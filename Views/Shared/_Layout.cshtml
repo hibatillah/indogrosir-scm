@@ -7,19 +7,77 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/indogrosir_tim8.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css" />
 </head>
-<body>
-    <header>
-        <p class="text-sky-500 text-6xl p-5">Halo</p>
+<body class="bg-[#EFEFEF]">
+    <header class="px-8 py-2 rounded-lg bg-white shadow flex justify-between">
+        <img src="assets/image/logo.png" class="h-10" />
+        <nav class="flex gap-x-3 items-center text-gray-400">
+            <div class="p-2 row gap-2">
+                <i class="bi bi-grid-fill"></i>
+                <span>Beranda</span>
+            </div>
+            <div class="p-2 row gap-2">
+                <i class="bi bi-bookmarks"></i>
+                <span>Berita</span>
+            </div>
+            <div class="p-2 row gap-2">
+                <i class="bi bi-geo-alt"></i>
+                <span>Lokasi</span>
+            </div>
+            <div class="p-2 row gap-2">
+                <i class="bi bi-building"></i>
+                <span>Tentang</span>
+                <i class="bi bi-carret-down-fill"></i>
+            </div>
+            <div class="p-2 row gap-2">
+                <i class="bi bi-person-circle"></i>
+                <span>Login</span>
+            </div>
+        </nav>
     </header>
 
     <main>
         @RenderBody()
     </main>
 
-    <footer class="">
-        <div class="container">
-            &copy; 2023 Tim 8 - 3SIC
+    <footer class="px-20 py-8 h-72 rounded-lg bg-white shadow grid grid-cols-2 gap-4">
+        <div class="flex flex-col justify-between">
+            <div>
+                <img src="assets/image/logo.png" class="h-16" />
+                <p class="mt-2 mb-5 text-gray-900">PT. Inti Cakrawala Citra</p>
+                <p class="text-gray-500">
+                    Menara Indomaret <br />
+                    Jl. Pantai Indah Kapuk Blvd No.1 <br />
+                    Pantai Indah Kapuk,Jakarta 14470
+                </p>
+            </div>
+            <p class="text-gray-800">
+                &copy; 2023 Team 8 - 3SIC
+            </p>
+        </div>
+        <div class="flex flex-col justify-between items-end">
+            <div class="flex gap-12">
+                <ul class="space-y-2 text-gray-500">
+                    <h4>Menu</h4>
+                    <li>Beranda</li>
+                    <li>Berita</li>
+                    <li>Lokasi</li>
+                    <li>Tentang</li>
+                </ul>
+                <ul class="space-y-2 text-gray-500">
+                    <h4>Tentang</h4>
+                    <li>Sejarah</li>
+                    <li>Produk Bisnis</li>
+                    <li>Hubungi Kami</li>
+                </ul>
+            </div>
+            <div class="flex gap-4 text-gray-800">
+                <i class="bi bi-telephone-fill"></i>
+                <i class="bi bi-instagram"></i>
+                <i class="bi bi-facebook"></i>
+                <i class="bi bi-twitter-x"></i>
+            </div>
         </div>
     </footer>
 

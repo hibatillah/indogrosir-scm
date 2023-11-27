@@ -2,7 +2,124 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="space-y-4">
+
+    @*Banner*@
+    <div class="relative h-80 bg-white rounded-2xl shadow overflow-hidden">
+        <div class="flex flex-col justify-center items-start h-full pl-32 bg-gradient-to-r from-white z-10">
+            <h1 class="text-5xl font-bold">Indogrosir</h1>
+            <p class="w-96 mt-5 mb-12">“Menjadi jalur distribusi guna melahirkan dan mengembangkan para wirausaha di bidang retail”</p>
+        </div>
+        <img src="~/assets/image/banner.png" class="absolute right-0 top-0 -z-10 h-full" />
+    </div>
+
+    @*Card*@
+    <div class="card grid grid-cols-4">
+        <div class="rounded-l-lg bg-blue-500 flex gap-4 items-center justify-center p-10">
+            <div class="">
+                <img src="assets/image/market.png"/>
+            </div>
+            <div class="text-center text-white">
+                <p class="font-bold text-4xl mb-1">28</p>
+                <p class="font-semibold">Lokasi Gerai Tersebar di Seluruh Indonesia</p>
+            </div>
+        </div>
+        <div class="bg-red-400 flex gap-4 p-10 items-center justify-center">
+            <div>
+                <img src="assets/image/ecommerce.png"/>
+            </div>
+            <div class="text-center text-white">
+                <p class="font-bold text-4xl mb-1">600</p>
+                <p class="font-semibold">Jumlah Supplier dan Distributor</p>
+            </div>
+        </div>
+        <div class="bg-blue-500 flex gap-4 p-10 items-center justify-center">
+            <div>
+                <img src="assets/image/box.png" />
+            </div>
+            <div class="text-center text-white">
+                <p class="font-bold text-4xl mb-1">6.000</p>
+                <p class="font-semibold">Items Meliputi Produk Food dan Perishable</p>
+            </div>
+        </div>
+        <div class="rounded-r-lg bg-red-400 flex gap-4 p-10 items-center justify-center">
+            <div>
+                <img src="assets/image/people.png" />
+            </div>
+            <div class="text-center text-white">
+                <p class="font-bold text-4xl mb-1">160K</p>
+                <p class="font-semibold">Mitra UMKM Bekerja Sama dengan Indogosir</p>
+            </div>
+        </div>
+    </div>
+
+    @* Produk Baru *@
+    <div class="card">
+        <h1 class="text-center mb-4 text-2xl font-bold">Produk Baru</h1>
+        <div class="grid grid-cols-4 gap-2">
+            @*1*@
+            <div class="col-span-2 row-span-2 rounded-xl border overflow-hidden">
+                <img src="assets/image/nuugreentea.png" class="img-cover"/>
+            </div>
+            @*2*@
+            <div class="rounded-xl border overflow-hidden">
+                <img src="assets/image/silverqueen.png" class="img-cover" />
+            </div>
+            @*3*@
+            <div class="rounded-xl border overflow-hidden">
+                <img src="assets/image/oatside.png" class="img-cover"/>
+            </div>
+            @*4*@
+            <div class="col-start-3 rounded-xl border overflow-hidden">
+                <img src="assets/image/milo.png" class="img-cover" />
+            </div>
+            @*5*@
+            <div class="rounded-xl border overflow-hidden">
+                <img src="assets/image/ichitan.png" class="img-cover" />
+            </div>
+        </div>
+    </div>
+
+    @*Produk Bisnis*@
+    <div class="card">
+        <h1 class="text-center mb-4 text-2xl font-bold">Produk Bisnis</h1>
+        <div class="grid grid-cols-4 gap-4">
+            @*1*@
+            <div class="card-produk-bisnis">
+                <div class="overflow-hidden w-1/2 mb-4">
+                    <img src="assets/image/logo.png" class="img-cover" />
+                </div>
+                <p class="text-center w-3/4">Retail Indogrosir adalah toko retail yang tersebar di kota-kota besar di Indonesia</p>
+            </div>
+            @*2*@
+            <div class="card-produk-bisnis">
+                <div class="overflow-hidden w-1/2 mb-4">
+                    <img src="assets/image/omi.png" class="img-cover" />
+                </div>
+                <p class="text-center w-3/4">Omi adalah Minimarket modern dalam bentuk  kemitraan yang ditujukan kepada masyarakat.</p>
+            </div>
+            @*3*@
+            <div class="col-start-3 col-span-2 row-span-2 card-produk-bisnis h-[450px]">
+                <div class="overflow-hidden w-1/2 mb-2">
+                    <img src="assets/image/tmi.png" class="img-cover" />
+                </div>
+                <p class="text-center w-3/4">Toko Mitra Indogrosir (TMI) adalah program pendampingan yang dilakukan Indogrosir kepada calon wirausaha dalam bentuk toko/warung modern dengan sistem yang lebih modernp>
+            </div>
+            @*4*@
+            <div class="card-produk-bisnis">
+                <div class="overflow-hidden w-1/2 mb-4">
+                    <img src="assets/image/logo.png" class="img-cover" />
+                </div>
+                <p class="text-center w-3/4">IGR adalah Retail Indogrosir adalah toko retail yang tersebar di kota-kota besar di Indonesia</p>
+            </div>
+            @*5*@
+            <div class="card-produk-bisnis">
+                <div class="overflow-hidden w-1/2 mb-4">
+                    <img src="assets/image/logo.png" class="img-cover" />
+                </div>
+                <p class="text-center w-3/4">Klik Indogorisr merupakan toko online yang merupakan solusi dari Indogrosir</p>
+            </div>
+        </div>
+    </div>
+
 </div>

@@ -5,7 +5,14 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                foreground: '#F6F8FA'
+                fore: 'var(--clr-foreground)',
+                back: 'var(--clr-background)',
+                title: 'var(--clr-title)',
+                muted: 'var(--clr-muted)',
+                indogrosir: {
+                    red: 'var(--clr-indogrosir-red)',
+                    blue: 'var(--clr-indogrosir-blue)',
+                },
             }
         },
     },

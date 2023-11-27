@@ -1,3 +1,58 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    --clr-title: '#1f1f1f';
+    --clr-muted: '#595959';
+    --clr-background: '#fff';
+    --clr-foreground: '#EFEFEF';
+    --clr-indogrosir-red: '#EB3941';
+    --clr-indogrosir-blue: '#0079C2';
+}
+
+body.dark {
+    --clr-title: '#fff';
+    --clr-muted: '#595959';
+    --clr-background: '#fff';
+    --clr-foreground: '#121212';
+}
+
+@layer base {
+    body {
+        @apply p-4 space-y-4;
+    }
+    h1, h2, h3, h4 {
+        @apply text-gray-900;
+    }
+    h1, h2 {
+        @apply font-bold;
+    }
+    h3, h4 {
+        @apply font-semibold;
+    }
+    h1 {
+        @apply text-2xl;
+    }
+    h2 {
+        @apply text-xl;
+    }
+    h3 {
+        @apply text-lg;
+    }
+    .row {
+        @apply flex items-center;
+    }
+    .img-cover {
+        @apply w-full h-full object-cover;
+    }
+}
+
+@layer component {
+    .card {
+        @apply bg-white shadow p-8 rounded-2xl;
+    }
+    .card-produk-bisnis {
+        @apply rounded-xl border bg-gray-100 flex flex-col justify-center items-center;
+    }
+}
