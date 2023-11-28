@@ -20,7 +20,7 @@ body.dark {
 
 @layer base {
     body {
-        @apply p-4 space-y-4;
+        @apply p-4 space-y-4 bg-gray-100;
     }
     h1, h2, h3, h4 {
         @apply text-gray-900;
@@ -54,5 +54,8 @@ body.dark {
     }
     .card-produk-bisnis {
         @apply rounded-xl border bg-gray-100 flex flex-col justify-center items-center;
+    }
+    .fit-screen {
+        @apply min-h-[calc(100dvh-104px)];
     }
 }

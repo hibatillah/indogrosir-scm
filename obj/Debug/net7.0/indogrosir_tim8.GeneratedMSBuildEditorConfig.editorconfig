@@ -9,37 +9,67 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = indogrosir_tim8
 build_property.RootNamespace = indogrosir_tim8
-build_property.ProjectDir = D:\Semester 5\indogrosir-scm\
+build_property.ProjectDir = D:\indogrosir_tim8\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\Semester 5\indogrosir-scm
+build_property.MSBuildProjectDirectory = D:\indogrosir_tim8
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Semester 5/indogrosir-scm/Views/Home/Index.cshtml]
+[D:/indogrosir_tim8/Views/Auth/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/indogrosir_tim8/Views/Auth/Signup.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aFxTaWdudXAuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/indogrosir_tim8/Views/Home/Berita.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxCZXJpdGEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/indogrosir_tim8/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Semester 5/indogrosir-scm/Views/Home/Privacy.cshtml]
+[D:/indogrosir_tim8/Views/Home/Lokasi.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2thc2kuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/indogrosir_tim8/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Semester 5/indogrosir-scm/Views/Shared/Error.cshtml]
+[D:/indogrosir_tim8/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Semester 5/indogrosir-scm/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/indogrosir_tim8/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Semester 5/indogrosir-scm/Views/_ViewImports.cshtml]
+[D:/indogrosir_tim8/Views/Tentang/Hubungi.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVudGFuZ1xIdWJ1bmdpLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/indogrosir_tim8/Views/Tentang/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVudGFuZ1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/indogrosir_tim8/Views/Tentang/Sejarah.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVudGFuZ1xTZWphcmFoLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/indogrosir_tim8/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Semester 5/indogrosir-scm/Views/_ViewStart.cshtml]
+[D:/indogrosir_tim8/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Semester 5/indogrosir-scm/Views/Shared/_Layout.cshtml]
+[D:/indogrosir_tim8/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-s91s1ahggm

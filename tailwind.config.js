@@ -1,3 +1,5 @@
+import plugin from "tailwindcss/plugin";
+
 module.exports = {
     content: [
         './Views/**/*.cshtml'

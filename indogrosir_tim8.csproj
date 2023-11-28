@@ -7,12 +7,15 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<UpToDateCheckBuilt Include="wwwroot/css/site.css" Set="Css" />
-		<UpToDateCheckBuilt Include="tailwind.config.js" Set="Css" />
+		<Compile Remove="wwwroot\assets\**" />
+		<Content Remove="wwwroot\assets\**" />
+		<EmbeddedResource Remove="wwwroot\assets\**" />
+		<None Remove="wwwroot\assets\**" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Include="wwwroot\assets\image\market.png" />
+		<UpToDateCheckBuilt Include="wwwroot/css/site.css" Set="Css" />
+		<UpToDateCheckBuilt Include="tailwind.config.js" Set="Css" />
 	</ItemGroup>
 
 	<Target Name="Tailwind" BeforeTargets="Build">

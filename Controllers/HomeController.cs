@@ -23,6 +23,16 @@ namespace indogrosir_tim8.Controllers
             return View();
         }
 
+        public IActionResult Berita()
+        {
+            return View();
+        }
+
+        public IActionResult Lokasi()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
