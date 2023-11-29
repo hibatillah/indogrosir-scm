@@ -46,6 +46,9 @@ body.dark {
     .img-cover {
         @apply w-full h-full object-cover;
     }
+    .h-100 {
+        height: 430px;
+    }
 }
 
 @layer component {
@@ -55,7 +58,25 @@ body.dark {
     .card-produk-bisnis {
         @apply rounded-xl border bg-gray-100 flex flex-col justify-center items-center;
     }
+
+    a.btn-primary {
+        @apply px-6 py-2 rounded bg-blue-500 text-white font-medium select-none;
+    }
+    a.btn-secondary {
+        @apply px-6 py-2 rounded bg-gray-400 text-white font-medium select-none;
+    }
+
     .fit-screen {
         @apply min-h-[calc(100dvh-104px)];
+    }
+    .grid-stack {
+        display: grid;
+        grid-template-areas: "stack";
+    }
+    .stack-elements {
+        grid-area: stack;
+    }
+    .bg-banner {
+        background: linear-gradient(90deg, rgba(255,255,255,1) 60%, rgba(255,255,255,0) 100%);
     }
 }

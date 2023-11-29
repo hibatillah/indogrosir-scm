@@ -11,26 +11,28 @@
 </head>
 <body>
     <header class="px-8 py-2 rounded-xl bg-white shadow flex justify-between">
-        <img src="assets/image/logo.png" class="h-10" />
+        <a asp-area="" asp-controller="Home" asp-action="Index">
+            <img src="assets/image/logo.png" class="h-10" />
+        </a>
         <nav class="flex gap-x-3 items-center text-gray-400">
-            <a class="p-2 row gap-2" asp-area="" asp-controller="Home" asp-action="Index">
+            <a class="p-2 row gap-2 hover:text-blue-500" asp-area="" asp-controller="Home" asp-action="Index">
                 <i class="bi bi-grid-fill"></i>
                 <span>Beranda</span>
             </a>
-            <a class="p-2 row gap-2" asp-area="" asp-controller="Home" asp-action="Berita">
+            <a class="p-2 row gap-2 hover:text-blue-500" asp-area="" asp-controller="Home" asp-action="Berita">
                 <i class="bi bi-bookmarks"></i>
                 <span>Berita</span>
             </a>
-            <a class="p-2 row gap-2" asp-area="" asp-controller="Home" asp-action="Lokasi">
+            <a class="p-2 row gap-2 hover:text-blue-500" asp-area="" asp-controller="Home" asp-action="Lokasi">
                 <i class="bi bi-geo-alt"></i>
                 <span>Lokasi</span>
             </a>
-            <a class="p-2 row gap-2" asp-area="" asp-controller="Tentang" asp-action="Index">
+            <a class="p-2 row gap-2 hover:text-blue-500" asp-area="" asp-controller="Tentang" asp-action="Index">
                 <i class="bi bi-building"></i>
                 <span>Tentang</span>
                 <i class="bi bi-carret-down-fill"></i>
             </a>
-            <a class="p-2 row gap-2" asp-area="" asp-controller="Auth" asp-action="Index">
+            <a class="p-2 row gap-2 hover:text-blue-500" asp-area="" asp-controller="Auth" asp-action="Index">
                 <i class="bi bi-person-circle"></i>
                 <span>Login</span>
             </a>
@@ -63,22 +65,22 @@
                         <h4>Menu</h4>
                     </li>
                     <li>
-                        <a asp-area="" asp-controller="Home" asp-action="Index">
+                        <a class="hover:text-blue-500" asp-area="" asp-controller="Home" asp-action="Index">
                             Beranda
                         </a>
                     </li>
                     <li>
-                        <a asp-area="" asp-controller="Home" asp-action="Berita">
+                        <a class="hover:text-blue-500" asp-area="" asp-controller="Home" asp-action="Berita">
                             Berita
                         </a>
                     </li>
                     <li>
-                        <a asp-area="" asp-controller="Home" asp-action="Lokasi">
+                        <a class="hover:text-blue-500" asp-area="" asp-controller="Home" asp-action="Lokasi">
                             Lokasi
                         </a>
                     </li>
                     <li>
-                        <a asp-area="" asp-controller="Tentang" asp-action="Index">
+                        <a class="hover:text-blue-500" asp-area="" asp-controller="Tentang" asp-action="Index">
                             Tentang
                         </a>
                     </li>
@@ -88,17 +90,17 @@
                         <h4>Tentang</h4>
                     </li>
                     <li>
-                        <a asp-area="" asp-controller="Tentang" asp-action="Sejarah">
+                        <a class="hover:text-blue-500" asp-area="" asp-controller="Tentang" asp-action="Sejarah">
                             Sejarah
                         </a>
                     </li>
                     <li>
-                        <a asp-area="" asp-controller="Tentang" asp-action="Index">
+                        <a class="hover:text-blue-500" asp-area="" asp-controller="Tentang" asp-action="Index">
                             Produk Bisnis
                         </a>
                     </li>
                     <li>
-                        <a asp-area="" asp-controller="Tentang" asp-action="Hubungi">
+                        <a class="hover:text-blue-500" asp-area="" asp-controller="Tentang" asp-action="Hubungi">
                             Hubungi Kami
                         </a>
                     </li>

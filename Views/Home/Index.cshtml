@@ -4,16 +4,27 @@
 
 
     @*Banner*@
-    <div class="relative h-80 bg-white rounded-2xl shadow overflow-hidden">
-        <div class="flex flex-col justify-center items-start h-full pl-32 bg-gradient-to-r from-white z-10">
-            <h1 class="text-5xl font-bold">Indogrosir</h1>
-            <p class="w-96 mt-5 mb-12">“Menjadi jalur distribusi guna melahirkan dan mengembangkan para wirausaha di bidang retail”</p>
+    <div class="relative h-100 rounded-2xl shadow bg-white overflow-hidden grid grid-cols-2">
+        <div class="col-span-1 flex flex-col justify-center items-start h-full pl-32 pr-12">
+            <h1 class="text-6xl font-bold">Indogrosir</h1>
+            <p class="mt-3 mb-12 text-xl text-gray-500">
+                “Menjadi jalur distribusi guna melahirkan dan mengembangkan para wirausaha di bidang retail”
+            </p>
+            <div class="row gap-3">
+                <a class="btn-primary text-white" asp-area="" asp-controller="Tentang" asp-action="Sejarah">
+                    Tentang Kami
+                </a>
+                <a class="btn-secondary text-gray-800" asp-area="" asp-controller="Auth" asp-action="Signup">
+                    Mitra Indogrosir
+                </a>
+            </div>
         </div>
-        <img src="~/assets/image/banner.png" class="absolute right-0 top-0 -z-10 h-full" />
+        <img src="~/assets/image/banner.png" class="col-span-1 h-full select-none pointer-events-none" />
+        <span class="absolute top-0 right-0 bottom-0 w-1/2 bg-gradient-to-r from-white" />
     </div>
 
     @*Card*@
-    <div class="card shadow grid grid-cols-4">
+   <div class="h-52 shadow rounded-2xl grid grid-cols-4">
         <div class="rounded-l-lg bg-blue-500 flex gap-4 items-center justify-center p-10">
             <div class="">
                 <img src="assets/image/market.png"/>
@@ -76,6 +87,18 @@
             <div class="rounded-xl border overflow-hidden">
                 <img src="assets/image/ichitan.png" class="img-cover" />
             </div>
+        </div>
+
+        @*Promo*@
+    <div class="relative mt-4 h-100 rounded-2xl border shadow bg-[#FFFAEA] overflow-hidden grid grid-cols-2">
+            <div class="col-span-1 flex flex-col justify-center items-start h-full pl-32">
+                <h2 class="text-3xl text-blue-500">Promo Akhir Bulan</h2>
+                <p class="text-gray-500 text-lg">Diskon hingga</p>
+                <h1 class="text-9xl text-red-600">70%</h1>
+                <p class="text-xl text-gray-900 mt-4 font-medium">Berlaku untuk semua bahan baku, hingga akhir bulan!</p>
+            </div>
+            <img src="~/assets/image/bahan.png" class="col-span-1 w-full h-100 object-cover select-none pointer-events-none" />
+            <span class="absolute top-0 right-0 bottom-0 w-1/2 bg-gradient-to-r from-[#FFFAEA]" />
         </div>
     </div>
 
