@@ -79,4 +79,10 @@ body.dark {
     .bg-banner {
         background: linear-gradient(90deg, rgba(255,255,255,1) 60%, rgba(255,255,255,0) 100%);
     }
+    .card-berita {
+        @apply bg-gray-200 rounded-xl p-8;
+    }
+    .img-berita {
+        @apply overflow-hidden h-64 rounded-lg mb-3;
+    }
 }
