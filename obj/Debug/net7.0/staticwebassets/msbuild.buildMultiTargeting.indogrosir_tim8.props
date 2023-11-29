@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\indogrosir_tim8.props" />
-</Project>

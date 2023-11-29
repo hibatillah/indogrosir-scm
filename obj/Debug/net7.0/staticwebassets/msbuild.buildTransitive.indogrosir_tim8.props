@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\indogrosir_tim8.props" />
-</Project>
