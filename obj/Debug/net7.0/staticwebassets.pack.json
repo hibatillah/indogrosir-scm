@@ -1,75 +1,75 @@
 {
   "Files": [
     {
-      "Id": "D:\\indogrosir_tim8\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\indogrosir_tim8.bundle.scp.css",
+      "Id": "D:\\Semester 5\\ProjectFramework\\indogrosir-scm\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\indogrosir_tim8.bundle.scp.css",
       "PackagePath": "staticwebassets\\indogrosir_tim8.bundle.scp.css"
     },
     {
-      "Id": "D:\\indogrosir_tim8\\wwwroot\\css\\site.css",
+      "Id": "D:\\Semester 5\\ProjectFramework\\indogrosir-scm\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
-      "Id": "D:\\indogrosir_tim8\\wwwroot\\css\\site.output.css",
+      "Id": "D:\\Semester 5\\ProjectFramework\\indogrosir-scm\\wwwroot\\css\\site.output.css",
       "PackagePath": "staticwebassets\\css\\site.output.css"
     },
     {
-      "Id": "D:\\indogrosir_tim8\\wwwroot\\css\\styles.css",
+      "Id": "D:\\Semester 5\\ProjectFramework\\indogrosir-scm\\wwwroot\\css\\styles.css",
       "PackagePath": "staticwebassets\\css\\styles.css"
     },
     {
-      "Id": "D:\\indogrosir_tim8\\wwwroot\\favicon.ico",
+      "Id": "D:\\Semester 5\\ProjectFramework\\indogrosir-scm\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "D:\\indogrosir_tim8\\wwwroot\\js\\site.js",
+      "Id": "D:\\Semester 5\\ProjectFramework\\indogrosir-scm\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
-      "Id": "D:\\indogrosir_tim8\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Id": "D:\\Semester 5\\ProjectFramework\\indogrosir-scm\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Id": "D:\\indogrosir_tim8\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Id": "D:\\Semester 5\\ProjectFramework\\indogrosir-scm\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Id": "D:\\indogrosir_tim8\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Id": "D:\\Semester 5\\ProjectFramework\\indogrosir-scm\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Id": "D:\\indogrosir_tim8\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Id": "D:\\Semester 5\\ProjectFramework\\indogrosir-scm\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Id": "D:\\indogrosir_tim8\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Id": "D:\\Semester 5\\ProjectFramework\\indogrosir-scm\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Id": "D:\\indogrosir_tim8\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Id": "D:\\Semester 5\\ProjectFramework\\indogrosir-scm\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Id": "D:\\indogrosir_tim8\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Id": "D:\\Semester 5\\ProjectFramework\\indogrosir-scm\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Id": "D:\\indogrosir_tim8\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Id": "D:\\Semester 5\\ProjectFramework\\indogrosir-scm\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Id": "D:\\indogrosir_tim8\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Id": "D:\\Semester 5\\ProjectFramework\\indogrosir-scm\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Id": "D:\\indogrosir_tim8\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Id": "D:\\Semester 5\\ProjectFramework\\indogrosir-scm\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Id": "D:\\indogrosir_tim8\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Id": "D:\\Semester 5\\ProjectFramework\\indogrosir-scm\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Id": "D:\\indogrosir_tim8\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Id": "D:\\Semester 5\\ProjectFramework\\indogrosir-scm\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {

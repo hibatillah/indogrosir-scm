@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("indogrosir_tim8")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e363af41aab0e9396da03e4f166f8497f2daf32c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("indogrosir_tim8")]
 [assembly: System.Reflection.AssemblyTitleAttribute("indogrosir_tim8")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

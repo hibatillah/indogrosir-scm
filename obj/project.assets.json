@@ -8,19 +8,19 @@
     "net7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\ASUS\\.nuget\\packages\\": {}
+    "C:\\Users\\mifta\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\indogrosir_tim8\\indogrosir_tim8.csproj",
+      "projectUniqueName": "D:\\Semester 5\\ProjectFramework\\indogrosir-scm\\indogrosir_tim8.csproj",
       "projectName": "indogrosir_tim8",
-      "projectPath": "D:\\indogrosir_tim8\\indogrosir_tim8.csproj",
-      "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "D:\\indogrosir_tim8\\obj\\",
+      "projectPath": "D:\\Semester 5\\ProjectFramework\\indogrosir-scm\\indogrosir_tim8.csproj",
+      "packagesPath": "C:\\Users\\mifta\\.nuget\\packages\\",
+      "outputPath": "D:\\Semester 5\\ProjectFramework\\indogrosir-scm\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mifta\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -64,7 +64,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

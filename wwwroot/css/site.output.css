@@ -642,12 +642,28 @@ h3 {
   margin-bottom: 1.25rem;
 }
 
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
 .mt-2 {
   margin-top: 0.5rem;
 }
 
 .mt-5 {
   margin-top: 1.25rem;
+}
+
+.mb-3 {
+  margin-bottom: 0.75rem;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
+.ml-3 {
+  margin-left: 0.75rem;
 }
 
 .flex {
@@ -662,6 +678,10 @@ h3 {
   height: 2.5rem;
 }
 
+.h-64 {
+  height: 16rem;
+}
+
 .h-80 {
   height: 20rem;
 }
@@ -672,6 +692,22 @@ h3 {
 
 .h-full {
   height: 100%;
+}
+
+.h-16 {
+  height: 4rem;
+}
+
+.h-32 {
+  height: 8rem;
+}
+
+.h-40 {
+  height: 10rem;
+}
+
+.h-44 {
+  height: 11rem;
 }
 
 .w-1\/2 {
@@ -686,16 +722,28 @@ h3 {
   width: 24rem;
 }
 
+.w-full {
+  width: 100%;
+}
+
+.w-32 {
+  width: 8rem;
+}
+
+.w-60 {
+  width: 15rem;
+}
+
 .grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.grid-cols-4 {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
 .grid-cols-3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .flex-col {
@@ -734,6 +782,14 @@ h3 {
   gap: 1rem;
 }
 
+.gap-6 {
+  gap: 1.5rem;
+}
+
+.gap-3 {
+  gap: 0.75rem;
+}
+
 .gap-x-3 {
   -moz-column-gap: 0.75rem;
        column-gap: 0.75rem;
@@ -757,6 +813,10 @@ h3 {
 
 .rounded-2xl {
   border-radius: 1rem;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
 }
 
 .rounded-xl {
@@ -802,6 +862,23 @@ h3 {
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
+.fill-blue-400 {
+  fill: #60a5fa;
+}
+
+.fill-blue-500 {
+  fill: #3b82f6;
+}
+
+.fill-red-400 {
+  fill: #f87171;
+}
+
+.object-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .p-10 {
   padding: 2.5rem;
 }
@@ -828,6 +905,11 @@ h3 {
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .pl-32 {
@@ -932,5 +1014,19 @@ body.dark {
 
   .fit-screen {
     min-height: calc(100dvh - 104px);
+  }
+
+  .card-berita {
+    border-radius: 0.75rem;
+    --tw-bg-opacity: 1;
+    background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+    padding: 2rem;
+  }
+
+  .img-berita {
+    margin-bottom: 0.75rem;
+    height: 16rem;
+    overflow: hidden;
+    border-radius: 0.5rem;
   }
 }

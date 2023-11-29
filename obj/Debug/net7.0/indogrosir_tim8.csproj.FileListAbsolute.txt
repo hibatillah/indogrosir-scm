@@ -65,3 +65,36 @@ D:\Semester 5\indogrosir-scm\obj\Debug\net7.0\ref\indogrosir_tim8.dll
 D:\Semester 5\indogrosir-scm\bin\Debug\net7.0\tailwind.extension.json
 D:\indogrosir_tim8\bin\Debug\net7.0\tailwind.extension.json
 D:\indogrosir_tim8\obj\Debug\net7.0\indogrosir_tim8.sourcelink.json
+D:\Semester 5\ProjectFramework\indogrosir-scm\bin\Debug\net7.0\appsettings.Development.json
+D:\Semester 5\ProjectFramework\indogrosir-scm\bin\Debug\net7.0\appsettings.json
+D:\Semester 5\ProjectFramework\indogrosir-scm\bin\Debug\net7.0\package-lock.json
+D:\Semester 5\ProjectFramework\indogrosir-scm\bin\Debug\net7.0\package.json
+D:\Semester 5\ProjectFramework\indogrosir-scm\bin\Debug\net7.0\tailwind.extension.json
+D:\Semester 5\ProjectFramework\indogrosir-scm\bin\Debug\net7.0\indogrosir_tim8.staticwebassets.runtime.json
+D:\Semester 5\ProjectFramework\indogrosir-scm\bin\Debug\net7.0\indogrosir_tim8.exe
+D:\Semester 5\ProjectFramework\indogrosir-scm\bin\Debug\net7.0\indogrosir_tim8.deps.json
+D:\Semester 5\ProjectFramework\indogrosir-scm\bin\Debug\net7.0\indogrosir_tim8.runtimeconfig.json
+D:\Semester 5\ProjectFramework\indogrosir-scm\bin\Debug\net7.0\indogrosir_tim8.dll
+D:\Semester 5\ProjectFramework\indogrosir-scm\bin\Debug\net7.0\indogrosir_tim8.pdb
+D:\Semester 5\ProjectFramework\indogrosir-scm\obj\Debug\net7.0\indogrosir_tim8.GeneratedMSBuildEditorConfig.editorconfig
+D:\Semester 5\ProjectFramework\indogrosir-scm\obj\Debug\net7.0\indogrosir_tim8.AssemblyInfoInputs.cache
+D:\Semester 5\ProjectFramework\indogrosir-scm\obj\Debug\net7.0\indogrosir_tim8.AssemblyInfo.cs
+D:\Semester 5\ProjectFramework\indogrosir-scm\obj\Debug\net7.0\indogrosir_tim8.csproj.CoreCompileInputs.cache
+D:\Semester 5\ProjectFramework\indogrosir-scm\obj\Debug\net7.0\indogrosir_tim8.MvcApplicationPartsAssemblyInfo.cache
+D:\Semester 5\ProjectFramework\indogrosir-scm\obj\Debug\net7.0\indogrosir_tim8.RazorAssemblyInfo.cache
+D:\Semester 5\ProjectFramework\indogrosir-scm\obj\Debug\net7.0\indogrosir_tim8.RazorAssemblyInfo.cs
+D:\Semester 5\ProjectFramework\indogrosir-scm\obj\Debug\net7.0\staticwebassets\msbuild.indogrosir_tim8.Microsoft.AspNetCore.StaticWebAssets.props
+D:\Semester 5\ProjectFramework\indogrosir-scm\obj\Debug\net7.0\staticwebassets\msbuild.build.indogrosir_tim8.props
+D:\Semester 5\ProjectFramework\indogrosir-scm\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.indogrosir_tim8.props
+D:\Semester 5\ProjectFramework\indogrosir-scm\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.indogrosir_tim8.props
+D:\Semester 5\ProjectFramework\indogrosir-scm\obj\Debug\net7.0\staticwebassets.pack.json
+D:\Semester 5\ProjectFramework\indogrosir-scm\obj\Debug\net7.0\staticwebassets.build.json
+D:\Semester 5\ProjectFramework\indogrosir-scm\obj\Debug\net7.0\staticwebassets.development.json
+D:\Semester 5\ProjectFramework\indogrosir-scm\obj\Debug\net7.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+D:\Semester 5\ProjectFramework\indogrosir-scm\obj\Debug\net7.0\scopedcss\bundle\indogrosir_tim8.styles.css
+D:\Semester 5\ProjectFramework\indogrosir-scm\obj\Debug\net7.0\scopedcss\projectbundle\indogrosir_tim8.bundle.scp.css
+D:\Semester 5\ProjectFramework\indogrosir-scm\obj\Debug\net7.0\indogrosir_tim8.dll
+D:\Semester 5\ProjectFramework\indogrosir-scm\obj\Debug\net7.0\refint\indogrosir_tim8.dll
+D:\Semester 5\ProjectFramework\indogrosir-scm\obj\Debug\net7.0\indogrosir_tim8.pdb
+D:\Semester 5\ProjectFramework\indogrosir-scm\obj\Debug\net7.0\indogrosir_tim8.genruntimeconfig.cache
+D:\Semester 5\ProjectFramework\indogrosir-scm\obj\Debug\net7.0\ref\indogrosir_tim8.dll
