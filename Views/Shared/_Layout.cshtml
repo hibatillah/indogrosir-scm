@@ -12,7 +12,7 @@
 <body>
     <header class="px-8 py-2 rounded-xl bg-white shadow flex justify-between">
         <a asp-area="" asp-controller="Home" asp-action="Index">
-            <img src="assets/image/logo.png" class="h-10" />
+            <img src="assets/image/logo.png" class="h-10 pointer-events-none" alt="logo indogrosir" />
         </a>
         <nav class="flex gap-x-3 items-center text-gray-400">
             <a class="p-2 row gap-2 hover:text-blue-500" asp-area="" asp-controller="Home" asp-action="Index">
@@ -46,7 +46,7 @@
     <footer class="px-20 py-8 h-80 rounded-2xl bg-white shadow grid grid-cols-2 gap-4">
         <div class="h-full flex flex-col justify-between">
             <div>
-                <img src="assets/image/logo.png" class="h-10" />
+                <img src="assets/image/logo.png" class="h-10 pointer-events-none" alt="logo indogrosir" />
                 <p class="mt-2 mb-5 text-gray-900">PT. Inti Cakrawala Citra</p>
                 <p class="text-gray-500">
                     Menara Indomaret <br />
@@ -59,7 +59,7 @@
             </p>
         </div>
         <div class="flex flex-col justify-between items-end">
-            <div class="flex gap-16">
+            <div class="flex gap-20">
                 <ul class="space-y-2 text-gray-500">
                     <li>
                         <h4>Menu</h4>
@@ -105,13 +105,44 @@
                         </a>
                     </li>
                 </ul>
+                <ul class="space-y-2 text-gray-500">
+                    <li>
+                        <h4>Mitra</h4>
+                    </li>
+                    <li>
+                        <a class="hover:text-blue-500" asp-area="" asp-controller="Auth" asp-action="Index">
+                            Masuk
+                        </a>
+                    </li>
+                    <li>
+                        <a class="hover:text-blue-500" asp-area="" asp-controller="Auth" asp-action="Signup">
+                            Daftar
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <div class="flex gap-4 text-gray-800">
-                <i class="bi bi-telephone-fill"></i>
-                <i class="bi bi-instagram"></i>
-                <i class="bi bi-facebook"></i>
-                <i class="bi bi-twitter-x"></i>
-            </div>
+            <ul class="flex gap-4">
+                <li>
+                    <a href="tel:0761564641" target="_blank">
+                        <i class="bi bi-telephone-fill text-gray-800 hover:text-blue-500"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/officialindogrosir/" target="_blank">
+                        <i class="bi bi-instagram text-gray-800 hover:text-blue-500"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://m.facebook.com/officialindogrosir/" target="_blank">
+                        <i class="bi bi-facebook text-gray-800 hover:text-blue-500"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/officialigr" target="_blank">
+                        <i class="bi bi-twitter-x text-gray-800 hover:text-blue-500"></i>
+                    </a>
+                </li>
+            </ul>
         </div>
     </footer>
 

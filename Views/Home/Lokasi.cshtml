@@ -3,101 +3,78 @@
 }
 
 <div class="card shadow fit-screen">
-    <div class="grid grid-cols-2">
+    <div class="grid grid-cols-2 gap-10">
+
         @*Kiri*@
-        <div>
-            <h1 class="mb-4">Lokasi Gerai</h1>
-            @*Pekanbaru*@
-            <div class="grid grid-cols-2 gap-3 mb-6">
-                <div class="h-44 rounded-lg overflow-hidden">
-                    <img src="~/assets/image/pekanbaru.png" class="img-cover" />
-                </div>
-                <div class="">
-                    <h2 class="mb-2">Indogrosir Pekanbaru</h2>
-                    <p class="mb-2 text-gray-500">Jalan Soekarno Hatta (Arengka) No.18 RT.01 RW.08, Kel. Sidomulya Barat,Kec. Tampan, Kota Pekanbaru 28294</p>
-                    <div class="flex gap-2 items-center mb-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill fill-blue-500" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
-                        </svg>
-                        <p class="text-gray-500">0761 - 564 641</p>
+        <div class="h-full">
+            <h1 class="mb-6">Lokasi Gerai Indogrosir</h1>
+            @*list lokasi*@
+            <ul class="space-y-4">
+                @*Pekanbaru*@
+                <li class="row gap-5">
+                    <div class="w-[600px] h-44 rounded-lg border-2 overflow-hidden">
+                        <img src="~/assets/image/pekanbaru.png" class="img-cover" alt="indogrosir pekanbaru" />
                     </div>
-                    <div class="flex gap-2 items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill fill-red-400" viewBox="0 0 16 16">
-                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
-                        </svg>
-                        <p class="text-gray-500">Buka di google maps</p>
+                    <div>
+                        <h2>Indogrosir Pekanbaru</h2>
+                        <p class="mb-2 text-justify text-gray-500 line-clamp-3">
+                            Jalan Soekarno Hatta (Arengka) No.18 RT.01 RW.08, Kel. Sidomulya Barat,Kec. Tampan, Kota Pekanbaru 28294
+                        </p>
+                        <a href="tel:0761564641" class="row gap-2">
+                            <i class="bi bi-telephone-fill text-blue-500"></i>
+                            <p class="text-gray-500">0761 - 564 641</p>
+                        </a>
+                        <a href="#" class="row gap-2">
+                            <i class="bi bi-geo-alt-fill text-blue-500"></i>
+                            <p class="text-gray-500">Buka Google Maps</p>
+                        </a>
                     </div>
-                </div>
-            </div>
-            @*Palembang*@
-            <div class="grid grid-cols-2 gap-3 mb-6">
-                <div class="h-44 rounded-lg overflow-hidden">
-                    <img src="~/assets/image/palembang.png" class="img-cover" />
-                </div>
-                <div class="">
-                    <h2 class="mb-2">Indogrosir Palembang</h2>
-                    <p class="mb-2 text-gray-500">Jalan Pangeran Ayin D/H Najamuddin No. 326, Kel. Sukamaju Kec. Suko, Palembang, Sumatera Selatan 30164</p>
-                    <div class="flex gap-2 items-center mb-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill fill-blue-500" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
-                        </svg>
-                        <p class="text-gray-500">0711 - 822 123</p>
+                </li>
+                @*Palembang*@
+                <li class="row gap-5">
+                    <div class="w-[600px] h-44 rounded-lg border-2 overflow-hidden">
+                        <img src="~/assets/image/palembang.png" class="img-cover" alt="indogrosir palembang" />
                     </div>
-                    <div class="flex gap-2 items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill fill-red-400" viewBox="0 0 16 16">
-                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
-                        </svg>
-                        <p class="text-gray-500">Buka di google maps</p>
+                    <div>
+                        <h2>Indogrosir Palembang</h2>
+                        <p class="mb-2 text-justify text-gray-500 line-clamp-3">
+                            Jalan Pangeran Ayin D/H Najamuddin No. 326, Kel. Sukamaju Kec. Suko, Palembang, Sumatera Selatan 30164
+                        </p>
+                        <a href="tel:0761564641" class="row gap-2">
+                            <i class="bi bi-telephone-fill text-blue-500"></i>
+                            <p class="text-gray-500">0761 - 564 641</p>
+                        </a>
+                        <a href="#" class="row gap-2">
+                            <i class="bi bi-geo-alt-fill text-blue-500"></i>
+                            <p class="text-gray-500">Buka Google Maps</p>
+                        </a>
                     </div>
-                </div>
-            </div>
-            @*Bandung*@
-            <div class="grid grid-cols-2 gap-3 mb-6">
-                <div class="h-44 rounded-lg overflow-hidden">
-                    <img src="~/assets/image/bandung.png" class="img-cover" />
-                </div>
-                <div class="">
-                    <h2 class="mb-2">Indogrosir Bandung</h2>
-                    <p class="mb-2 text-gray-500">Jalan Ahmad Yani No. 806 (100 M Barat Terminal Cicaheum) Cicaheum, Bandung 40282</p>
-                    <div class="flex gap-2 items-center mb-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill fill-blue-500" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
-                        </svg>
-                        <p class="text-gray-500">0911 - 368 5555</p>
+                </li>
+                @*Ambon*@
+                <li class="row gap-5">
+                    <div class="w-[600px] h-44 rounded-lg border-2 overflow-hidden">
+                        <img src="~/assets/image/ambon.png" class="img-cover" alt="indogrosir ambon" />
                     </div>
-                    <div class="flex gap-2 items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill fill-red-400" viewBox="0 0 16 16">
-                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
-                        </svg>
-                        <p class="text-gray-500">Buka di google maps</p>
+                    <div>
+                        <h2>Indogrosir Ambon</h2>
+                        <p class="mb-2 text-justify text-gray-500 line-clamp-3">
+                            Jalan Syaranamual Desa Hunuth Atau Kate-kate Kecamatan Pulau Ambon Kota Ambon Provinsi Maluku
+                        </p>
+                        <a href="tel:0761564641" class="row gap-2">
+                            <i class="bi bi-telephone-fill text-blue-500"></i>
+                            <p class="text-gray-500">0761 - 564 641</p>
+                        </a>
+                        <a href="#" class="row gap-2">
+                            <i class="bi bi-geo-alt-fill text-blue-500"></i>
+                            <p class="text-gray-500">Buka Google Maps</p>
+                        </a>
                     </div>
-                </div>
-            </div>
-            @*Ambon*@
-            <div class="grid grid-cols-2 gap-3">
-                <div class="h-44 rounded-lg overflow-hidden">
-                    <img src="~/assets/image/ambon.png" class="img-cover" />
-                </div>
-                <div class="">
-                    <h2 class="mb-2">Indogrosir Ambon</h2>
-                    <p class="mb-2 text-gray-500">Jalan Syaranamual Desa Hunuth Atau Kate-kate Kecamatan Pulau Ambon Kota Ambon Provinsi Maluku</p>
-                    <div class="flex gap-2 items-center mb-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill fill-blue-500" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
-                        </svg>
-                        <p class="text-gray-500">0911 - 368 5555</p>
-                    </div>
-                    <div class="flex gap-2 items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill fill-red-400" viewBox="0 0 16 16">
-                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
-                        </svg>
-                        <p class="text-gray-500">Buka di google maps</p>
-                    </div>
-                </div>
-            </div>
+                </li>
+            </ul>
         </div>
+
         @*Kanan*@
-        <div class="rounded-xl ml-3 overflow-hidden">
+        <div class="rounded-xl h-[43rem] border overflow-hidden">
             <img src="~/assets/image/figmap.png" class="img-cover" />
         </div>
     </div>
