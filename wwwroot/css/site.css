@@ -69,6 +69,7 @@ body.dark {
         @apply overflow-hidden h-64 rounded-lg mb-3 pointer-events-none;
     }
 
+
     /* card */
     a.btn-primary {
         @apply px-6 py-2 rounded bg-blue-500 text-white font-medium select-none;
