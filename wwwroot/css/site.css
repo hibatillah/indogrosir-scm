@@ -49,6 +49,9 @@ body.dark {
     .img-cover {
         @apply w-full h-full object-cover;
     }
+    .img-contain {
+        @apply w-full h-full object-contain;
+    }
 }
 
 @layer component {
@@ -69,13 +72,23 @@ body.dark {
         @apply overflow-hidden h-64 rounded-lg mb-3 pointer-events-none;
     }
 
-
     /* card */
-    a.btn-primary {
-        @apply px-6 py-2 rounded bg-blue-500 text-white font-medium select-none;
+    .btn-primary {
+        @apply px-6 py-2 rounded-lg bg-blue-500 text-white font-medium select-none;
     }
-    a.btn-secondary {
-        @apply px-6 py-2 rounded bg-gray-400 text-white font-medium select-none;
+    .btn-secondary {
+        @apply px-6 py-2 rounded-lg bg-gray-400 text-white font-medium select-none;
+    }
+
+    /* form */
+    label:has(.form-input) {
+        @apply flex flex-col gap-1;
+    }
+    label:has(.form-input) span {
+        @apply text-gray-600;
+    }
+    .form-input {
+        @apply px-4 py-2 rounded-sm bg-gray-100 text-gray-900 focus:outline-none focus:outline-blue-500 placeholder:text-gray-400;
     }
 
     /* util */
@@ -94,8 +107,5 @@ body.dark {
     }
     .row {
         @apply flex items-center;
-    }
-    .img-contain {
-        @apply w-full h-full object-contain;
     }
 }

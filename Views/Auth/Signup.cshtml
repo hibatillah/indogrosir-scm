@@ -2,4 +2,36 @@
     ViewData["Title"] = "Sign Up";
 }
 
-<div class="card shadow  fit-screen">Sign Up</div>
+<div class="card shadow fit-screen grid place-items-center">
+    <div class="grid grid-cols-2 w-4/6 gap-10">
+        <div class="col-span-1 h-[400px] rounded-xl overflow-hidden">
+            <img src="~/assets/image/banner.png" alt="indogrosir" class="img-cover" />
+        </div>
+        <div class="col-span-1 pl-10">
+            <form id="login" action="#" class="space-y-4">
+                <h1>Sign Up</h1>
+                <label for="usaha">
+                    <span>Nama Usaha</span>
+                    <input type="text" id="usaha" name="usaha" placeholder="Masukkan Nama Usaha" class="form-input" />
+                </label>
+                <label for="lokasi">
+                    <span>Lokasi Usaha</span>
+                    <input type="text" id="lokasi" name="lokasi" placeholder="Masukkan Lokasi Usaha" class="form-input" />
+                </label>
+                <label for="email">
+                    <span>Email</span>
+                    <input type="email" id="email" name="email" placeholder="Masukkan Email" class="form-input" />
+                </label>
+                <label for="password">
+                    <span>Password</span>
+                    <input type="password" id="password" name="password" placeholder="Masukkan Password" class="form-input" />
+                </label>
+                <button type="submit" class="btn-primary">Daftar</button>
+                <div class="row gap-1 text-gray-600">
+                    Sudah menjadi mitra?
+                    <a asp-area="" asp-controller="Auth" asp-action="Index" class="text-blue-500 hover:underline underline-offset-1">Masuk</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

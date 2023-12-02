@@ -2,4 +2,32 @@
     ViewData["Title"] = "Hubungi Kami";
 }
 
-<div class="card shadow fit-screen">Hubungi Kami</div>
+<div class="card shadow fit-screen grid place-items-center">
+    <div class="grid grid-cols-2 w-4/6 gap-10">
+        <div class="col-span-1 order-2 h-[450px] rounded-xl overflow-hidden">
+            <img src="~/assets/image/banner.png" alt="indogrosir" class="img-cover" />
+        </div>
+        <div class="col-span-1 order-1 pr-10">
+            <form id="login" action="#" class="space-y-4">
+                <h1>Tulis Pendapatmu</h1>
+                <label for="nama">
+                    <span>Nama</span>
+                    <input type="text" id="nama" name="nama" placeholder="Masukkan Nama" class="form-input" />
+                </label>
+                <label for="nohape">
+                    <span>No. Hape</span>
+                    <input type="tel" id="nohape" name="nohape" placeholder="Masukkan Nomor Hape" class="form-input" />
+                </label>
+                <label for="cabang">
+                    <span>Cabang</span>
+                    <input type="text" id="cabang" name="cabang" placeholder="Masukkan Cabang" class="form-input" />
+                </label>
+                <label for="pesan">
+                    <span>Pesan</span>
+                    <textarea id="pesan" name="pesan" rows="4" placeholder="Masukkan Pesan" class="form-input"></textarea>
+                </label>
+                <button type="submit" class="btn-primary">Kirim Pesan</button>
+            </form>
+        </div>
+    </div>
+</div>

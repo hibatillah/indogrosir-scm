@@ -2,4 +2,8 @@
 node_modules/
 .vs/
 bin/
+
+# build
 obj/
+wwwroot/css/styles.css
+
