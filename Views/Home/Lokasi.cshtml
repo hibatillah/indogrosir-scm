@@ -2,14 +2,14 @@
     ViewData["Title"] = "Lokasi";
 }
 
-<div class="card shadow fit-screen">
-    <div class="grid grid-cols-2 gap-10">
+<div class="card shadow h-screen overflow-hidden">
+    <div class="h-full grid grid-cols-2 gap-6">
 
         @*Kiri*@
-        <div class="h-full">
-            <h1 class="mb-6">Lokasi Gerai Indogrosir</h1>
+        <div class="h-full overflow-hidden">
+            <h1 class="mb-6">Lokasi Gerai</h1>
             @*list lokasi*@
-            <ul class="space-y-4">
+            <ul id="lokasi" class="pr-2 space-y-5 h-[43rem] overflow-y-scroll">
                 @*Pekanbaru*@
                 <li class="row gap-5">
                     <div class="w-[600px] h-44 rounded-lg border-2 overflow-hidden">
@@ -74,7 +74,7 @@
         </div>
 
         @*Kanan*@
-        <div class="rounded-xl h-[43rem] border overflow-hidden">
+        <div class="rounded-xl h-full border overflow-hidden">
             <img src="~/assets/image/figmap.png" class="img-cover" />
         </div>
     </div>

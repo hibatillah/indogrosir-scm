@@ -29,25 +29,25 @@
         <a asp-area="" asp-controller="Home" asp-action="Index">
             <img src="assets/image/logo.png" class="h-10 pointer-events-none" alt="logo indogrosir" />
         </a>
-        <nav class="flex gap-x-3 items-center text-gray-400">
-            <a class="p-2 row gap-2 hover:text-blue-500" asp-area="" asp-controller="Home" asp-action="Index">
+        <nav id="menu" class="flex gap-x-3 items-center text-gray-400">
+            <a class="p-2 row gap-2 font-medium hover:text-blue-500" asp-area="" asp-controller="Home" asp-action="Index">
                 <i class="bi bi-grid-fill"></i>
                 <span>Beranda</span>
             </a>
-            <a class="p-2 row gap-2 hover:text-blue-500" asp-area="" asp-controller="Home" asp-action="Berita">
+            <a class="p-2 row gap-2 font-medium hover:text-blue-500" asp-area="" asp-controller="Home" asp-action="Berita">
                 <i class="bi bi-bookmarks"></i>
                 <span>Berita</span>
             </a>
-            <a class="p-2 row gap-2 hover:text-blue-500" asp-area="" asp-controller="Home" asp-action="Lokasi">
+            <a class="p-2 row gap-2 font-medium hover:text-blue-500" asp-area="" asp-controller="Home" asp-action="Lokasi">
                 <i class="bi bi-geo-alt"></i>
                 <span>Lokasi</span>
             </a>
-            <a class="p-2 row gap-2 hover:text-blue-500" asp-area="" asp-controller="Tentang" asp-action="Index">
+            <a class="p-2 row gap-2 font-medium hover:text-blue-500" asp-area="" asp-controller="Tentang" asp-action="Index">
                 <i class="bi bi-building"></i>
                 <span>Tentang</span>
                 <i class="bi bi-carret-down-fill"></i>
             </a>
-            <a class="p-2 row gap-2 hover:text-blue-500" asp-area="" asp-controller="Auth" asp-action="Index">
+            <a class="p-2 row gap-2 font-medium hover:text-blue-500" asp-area="" asp-controller="Auth" asp-action="Index">
                 <i class="bi bi-person-circle"></i>
                 <span>Login</span>
             </a>
@@ -160,6 +160,46 @@
             </ul>
         </div>
     </footer>
+
+    <script>
+        const path = window.location.href
+        const currentPath = path.split('//')[1]
+        const allMenu = document.querySelectorAll('nav#menu a')
+        console.log(currentPath.split('/')[-1])
+
+        const activeMenu = (index) => {
+            for (let i = 0; i < allMenu.length; i++) {
+                let active = 'text-blue-500'
+
+                if (i == index) {
+                    allMenu[i].classList.add(active)
+                } else {
+                    allMenu[i].classList.remove(active)
+                }
+            }
+        }
+
+        switch (currentPath.split('/')[1]) {
+            case "Home":
+                switch (currentPath.split('/')[2]) {
+                    case "Berita":
+                        activeMenu(1)
+                        break;
+                    case "Lokasi":
+                        activeMenu(2)
+                        break;
+                }
+                break;
+            case "Tentang":
+                activeMenu(3)
+                break;
+            case "Auth":
+                activeMenu(4)
+                break;
+            default:
+                activeMenu(0)
+        }
+    </script>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
