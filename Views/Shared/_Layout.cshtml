@@ -45,7 +45,10 @@
             <a class="p-2 row gap-2 font-medium hover:text-blue-500" asp-area="" asp-controller="Tentang" asp-action="Index">
                 <i class="bi bi-building"></i>
                 <span>Tentang</span>
-                <i class="bi bi-carret-down-fill"></i>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="mt-0.5 w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+
             </a>
             <a class="p-2 row gap-2 font-medium hover:text-blue-500" asp-area="" asp-controller="Auth" asp-action="Index">
                 <i class="bi bi-person-circle"></i>
@@ -168,27 +171,20 @@
         console.log(currentPath.split('/')[-1])
 
         const activeMenu = (index) => {
-            for (let i = 0; i < allMenu.length; i++) {
+            for (i in allMenu) {
                 let active = 'text-blue-500'
 
-                if (i == index) {
-                    allMenu[i].classList.add(active)
-                } else {
-                    allMenu[i].classList.remove(active)
-                }
+                i == index
+                    ? allMenu[i].classList.add(active)
+                    : allMenu[i].classList.remove(active)
             }
         }
 
         switch (currentPath.split('/')[1]) {
             case "Home":
-                switch (currentPath.split('/')[2]) {
-                    case "Berita":
-                        activeMenu(1)
-                        break;
-                    case "Lokasi":
-                        activeMenu(2)
-                        break;
-                }
+                currentPath.split('/')[2] == "Berita"
+                    ? activeMenu(1)
+                    : activeMenu(2)
                 break;
             case "Tentang":
                 activeMenu(3)
