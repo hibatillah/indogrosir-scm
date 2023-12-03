@@ -13,3 +13,7 @@ Redesign Indogrosir website and create Supply Chain Management System for Indogr
 - [ ] Product notification reaches minimum limit
 - [ ] Place an order for products
 - [ ] Managing partners for admin
+
+## Tech Stack
+- ASP.NET Web App Model-View-Controller
+- Tailwind CSS

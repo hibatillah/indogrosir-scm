@@ -645,7 +645,7 @@ h3 {
      object-fit: contain;
 }
 
-/* card */
+/* button */
 
 .btn-primary {
   -webkit-user-select: none;
@@ -670,7 +670,7 @@ h3 {
           user-select: none;
   border-radius: 0.5rem;
   --tw-bg-opacity: 1;
-  background-color: rgb(156 163 175 / var(--tw-bg-opacity));
+  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   padding-top: 0.5rem;
@@ -756,8 +756,16 @@ ul#lokasi::-webkit-scrollbar {
   bottom: 0px;
 }
 
+.bottom-1 {
+  bottom: 0.25rem;
+}
+
 .right-0 {
   right: 0px;
+}
+
+.right-1 {
+  right: 0.25rem;
 }
 
 .top-0 {
@@ -825,6 +833,14 @@ ul#lokasi::-webkit-scrollbar {
   margin-bottom: 2rem;
 }
 
+.mt-0 {
+  margin-top: 0px;
+}
+
+.mt-0\.5 {
+  margin-top: 0.125rem;
+}
+
 .mt-2 {
   margin-top: 0.5rem;
 }
@@ -845,16 +861,8 @@ ul#lokasi::-webkit-scrollbar {
   margin-top: 1.5rem;
 }
 
-.mt-1 {
-  margin-top: 0.25rem;
-}
-
-.mt-0 {
-  margin-top: 0px;
-}
-
-.mt-0\.5 {
-  margin-top: 0.125rem;
+.mt-8 {
+  margin-top: 2rem;
 }
 
 .line-clamp-3 {
@@ -872,6 +880,14 @@ ul#lokasi::-webkit-scrollbar {
   display: grid;
 }
 
+.hidden {
+  display: none;
+}
+
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
 .h-10 {
   height: 2.5rem;
 }
@@ -886,6 +902,14 @@ ul#lokasi::-webkit-scrollbar {
 
 .h-16 {
   height: 4rem;
+}
+
+.h-4 {
+  height: 1rem;
+}
+
+.h-40 {
+  height: 10rem;
 }
 
 .h-44 {
@@ -916,6 +940,11 @@ ul#lokasi::-webkit-scrollbar {
   height: 70px;
 }
 
+.h-fit {
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
 .h-full {
   height: 100%;
 }
@@ -924,16 +953,12 @@ ul#lokasi::-webkit-scrollbar {
   height: 100vh;
 }
 
-.h-6 {
-  height: 1.5rem;
-}
-
-.h-4 {
-  height: 1rem;
-}
-
 .w-1\/2 {
   width: 50%;
+}
+
+.w-1\/4 {
+  width: 25%;
 }
 
 .w-2\/5 {
@@ -952,8 +977,20 @@ ul#lokasi::-webkit-scrollbar {
   width: 75%;
 }
 
+.w-4 {
+  width: 1rem;
+}
+
 .w-4\/6 {
   width: 66.666667%;
+}
+
+.w-40 {
+  width: 10rem;
+}
+
+.w-9 {
+  width: 2.25rem;
 }
 
 .w-\[600px\] {
@@ -964,12 +1001,12 @@ ul#lokasi::-webkit-scrollbar {
   width: 100%;
 }
 
-.w-6 {
-  width: 1.5rem;
+.flex-auto {
+  flex: 1 1 auto;
 }
 
-.w-4 {
-  width: 1rem;
+.cursor-pointer {
+  cursor: pointer;
 }
 
 .select-none {
@@ -1065,6 +1102,12 @@ ul#lokasi::-webkit-scrollbar {
   margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
 }
 
+.space-y-3 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
+}
+
 .space-y-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
@@ -1077,6 +1120,16 @@ ul#lokasi::-webkit-scrollbar {
   margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
 }
 
+.space-y-8 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(2rem * var(--tw-space-y-reverse));
+}
+
+.self-end {
+  align-self: flex-end;
+}
+
 .overflow-hidden {
   overflow: hidden;
 }
@@ -1087,6 +1140,10 @@ ul#lokasi::-webkit-scrollbar {
 
 .rounded-2xl {
   border-radius: 1rem;
+}
+
+.rounded-full {
+  border-radius: 9999px;
 }
 
 .rounded-lg {
@@ -1130,6 +1187,11 @@ ul#lokasi::-webkit-scrollbar {
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
 
+.bg-gray-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+}
+
 .bg-red-400 {
   --tw-bg-opacity: 1;
   background-color: rgb(248 113 113 / var(--tw-bg-opacity));
@@ -1169,6 +1231,11 @@ ul#lokasi::-webkit-scrollbar {
   padding: 0.5rem;
 }
 
+.px-10 {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
 .px-20 {
   padding-left: 5rem;
   padding-right: 5rem;
@@ -1177,6 +1244,11 @@ ul#lokasi::-webkit-scrollbar {
 .px-8 {
   padding-left: 2rem;
   padding-right: 2rem;
+}
+
+.py-16 {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 .py-2 {
@@ -1215,6 +1287,11 @@ ul#lokasi::-webkit-scrollbar {
 
 .text-justify {
   text-align: justify;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .text-3xl {
