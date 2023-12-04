@@ -605,6 +605,18 @@ h3 {
   background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
 
+.card-visi {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  border-width: 1px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+  padding: 2.5rem;
+}
+
 .card-berita {
   cursor: pointer;
   border-radius: 0.75rem;
@@ -752,6 +764,10 @@ ul#lokasi::-webkit-scrollbar {
   position: relative;
 }
 
+.-right-px {
+  right: -1px;
+}
+
 .bottom-0 {
   bottom: 0px;
 }
@@ -768,8 +784,64 @@ ul#lokasi::-webkit-scrollbar {
   right: 0.25rem;
 }
 
+.right-\[3px\] {
+  right: 3px;
+}
+
 .top-0 {
   top: 0px;
+}
+
+.top-2 {
+  top: 0.5rem;
+}
+
+.top-3 {
+  top: 0.75rem;
+}
+
+.-bottom-1 {
+  bottom: -0.25rem;
+}
+
+.left-0 {
+  left: 0px;
+}
+
+.-bottom-full {
+  bottom: -100%;
+}
+
+.top-20 {
+  top: 5rem;
+}
+
+.top-10 {
+  top: 2.5rem;
+}
+
+.top-12 {
+  top: 3rem;
+}
+
+.top-14 {
+  top: 3.5rem;
+}
+
+.top-11 {
+  top: 2.75rem;
+}
+
+.z-0 {
+  z-index: 0;
+}
+
+.z-10 {
+  z-index: 10;
+}
+
+.z-20 {
+  z-index: 20;
 }
 
 .order-1 {
@@ -796,6 +868,16 @@ ul#lokasi::-webkit-scrollbar {
   grid-row: span 2 / span 2;
 }
 
+.my-1 {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.my-12 {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
 .my-auto {
   margin-top: auto;
   margin-bottom: auto;
@@ -815,6 +897,10 @@ ul#lokasi::-webkit-scrollbar {
 
 .mb-2 {
   margin-bottom: 0.5rem;
+}
+
+.mb-3 {
+  margin-bottom: 0.75rem;
 }
 
 .mb-4 {
@@ -904,6 +990,14 @@ ul#lokasi::-webkit-scrollbar {
   height: 4rem;
 }
 
+.h-2 {
+  height: 0.5rem;
+}
+
+.h-2\.5 {
+  height: 0.625rem;
+}
+
 .h-4 {
   height: 1rem;
 }
@@ -953,12 +1047,28 @@ ul#lokasi::-webkit-scrollbar {
   height: 100vh;
 }
 
+.w-0 {
+  width: 0px;
+}
+
+.w-0\.5 {
+  width: 0.125rem;
+}
+
 .w-1\/2 {
   width: 50%;
 }
 
 .w-1\/4 {
   width: 25%;
+}
+
+.w-2 {
+  width: 0.5rem;
+}
+
+.w-2\.5 {
+  width: 0.625rem;
 }
 
 .w-2\/5 {
@@ -989,6 +1099,14 @@ ul#lokasi::-webkit-scrollbar {
   width: 10rem;
 }
 
+.w-48 {
+  width: 12rem;
+}
+
+.w-80 {
+  width: 20rem;
+}
+
 .w-9 {
   width: 2.25rem;
 }
@@ -1001,8 +1119,28 @@ ul#lokasi::-webkit-scrollbar {
   width: 100%;
 }
 
+.w-60 {
+  width: 15rem;
+}
+
+.w-52 {
+  width: 13rem;
+}
+
+.w-44 {
+  width: 11rem;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
+}
+
 .flex-auto {
   flex: 1 1 auto;
+}
+
+.flex-none {
+  flex: none;
 }
 
 .cursor-pointer {
@@ -1059,8 +1197,16 @@ ul#lokasi::-webkit-scrollbar {
   gap: 0.25rem;
 }
 
+.gap-1\.5 {
+  gap: 0.375rem;
+}
+
 .gap-10 {
   gap: 2.5rem;
+}
+
+.gap-16 {
+  gap: 4rem;
 }
 
 .gap-2 {
@@ -1154,6 +1300,10 @@ ul#lokasi::-webkit-scrollbar {
   border-radius: 0.75rem;
 }
 
+.rounded-md {
+  border-radius: 0.375rem;
+}
+
 .rounded-l-lg {
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
@@ -1231,6 +1381,10 @@ ul#lokasi::-webkit-scrollbar {
   padding: 0.5rem;
 }
 
+.p-4 {
+  padding: 1rem;
+}
+
 .px-10 {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
@@ -1287,6 +1441,10 @@ ul#lokasi::-webkit-scrollbar {
 
 .text-justify {
   text-align: justify;
+}
+
+.text-end {
+  text-align: end;
 }
 
 .text-2xl {
@@ -1386,6 +1544,12 @@ ul#lokasi::-webkit-scrollbar {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.shadow-md {
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
 body {
   --clr-title: '#1f1f1f';
   --clr-muted: '#595959';
@@ -1411,7 +1575,66 @@ body.dark {
   text-decoration-line: underline;
 }
 
+@media (min-width: 768px) {
+  .md\:line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+
+  .md\:w-2\/3 {
+    width: 66.666667%;
+  }
+
+  .md\:flex-auto {
+    flex: 1 1 auto;
+  }
+
+  .md\:flex-row {
+    flex-direction: row;
+  }
+
+  .md\:items-center {
+    align-items: center;
+  }
+
+  .md\:justify-end {
+    justify-content: flex-end;
+  }
+
+  .md\:gap-6 {
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:block {
+    display: block;
+  }
+
+  .lg\:h-40 {
+    height: 10rem;
+  }
+
+  .lg\:h-52 {
+    height: 13rem;
+  }
+
+  .lg\:flex-auto {
+    flex: 1 1 auto;
+  }
+
+  .lg\:gap-8 {
+    gap: 2rem;
+  }
+}
+
 @media (min-width: 1536px) {
+  .\32xl\:w-2\/3 {
+    width: 66.666667%;
+  }
+
   .\32xl\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }

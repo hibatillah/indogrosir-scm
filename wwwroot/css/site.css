@@ -56,6 +56,9 @@ body.dark {
     .card-produk-bisnis {
         @apply rounded-xl border bg-gray-100 flex flex-col justify-center items-center;
     }
+    .card-visi {
+        @apply rounded-xl border bg-gray-50 flex flex-col justify-center items-center p-10;
+    }
     .card-berita {
         @apply bg-gray-100 rounded-xl p-6 cursor-pointer shadow;
     }
