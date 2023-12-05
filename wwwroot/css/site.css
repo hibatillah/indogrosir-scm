@@ -113,6 +113,7 @@ body.dark {
         @apply flex items-center;
     }
 
+    /* element */
     ul#lokasi::-webkit-scrollbar {
         @apply w-1 rounded bg-white;
     }

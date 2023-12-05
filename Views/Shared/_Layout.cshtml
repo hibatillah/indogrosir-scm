@@ -43,15 +43,15 @@
                 <i class="bi bi-geo-alt-fill"></i>
                 <span>Lokasi</span>
             </a>
-            <div  class="relative p-2 font-medium cursor-pointer">
-                <span id="menuTentang" class="row gap-2">
+            <div id="menuTentang" class="relative p-2 font-medium cursor-pointer">
+                <span class="row gap-2 hover:text-blue-500">
                     <i class="bi bi-building-fill"></i>
                     <span>Tentang</span>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="mt-0.5 w-4 h-4">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                     </svg>
                 </span>
-                <div id="dropdownTentang" class="z-20 absolute top-10 left-0 p-4 w-44 flex flex-col gap-2 rounded-md bg-white shadow-md border hidden">
+                <div id="dropdownTentang" class="z-20 absolute top-10 right-0 px-4 py-3 w-44 flex flex-col gap-2 rounded-md bg-white shadow-md border hidden">
                     <a class="hover:text-blue-500" asp-area="" asp-controller="Tentang" asp-action="Sejarah">
                         Sejarah & Visi Misi
                     </a>
@@ -202,21 +202,27 @@
     <script>
         const path = window.location.href
         const currentPath = path.split('//')[1]
-        const allMenu = document.querySelectorAll('nav#menu a')
+        const allMenu = document.querySelectorAll('nav#menu > *')
         const menuTentang = document.querySelector('#menuTentang')
         const dropTentang = document.querySelector('#dropdownTentang')
         console.log(currentPath.split('/')[-1])
 
         /* active menu */
         const activeMenu = (index) => {
-            for (i in allMenu) {
+            for (menu in allMenu) {
                 let active = 'text-blue-500'
 
-                i == index
-                    ? allMenu[i].classList.add(active)
-                    : allMenu[i].classList.remove(active)
+                menu == index
+                    ? allMenu[menu].classList.add(active)
+                    : allMenu[menu].classList.remove(active)
             }
         }
+
+        /* dropdown tentang */
+        menuTentang.addEventListener('click', () => {
+            console.log('dropdown actived')
+            dropTentang.classList.toggle('hidden')
+        })
 
         /* check active page */
         switch (currentPath.split('/')[1]) {
@@ -238,23 +244,19 @@
                         break;
                     default:
                         activeMenu(5)
+                        break;
                 }
                 break;
-            case "Tentang":
-                activeMenu(3)
+            case "Tentang":                
+                menuTentang.querySelector('span').classList.add('text-blue-500')
                 break;
             case "Auth":
                 activeMenu(4)
                 break;
             default:
                 activeMenu(0)
-        }
-
-        /* dropdown tentang */
-        menuTentang.addEventListener('click', () => {
-            console.log('tentang')
-            dropTentang.classList.toggle('hidden')
-        })
+                break;
+        } 
     </script>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
