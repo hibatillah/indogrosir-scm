@@ -734,6 +734,10 @@ label:has(.form-input) span {
   outline-color: #3b82f6;
 }
 
+search:has(input#search:focus) form#search {
+  outline-color: #3b82f6;
+}
+
 /* util */
 
 .fit-screen {
@@ -1126,14 +1130,6 @@ ul#lokasi::-webkit-scrollbar {
   list-style-type: disc;
 }
 
-.list-image-\[\'-\'\] {
-  list-style-image: '-';
-}
-
-.list-image-\[\'\A9\'\] {
-  list-style-image: '©';
-}
-
 .grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -1406,6 +1402,10 @@ ul#lokasi::-webkit-scrollbar {
   padding-left: 2.5rem;
 }
 
+.pl-3 {
+  padding-left: 0.75rem;
+}
+
 .pl-32 {
   padding-left: 8rem;
 }
@@ -1521,11 +1521,6 @@ ul#lokasi::-webkit-scrollbar {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.text-gray-700 {
-  --tw-text-opacity: 1;
-  color: rgb(55 65 81 / var(--tw-text-opacity));
-}
-
 .underline-offset-1 {
   text-underline-offset: 1px;
 }
@@ -1565,6 +1560,11 @@ body.dark {
 
 .hover\:underline:hover {
   text-decoration-line: underline;
+}
+
+.focus\:outline-none:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
 @media (min-width: 768px) {

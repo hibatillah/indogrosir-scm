@@ -94,6 +94,9 @@ body.dark {
     .form-input {
         @apply px-3 py-2 rounded-md bg-gray-100 text-gray-900 focus:outline-none focus:outline-blue-500 placeholder:text-gray-400;
     }
+    search:has(input#search:focus) form#search {
+        @apply outline-blue-500;
+    }
 
     /* util */
     .fit-screen {
