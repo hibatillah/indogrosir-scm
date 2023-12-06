@@ -90,16 +90,16 @@ body.dark {
 
     /* button */
     .btn {
-        @apply pl-5 pr-6 py-2 rounded-lg text-white text-center font-medium select-none;
+        @apply pl-5 pr-6 py-2 rounded-lg text-white text-center font-medium select-none cursor-pointer;
     }
     .btn-primary {
-        @apply px-6 py-2 rounded-lg bg-blue-500 text-white text-center font-medium select-none;
+        @apply px-6 py-2 rounded-lg bg-blue-500 text-white text-center font-medium select-none cursor-pointer;
     }
     .btn-secondary {
-        @apply px-6 py-2 rounded-lg bg-gray-300 text-gray-600 text-center font-medium select-none;
+        @apply px-6 py-2 rounded-lg bg-gray-300 text-gray-600 text-center font-medium select-none cursor-pointer;
     }
     .btn-danger {
-        @apply px-6 py-2 rounded-lg bg-red-600 text-white text-center font-medium select-none;
+        @apply px-6 py-2 rounded-lg bg-red-600 text-white text-center font-medium select-none cursor-pointer;
     }
     .btn-icon {
         @apply w-7 aspect-square grid place-items-center rounded text-white cursor-pointer;

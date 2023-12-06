@@ -704,6 +704,7 @@ td:first-child {
 /* button */
 
 .btn {
+  cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
@@ -719,6 +720,7 @@ td:first-child {
 }
 
 .btn-primary {
+  cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
@@ -736,6 +738,7 @@ td:first-child {
 }
 
 .btn-secondary {
+  cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
@@ -753,6 +756,7 @@ td:first-child {
 }
 
 .btn-danger {
+  cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
@@ -1219,6 +1223,10 @@ search:has(input#search:focus) form#search {
 
 .w-full {
   width: 100%;
+}
+
+.w-36 {
+  width: 9rem;
 }
 
 .min-w-\[200px\] {
@@ -1772,6 +1780,11 @@ body.dark {
 .hover\:text-blue-500:hover {
   --tw-text-opacity: 1;
   color: rgb(59 130 246 / var(--tw-text-opacity));
+}
+
+.hover\:text-red-600:hover {
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
 }
 
 .hover\:underline:hover {

@@ -85,13 +85,23 @@
                 <i class="bi bi-people-fill"></i>
                 <span>Mitra</span>
             </a>
-            <a class="p-2 row gap-2 font-medium hover:text-blue-500" asp-area="" asp-controller="SCM" asp-action="Profil">
-                <i class="bi bi-person-circle"></i>
-                <span>Profil</span>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="mt-0.5 w-4 h-4">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                </svg>
-            </a>
+            <div id="menuProfil" class="relative p-2 font-medium cursor-pointer">
+                <span class="row gap-2 hover:text-blue-500">
+                    <i class="bi bi-person-circle"></i>
+                    <span>Profil</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="mt-0.5 w-4 h-4">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                </span>
+                <div id="dropdown" class="z-20 absolute top-10 right-0 px-4 py-3 w-32 flex flex-col gap-2 rounded-md bg-white shadow-md border hidden">
+                    <a class="hover:text-blue-500" asp-area="" asp-controller="SCM" asp-action="Profil">
+                        Lihat Profil
+                    </a>
+                    <a class="hover:text-red-600" asp-area="" asp-controller="Home" asp-action="Index">
+                        Keluar
+                    </a>
+                </div>
+            </div>
         </nav>
     </header>
 
@@ -206,8 +216,6 @@
         const path = window.location.href
         const currentPath = path.split('//')[1]
         const allMenu = document.querySelectorAll('nav#menu > *')
-        const menuTentang = document.querySelector('#menuTentang')
-        const dropTentang = document.querySelector('#dropdownTentang')
         console.log(currentPath.split('/')[-1])
 
         /* active menu */
@@ -222,9 +230,19 @@
         }
 
         /* dropdown tentang */
+        const menuTentang = document.querySelector('#menuTentang')
+        const dropTentang = document.querySelector('#dropdownTentang')
         menuTentang.addEventListener('click', () => {
             console.log('dropdown actived')
             dropTentang.classList.toggle('hidden')
+        })
+
+        /* dropdown profil */
+        const menuProfil = document.querySelector('#menuProfil')
+        const dropProfil = menuProfil.querySelector('#dropdown')
+        menuProfil.addEventListener('click', () => {
+            console.log('dropdown actived')
+            dropProfil.classList.toggle('hidden')
         })
 
         /* check active page */
@@ -234,7 +252,7 @@
                     ? activeMenu(1)
                     : activeMenu(2)
                 break;
-            case "Tentang":                
+            case "Tentang":
                 menuTentang.querySelector('span').classList.add('text-blue-500')
                 break;
             case "Auth":
@@ -243,7 +261,7 @@
             case "SCM":
                 currentPath.split('/')[2] !== "Profil"
                     ? activeMenu(5)
-                    : activeMenu(9)
+                    : menuProfil.querySelector('span').classList.add('text-blue-500')
                 break;
             case "Produk":
                 activeMenu(6)
