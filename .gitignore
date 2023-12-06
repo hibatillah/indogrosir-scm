@@ -5,5 +5,5 @@ bin/
 
 # build
 obj/
-wwwroot/css/styles.css
-
+**/*.css
+!site.css
