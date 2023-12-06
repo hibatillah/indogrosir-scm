@@ -1,0 +1,39 @@
+﻿@model IEnumerable<indogrosir_tim8.Models.Produk>
+
+@{
+    ViewData["Title"] = "Produk";
+}
+
+<div class="card fit-screen overflow-hidden">
+    <div class="row justify-between mb-8">
+        <h1>Produk</h1>
+        <div class="row gap-3">
+            <search>
+                <form id="search" action="#" class="row bg-gray-100 pl-3 rounded-md gap-1">
+                    <i class="bi bi-search text-gray-400"></i>
+                    <input type="search" id="search" name="search" placeholder="Cari produk..." class="form-input focus:outline-none" />
+                    <button type="submit" class="btn-primary">Cari</button>
+                </form>
+            </search>
+            <a asp-action="Create" class="btn-primary pl-5">
+                <i class="bi bi-plus-lg stroke-2"></i>
+                Buat Produk
+            </a>
+        </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        @foreach (var item in Model)
+        {
+            <a asp-action="Details" asp-route-id="@item.Id" class="p-5 bg-gray-100 rounded-xl row gap-6 shadow">
+                <div class="w-32 aspect-square bg-gray-200 rounded-lg border"></div>
+                <div>
+                    <h2 class="text-2xl font-semibold capitalize line-clamp-1">@Html.DisplayFor(modelItem => item.Nama)</h2>
+                    <div class="text-gray-500 mt-1">
+                        <p>Rp @Html.DisplayFor(modelItem => item.Harga)</p>
+                        <p>@Html.DisplayFor(modelItem => item.Jumlah) Stok</p>
+                    </div>
+                </div>
+            </a>
+        }
+    </div>
+</div>

@@ -67,28 +67,31 @@
                 <i class="bi bi-person-circle"></i>
                 <span>Login</span>
             </a>
+
             @* Mitra *@
-         
-            <a class="p-2 row gap-2 font-medium hover:text-blue-500" asp-area="" asp-controller="Mitra" asp-action="Index">
+            <a class="p-2 row gap-2 font-medium hover:text-blue-500" asp-area="" asp-controller="SCM" asp-action="Index">
                 <i class="bi bi-grid-fill"></i>
                 <span>Dashboard</span>
             </a>
-            <a class="p-2 row gap-2 font-medium hover:text-blue-500" asp-area="" asp-controller="Mitra" asp-action="Produk">
+            <a class="p-2 row gap-2 font-medium hover:text-blue-500" asp-area="" asp-controller="Produk" asp-action="Index">
                 <i class="bi bi-archive-fill"></i>
                 <span>Produk</span>
             </a>
-            <a class="p-2 row gap-2 font-medium hover:text-blue-500" asp-area="" asp-controller="Mitra" asp-action="Pesanan">
+            <a class="p-2 row gap-2 font-medium hover:text-blue-500" asp-area="" asp-controller="Pesanan" asp-action="Index">
                 <i class="bi bi-clipboard2-data-fill"></i>
                 <span>Pesanan</span>
             </a>
-            <a class="p-2 row gap-2 font-medium hover:text-blue-500" asp-area="" asp-controller="Mitra" asp-action="Profil">
+            <a class="p-2 row gap-2 font-medium hover:text-blue-500" asp-area="" asp-controller="Mitra" asp-action="Index">
+                <i class="bi bi-people-fill"></i>
+                <span>Mitra</span>
+            </a>
+            <a class="p-2 row gap-2 font-medium hover:text-blue-500" asp-area="" asp-controller="SCM" asp-action="Profil">
                 <i class="bi bi-person-circle"></i>
                 <span>Profil</span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="mt-0.5 w-4 h-4">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                 </svg>
             </a>
-            
         </nav>
     </header>
 
@@ -231,27 +234,25 @@
                     ? activeMenu(1)
                     : activeMenu(2)
                 break;
-            case "Mitra":
-                switch (currentPath.split('/')[2]) {
-                    case "Produk":
-                        activeMenu(6)
-                        break;
-                    case "Pesanan":
-                        activeMenu(7)
-                        break;
-                    case "Profil":
-                        activeMenu(8)
-                        break;
-                    default:
-                        activeMenu(5)
-                        break;
-                }
-                break;
             case "Tentang":                
                 menuTentang.querySelector('span').classList.add('text-blue-500')
                 break;
             case "Auth":
                 activeMenu(4)
+                break;
+            case "SCM":
+                currentPath.split('/')[2] !== "Profil"
+                    ? activeMenu(5)
+                    : activeMenu(9)
+                break;
+            case "Produk":
+                activeMenu(6)
+                break;
+            case "Pesanan":
+                activeMenu(7)
+                break;
+            case "Mitra":
+                activeMenu(8)
                 break;
             default:
                 activeMenu(0)

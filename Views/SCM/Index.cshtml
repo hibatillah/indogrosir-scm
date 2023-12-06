@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="card h-[calc(100dvh-104px)] overflow-hidden">
+    <h1 class="mb-5">Dashboard</h1>
+    <div class="flex h-40 gap-5 mb-5">
+        @*Kiri*@
+        <div class="flex-none items-center rounded-lg bg-blue-500 p-4 min-w-[200px] max-w-[240px]">
+            <div class="w-10 h-10 rounded-full border overflow-hidden border-white mb-3">
+                <img src="~/assets/image/user.png" class="img-cover" />
+            </div>
+            <h2 class="text-white font-bold">UCUP MART</h2>
+            <p class="text-white">Pekanbaru</p>
+        </div>
+        @*Kanan*@
+        @*1*@
+        <div class="flex-1 bg-gray-100 rounded-lg p-5 h-full">
+            <div class="bg-white rounded-md w-9 aspect-square mb-1 grid place-items-center">
+                <i class="bi bi-currency-dollar text-blue-500"></i>
+            </div>
+            <p>Total Suplai</p>
+            <h2 class="text-blue-500 mt-1 mb-px text-2xl font-bold">Rp 8.523.000,-</h2>
+            <p class="text-gray-500 text-sm">Dalam bulan ini</p>
+        </div>
+        @*2*@
+        <div class="flex-1 bg-gray-100 rounded-lg p-4 h-full">
+            <div class="bg-white rounded-lg w-9 aspect-square mb-1 grid place-items-center">
+                <i class="bi bi-rocket-takeoff text-blue-500 stroke-2"></i>
+            </div>
+            <p>Total Produk</p>
+            <h2 class="text-blue-500 mb-1 font-bold text-2xl mt-1 mb-px">350 Buah</h2>
+            <p class="text-gray-500 text-sm">Penjualan dalam bulan ini</p>
+        </div>
+        @*3*@
+        <div class="flex-1 bg-gray-100 rounded-lg p-4 h-full">
+            <div class="bg-white rounded-lg w-9 aspect-square mb-1 grid place-items-center">
+                <i class="bi bi-graph-up-arrow text-blue-500 stroke-2"></i>
+            </div>
+            <p>Total Penjualan</p>
+            <h2 class="text-blue-500 mb-1 font-bold text-2xl mt-1 mb-px">430 Produk</h2>
+            <p class="text-gray-500">Dalam bulan ini</p>
+        </div>
+    </div>
+    <div class="grid grid-cols-2 gap-5 h-[350px]">
+        <div class="col-span-1 bg-gray-100 rounded-lg p-5">
+            <div class="row gap-3">
+                <div class="bg-white rounded-lg w-9 aspect-square mb-1 grid place-items-center">
+                    <i class="bi bi-rocket-takeoff text-blue-500 stroke-2"></i>
+                </div>
+                <h2>Grafik Penjualan</h2>
+            </div>
+            <div>@*grafik*@</div>
+        </div>
+        <div class="col-span-1 bg-gray-100 rounded-lg p-5">
+            <div class="row gap-3">
+                <div class="bg-white rounded-lg w-9 aspect-square mb-1 grid place-items-center">
+                    <i class="bi bi-journal-bookmark-fill text-blue-500 stroke-2"></i>
+                </div>
+                <h2>Kategori Penjualan</h2>
+            </div>
+            <div>@*grafik*@</div>
+        </div>
+    </div>
+</div>

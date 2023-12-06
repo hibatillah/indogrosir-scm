@@ -1,0 +1,54 @@
+﻿@model indogrosir_tim8.Models.Pesanan
+
+@{
+    ViewData["Title"] = "Hapus Pesanan";
+}
+
+<div class="card fit-screen">
+    <div class="row justify-between">
+        <h1 class="text-2xl">Anda yakin ingin menghapus pesanan ini?</h1>
+        <div class="row gap-2">
+            <a asp-action="Details" asp-route-id="@Model?.Id" class="btn-secondary">
+                <i class="bi bi-arrow-left"></i>
+                Kembali
+            </a>
+        </div>
+    </div>
+    <div class="flex-auto h-fit flex flex-wrap gap-6 mt-8">
+        <label asp-for="Tanggal">
+            <span>Tanggal</span>
+            <input asp-for="Tanggal" class="form-input capitalize" readonly />
+        </label>
+        <label asp-for="Mitra">
+            <span>Mitra</span>
+            <input asp-for="Mitra" class="form-input capitalize" readonly />
+        </label>
+        <label asp-for="Cabang">
+            <span>Cabang</span>
+            <input asp-for="Cabang" class="form-input" readonly />
+        </label>
+        <label asp-for="Admin">
+            <span>Admin</span>
+            <input asp-for="Admin" class="form-input" readonly />
+        </label>
+        <label asp-for="Produk">
+            <span>Produk</span>
+            <input asp-for="Produk" class="form-input" readonly />
+        </label>
+        <label asp-for="JumlahPesanan">
+            <span>Jumlah Pesanan</span>
+            <input asp-for="JumlahPesanan" class="form-input" readonly />
+        </label>
+        <label asp-for="TotalHarga">
+            <span>Total Harga</span>
+            <input asp-for="TotalHarga" class="form-input" readonly />
+        </label>
+        @* Tanggal, Mitra, Cabang, Admin, Produk, TotalHarga, JumlahPesanan*@
+        <form asp-action="Delete" class="self-end">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Hapus Produk" class="btn-danger" />
+        </form>
+    </div>
+    </div>
+</div>
+

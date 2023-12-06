@@ -1,0 +1,64 @@
+﻿@model indogrosir_tim8.Models.Pesanan
+
+@{
+    ViewData["Title"] = "Edit Pesanan";
+}
+
+<div class="card fit-screen">
+    <div class="row justify-between">
+        <h1>Edit Pesanan</h1>
+        <div class="row gap-2">
+            <a asp-action="Details" asp-route-id="@Model?.Id" class="btn-secondary">
+                <i class="bi bi-arrow-left"></i>
+                Kembali
+            </a>
+        </div>
+    </div>
+    <form asp-action="Edit" class="flex-auto h-fit flex flex-wrap gap-6 mt-8">
+        <div asp-validation-summary="ModelOnly" class="warning"></div>
+        <input type="hidden" asp-for="Id" />
+        <label asp-for="Tanggal">
+            <span>Tanggal</span>
+            <input asp-for="Tanggal" placeholder="Masukkan nama produk" class="form-input capitalize" />
+            <span asp-validation-for="Tanggal" class="warning"></span>
+        </label>
+        <label asp-for="Mitra">
+            <span>Mitra</span>
+            <input asp-for="Mitra" class="form-input capitalize" placeholder="Masukkan kategori produk" />
+            <span asp-validation-for="Mitra" class="warning"></span>
+        </label>
+        <label asp-for="Cabang">
+            <span>Cabang</span>
+            <input asp-for="Cabang" class="form-input" placeholder="Masukkan harga produk" />
+            <span asp-validation-for="Cabang" class="warning"></span>
+        </label>
+        <label asp-for="Admin">
+            <span>Admin</span>
+            <input asp-for="Admin" class="form-input" placeholder="Masukkan jumlah stok tersedia" />
+            <span asp-validation-for="Admin" class="warning"></span>
+        </label>
+        <label asp-for="Produk">
+            <span>Produk</span>
+            <input asp-for="Produk" class="form-input" placeholder="Masukkan jumlah stok tersedia" />
+            <span asp-validation-for="Produk" class="warning"></span>
+        </label>
+        <label asp-for="JumlahPesanan">
+            <span>Jumlah Pesanan</span>
+            <input asp-for="JumlahPesanan" class="form-input" placeholder="Masukkan jumlah minimum stok" />
+            <span asp-validation-for="JumlahPesanan" class="warning"></span>
+        </label>
+        <label asp-for="TotalHarga">
+            <span>Total Harga</span>
+            <input asp-for="TotalHarga" class="form-input" placeholder="Masukkan jumlah minimum stok" />
+            <span asp-validation-for="TotalHarga" class="warning"></span>
+        </label>
+        @* Tanggal, Mitra, Cabang, Admin, Produk, TotalHarga, JumlahPesanan*@
+        <div class="self-end">
+            <input type="submit" value="Edit Data Pesanan" class="btn-primary" />
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

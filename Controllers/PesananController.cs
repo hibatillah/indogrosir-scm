@@ -10,87 +10,87 @@ using indogrosir_tim8.Models;
 
 namespace indogrosir_tim8.Controllers
 {
-    public class MitraController : Controller
+    public class PesananController : Controller
     {
         private readonly indogrosir_tim8Context _context;
 
-        public MitraController(indogrosir_tim8Context context)
+        public PesananController(indogrosir_tim8Context context)
         {
             _context = context;
         }
 
-        // GET: Mitra
+        // GET: Pesanan
         public async Task<IActionResult> Index()
         {
-              return _context.Mitra != null ? 
-                          View(await _context.Mitra.ToListAsync()) :
-                          Problem("Entity set 'indogrosir_tim8Context.Mitra'  is null.");
+              return _context.Pesanan != null ? 
+                          View(await _context.Pesanan.ToListAsync()) :
+                          Problem("Entity set 'indogrosir_tim8Context.Pesanan'  is null.");
         }
 
-        // GET: Mitra/Details/5
+        // GET: Pesanan/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Mitra == null)
+            if (id == null || _context.Pesanan == null)
             {
                 return NotFound();
             }
 
-            var mitra = await _context.Mitra
+            var pesanan = await _context.Pesanan
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (mitra == null)
+            if (pesanan == null)
             {
                 return NotFound();
             }
 
-            return View(mitra);
+            return View(pesanan);
         }
 
-        // GET: Mitra/Create
+        // GET: Pesanan/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Mitra/Create
+        // POST: Pesanan/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nama,Alamat,Cabang,TahunBerdiri,GabungMember,Admin,Email,Password,Produk")] Mitra mitra)
+        public async Task<IActionResult> Create([Bind("Id,Tanggal,Mitra,Cabang,Admin,Produk,TotalHarga,JumlahPesanan")] Pesanan pesanan)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(mitra);
+                _context.Add(pesanan);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(mitra);
+            return View(pesanan);
         }
 
-        // GET: Mitra/Edit/5
+        // GET: Pesanan/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Mitra == null)
+            if (id == null || _context.Pesanan == null)
             {
                 return NotFound();
             }
 
-            var mitra = await _context.Mitra.FindAsync(id);
-            if (mitra == null)
+            var pesanan = await _context.Pesanan.FindAsync(id);
+            if (pesanan == null)
             {
                 return NotFound();
             }
-            return View(mitra);
+            return View(pesanan);
         }
 
-        // POST: Mitra/Edit/5
+        // POST: Pesanan/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nama,Alamat,Cabang,TahunBerdiri,GabungMember,Admin,Email,Password,Produk")] Mitra mitra)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Tanggal,Mitra,Cabang,Admin,Produk,TotalHarga,JumlahPesanan")] Pesanan pesanan)
         {
-            if (id != mitra.Id)
+            if (id != pesanan.Id)
             {
                 return NotFound();
             }
@@ -99,12 +99,12 @@ namespace indogrosir_tim8.Controllers
             {
                 try
                 {
-                    _context.Update(mitra);
+                    _context.Update(pesanan);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MitraExists(mitra.Id))
+                    if (!PesananExists(pesanan.Id))
                     {
                         return NotFound();
                     }
@@ -115,49 +115,49 @@ namespace indogrosir_tim8.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(mitra);
+            return View(pesanan);
         }
 
-        // GET: Mitra/Delete/5
+        // GET: Pesanan/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Mitra == null)
+            if (id == null || _context.Pesanan == null)
             {
                 return NotFound();
             }
 
-            var mitra = await _context.Mitra
+            var pesanan = await _context.Pesanan
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (mitra == null)
+            if (pesanan == null)
             {
                 return NotFound();
             }
 
-            return View(mitra);
+            return View(pesanan);
         }
 
-        // POST: Mitra/Delete/5
+        // POST: Pesanan/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Mitra == null)
+            if (_context.Pesanan == null)
             {
-                return Problem("Entity set 'indogrosir_tim8Context.Mitra'  is null.");
+                return Problem("Entity set 'indogrosir_tim8Context.Pesanan'  is null.");
             }
-            var mitra = await _context.Mitra.FindAsync(id);
-            if (mitra != null)
+            var pesanan = await _context.Pesanan.FindAsync(id);
+            if (pesanan != null)
             {
-                _context.Mitra.Remove(mitra);
+                _context.Pesanan.Remove(pesanan);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MitraExists(int id)
+        private bool PesananExists(int id)
         {
-          return (_context.Mitra?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Pesanan?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

@@ -1,0 +1,55 @@
+﻿@model indogrosir_tim8.Models.Pesanan
+
+@{
+    ViewData["Title"] = "Detail Pesanan";
+}
+
+<div class="card fit-screen">
+    <div class="row justify-between">
+        <h1>Detail Pesanan</h1>
+        <div class="row gap-2">
+            <a asp-action="Index" class="btn-secondary">
+                <i class="bi bi-arrow-left"></i>
+                Kembali
+            </a>
+            <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn-primary">
+                <i class="bi bi-pencil-fill"></i>
+                Edit
+            </a>
+            <a asp-action="Delete" asp-route-id="@Model?.Id" class="btn-danger">
+                <i class="bi bi-trash-fill"></i>
+                Hapus
+            </a>
+        </div>
+    </div>
+    <div class="flex-auto mt-8 h-fit flex flex-wrap gap-6">
+        <label asp-for="Tanggal">
+            <span>Tanggal Pesanan</span>
+            <input asp-for="Tanggal" class="form-input" readonly />
+        </label>
+        <label asp-for="Mitra">
+            <span>Mitra</span>
+            <input asp-for="Mitra" class="form-input capitalize" readonly />
+        </label>
+        <label asp-for="Cabang">
+            <span>Cabang</span>
+            <input asp-for="Cabang" class="form-input capitalize" readonly />
+        </label>
+        <label asp-for="Admin">
+            <span>Admin</span>
+            <input asp-for="Admin" class="form-input capitalize" readonly />
+        </label>
+        <label asp-for="Produk">
+            <span>Produk</span>
+            <input asp-for="Produk" class="form-input" readonly />
+        </label>
+        <label asp-for="JumlahPesanan">
+            <span>Jumlah Pesanan</span>
+            <input asp-for="JumlahPesanan" class="form-input" readonly />
+        </label>
+        <label asp-for="TotalHarga">
+            <span>Total Harga</span>
+            <input asp-for="TotalHarga" class="form-input" readonly />
+        </label>
+    </div>
+</div>

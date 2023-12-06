@@ -10,87 +10,87 @@ using indogrosir_tim8.Models;
 
 namespace indogrosir_tim8.Controllers
 {
-    public class MitraController : Controller
+    public class CabangController : Controller
     {
         private readonly indogrosir_tim8Context _context;
 
-        public MitraController(indogrosir_tim8Context context)
+        public CabangController(indogrosir_tim8Context context)
         {
             _context = context;
         }
 
-        // GET: Mitra
+        // GET: Cabang
         public async Task<IActionResult> Index()
         {
-              return _context.Mitra != null ? 
-                          View(await _context.Mitra.ToListAsync()) :
-                          Problem("Entity set 'indogrosir_tim8Context.Mitra'  is null.");
+              return _context.Cabang != null ? 
+                          View(await _context.Cabang.ToListAsync()) :
+                          Problem("Entity set 'indogrosir_tim8Context.Cabang'  is null.");
         }
 
-        // GET: Mitra/Details/5
+        // GET: Cabang/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Mitra == null)
+            if (id == null || _context.Cabang == null)
             {
                 return NotFound();
             }
 
-            var mitra = await _context.Mitra
+            var cabang = await _context.Cabang
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (mitra == null)
+            if (cabang == null)
             {
                 return NotFound();
             }
 
-            return View(mitra);
+            return View(cabang);
         }
 
-        // GET: Mitra/Create
+        // GET: Cabang/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Mitra/Create
+        // POST: Cabang/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nama,Alamat,Cabang,TahunBerdiri,GabungMember,Admin,Email,Password,Produk")] Mitra mitra)
+        public async Task<IActionResult> Create([Bind("Id,Nama,Lokasi,Admin,Produk,Mitra")] Cabang cabang)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(mitra);
+                _context.Add(cabang);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(mitra);
+            return View(cabang);
         }
 
-        // GET: Mitra/Edit/5
+        // GET: Cabang/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Mitra == null)
+            if (id == null || _context.Cabang == null)
             {
                 return NotFound();
             }
 
-            var mitra = await _context.Mitra.FindAsync(id);
-            if (mitra == null)
+            var cabang = await _context.Cabang.FindAsync(id);
+            if (cabang == null)
             {
                 return NotFound();
             }
-            return View(mitra);
+            return View(cabang);
         }
 
-        // POST: Mitra/Edit/5
+        // POST: Cabang/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nama,Alamat,Cabang,TahunBerdiri,GabungMember,Admin,Email,Password,Produk")] Mitra mitra)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nama,Lokasi,Admin,Produk,Mitra")] Cabang cabang)
         {
-            if (id != mitra.Id)
+            if (id != cabang.Id)
             {
                 return NotFound();
             }
@@ -99,12 +99,12 @@ namespace indogrosir_tim8.Controllers
             {
                 try
                 {
-                    _context.Update(mitra);
+                    _context.Update(cabang);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MitraExists(mitra.Id))
+                    if (!CabangExists(cabang.Id))
                     {
                         return NotFound();
                     }
@@ -115,49 +115,49 @@ namespace indogrosir_tim8.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(mitra);
+            return View(cabang);
         }
 
-        // GET: Mitra/Delete/5
+        // GET: Cabang/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Mitra == null)
+            if (id == null || _context.Cabang == null)
             {
                 return NotFound();
             }
 
-            var mitra = await _context.Mitra
+            var cabang = await _context.Cabang
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (mitra == null)
+            if (cabang == null)
             {
                 return NotFound();
             }
 
-            return View(mitra);
+            return View(cabang);
         }
 
-        // POST: Mitra/Delete/5
+        // POST: Cabang/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Mitra == null)
+            if (_context.Cabang == null)
             {
-                return Problem("Entity set 'indogrosir_tim8Context.Mitra'  is null.");
+                return Problem("Entity set 'indogrosir_tim8Context.Cabang'  is null.");
             }
-            var mitra = await _context.Mitra.FindAsync(id);
-            if (mitra != null)
+            var cabang = await _context.Cabang.FindAsync(id);
+            if (cabang != null)
             {
-                _context.Mitra.Remove(mitra);
+                _context.Cabang.Remove(cabang);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MitraExists(int id)
+        private bool CabangExists(int id)
         {
-          return (_context.Mitra?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Cabang?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

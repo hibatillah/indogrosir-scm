@@ -1,0 +1,46 @@
+﻿@model indogrosir_tim8.Models.Produk
+
+@{
+    ViewData["Title"] = "Hapus Produk";
+}
+
+<div class="card fit-screen">
+    <div class="row justify-between">
+        <h1 class="text-2xl">Anda yakin ingin menghapus produk ini?</h1>
+        <div class="row gap-2">
+            <a asp-action="Details" asp-route-id="@Model?.Id" class="btn-secondary">
+                <i class="bi bi-arrow-left"></i>
+                Kembali
+            </a>
+        </div>
+    </div>
+    <div class="flex gap-10 mt-8">
+        <div class="flex-none w-96 h-100 bg-gray-200 rounded-lg border"></div>
+        <div class="flex-auto h-fit flex flex-wrap gap-6">
+            <label asp-for="Nama">
+                <span>Nama</span>
+                <input asp-for="Nama" class="form-input capitalize" readonly />
+            </label>
+            <label asp-for="Kategori">
+                <span>Kategori</span>
+                <input asp-for="Kategori" class="form-input capitalize" readonly />
+            </label>
+            <label asp-for="Harga">
+                <span>Harga</span>
+                <input asp-for="Harga" class="form-input" readonly />
+            </label>
+            <label asp-for="Jumlah">
+                <span>Jumlah</span>
+                <input asp-for="Jumlah" class="form-input" readonly />
+            </label>
+            <label asp-for="Minimum">
+                <span>Minimum</span>
+                <input asp-for="Minimum" class="form-input" readonly />
+            </label>
+            <form asp-action="Delete" class="self-end">
+                <input type="hidden" asp-for="Id" />
+                <input type="submit" value="Hapus Produk" class="btn-danger" />
+            </form>
+        </div>
+    </div>
+</div>

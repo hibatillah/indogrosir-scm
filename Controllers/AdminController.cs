@@ -10,87 +10,87 @@ using indogrosir_tim8.Models;
 
 namespace indogrosir_tim8.Controllers
 {
-    public class MitraController : Controller
+    public class AdminController : Controller
     {
         private readonly indogrosir_tim8Context _context;
 
-        public MitraController(indogrosir_tim8Context context)
+        public AdminController(indogrosir_tim8Context context)
         {
             _context = context;
         }
 
-        // GET: Mitra
+        // GET: Admin
         public async Task<IActionResult> Index()
         {
-              return _context.Mitra != null ? 
-                          View(await _context.Mitra.ToListAsync()) :
-                          Problem("Entity set 'indogrosir_tim8Context.Mitra'  is null.");
+              return _context.Admin != null ? 
+                          View(await _context.Admin.ToListAsync()) :
+                          Problem("Entity set 'indogrosir_tim8Context.Admin'  is null.");
         }
 
-        // GET: Mitra/Details/5
+        // GET: Admin/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Mitra == null)
+            if (id == null || _context.Admin == null)
             {
                 return NotFound();
             }
 
-            var mitra = await _context.Mitra
+            var admin = await _context.Admin
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (mitra == null)
+            if (admin == null)
             {
                 return NotFound();
             }
 
-            return View(mitra);
+            return View(admin);
         }
 
-        // GET: Mitra/Create
+        // GET: Admin/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Mitra/Create
+        // POST: Admin/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nama,Alamat,Cabang,TahunBerdiri,GabungMember,Admin,Email,Password,Produk")] Mitra mitra)
+        public async Task<IActionResult> Create([Bind("Id,Nama,Email,Password,Cabang")] Admin admin)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(mitra);
+                _context.Add(admin);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(mitra);
+            return View(admin);
         }
 
-        // GET: Mitra/Edit/5
+        // GET: Admin/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Mitra == null)
+            if (id == null || _context.Admin == null)
             {
                 return NotFound();
             }
 
-            var mitra = await _context.Mitra.FindAsync(id);
-            if (mitra == null)
+            var admin = await _context.Admin.FindAsync(id);
+            if (admin == null)
             {
                 return NotFound();
             }
-            return View(mitra);
+            return View(admin);
         }
 
-        // POST: Mitra/Edit/5
+        // POST: Admin/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nama,Alamat,Cabang,TahunBerdiri,GabungMember,Admin,Email,Password,Produk")] Mitra mitra)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nama,Email,Password,Cabang")] Admin admin)
         {
-            if (id != mitra.Id)
+            if (id != admin.Id)
             {
                 return NotFound();
             }
@@ -99,12 +99,12 @@ namespace indogrosir_tim8.Controllers
             {
                 try
                 {
-                    _context.Update(mitra);
+                    _context.Update(admin);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MitraExists(mitra.Id))
+                    if (!AdminExists(admin.Id))
                     {
                         return NotFound();
                     }
@@ -115,49 +115,49 @@ namespace indogrosir_tim8.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(mitra);
+            return View(admin);
         }
 
-        // GET: Mitra/Delete/5
+        // GET: Admin/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Mitra == null)
+            if (id == null || _context.Admin == null)
             {
                 return NotFound();
             }
 
-            var mitra = await _context.Mitra
+            var admin = await _context.Admin
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (mitra == null)
+            if (admin == null)
             {
                 return NotFound();
             }
 
-            return View(mitra);
+            return View(admin);
         }
 
-        // POST: Mitra/Delete/5
+        // POST: Admin/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Mitra == null)
+            if (_context.Admin == null)
             {
-                return Problem("Entity set 'indogrosir_tim8Context.Mitra'  is null.");
+                return Problem("Entity set 'indogrosir_tim8Context.Admin'  is null.");
             }
-            var mitra = await _context.Mitra.FindAsync(id);
-            if (mitra != null)
+            var admin = await _context.Admin.FindAsync(id);
+            if (admin != null)
             {
-                _context.Mitra.Remove(mitra);
+                _context.Admin.Remove(admin);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MitraExists(int id)
+        private bool AdminExists(int id)
         {
-          return (_context.Mitra?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Admin?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

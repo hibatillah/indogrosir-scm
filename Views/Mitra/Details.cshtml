@@ -1,0 +1,54 @@
+﻿@model indogrosir_tim8.Models.Mitra
+
+@{
+    ViewData["Title"] = "Detail Mitra";
+}
+
+<div class="card fit-screen">
+    <div class="row justify-between">
+        <h1>Detail Mitra</h1>
+        <div class="row gap-2">
+            <a asp-action="Index" class="btn-secondary">
+                <i class="bi bi-arrow-left"></i>
+                Kembali
+            </a>
+            <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn-primary">
+                <i class="bi bi-pencil-fill"></i>
+                Edit
+            </a>
+            <a asp-action="Delete" asp-route-id="@Model?.Id" class="btn-danger">
+                <i class="bi bi-trash-fill"></i>
+                Hapus
+            </a>
+        </div>
+    </div>
+    <div class="flex gap-10 mt-8">
+        <div class="flex-none w-96 h-100 bg-gray-200 rounded-lg border"></div>
+        <div class="flex-auto h-fit flex flex-wrap gap-6">
+            <label asp-for="Nama">
+                <span>Nama Mitra</span>
+                <input asp-for="Nama" class="form-input capitalize" readonly />
+            </label>
+            <label asp-for="Alamat">
+                <span>Alamat</span>
+                <input asp-for="Alamat" class="form-input capitalize" readonly />
+            </label>
+            <label asp-for="TahunBerdiri">
+                <span>Tahun Berdiri</span>
+                <input asp-for="TahunBerdiri" class="form-input" readonly />
+            </label>
+            <label asp-for="GabungMember">
+                <span>Member Sejak</span>
+                <input asp-for="GabungMember" class="form-input" readonly />
+            </label>
+            <label asp-for="Admin">
+                <span>Admin</span>
+                <input asp-for="Admin" class="form-input" readonly />
+            </label>
+            <label asp-for="Email">
+                <span>Email</span>
+                <input asp-for="Email" class="form-input" readonly />
+            </label>
+        </div>
+    </div>
+</div>
