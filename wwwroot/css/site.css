@@ -118,6 +118,9 @@ body.dark {
 }
 
 @layer utilities {
+    .center {
+        @apply grid place-items-center;
+    }
     .fit-screen {
         @apply min-h-[calc(100dvh-104px)];
     }
