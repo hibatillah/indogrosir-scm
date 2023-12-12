@@ -17,6 +17,6 @@ namespace indogrosir_tim8.Models
         public string Admin { get; set; }
         public string Email { get; set; }
         public string Password {  get; set; }
-        public string Produk {  get; set; }
+        public string? Produk {  get; set; }
     }
 }

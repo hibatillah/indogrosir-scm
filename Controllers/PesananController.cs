@@ -20,11 +20,19 @@ namespace indogrosir_tim8.Controllers
         }
 
         // GET: Pesanan
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchPesanan)
         {
-              return _context.Pesanan != null ? 
-                          View(await _context.Pesanan.ToListAsync()) :
-                          Problem("Entity set 'indogrosir_tim8Context.Pesanan'  is null.");
+            if (_context.Pesanan == null)
+            {
+                return Problem("Entity set 'MvcMovieContext.Movie' is null.");
+            }
+            var pesanan = from m in _context.Pesanan
+                        select m;
+            if (!String.IsNullOrEmpty(searchPesanan))
+            {
+                pesanan = pesanan.Where(s => s.Mitra!.Contains(searchPesanan) || s.Admin!.Contains(searchPesanan));
+            }
+            return View(await pesanan.ToListAsync());
         }
 
         // GET: Pesanan/Details/5

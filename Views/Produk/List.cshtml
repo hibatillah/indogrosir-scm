@@ -3,49 +3,75 @@
 @{
     ViewData["Title"] = "List";
 }
-<div class="card fit-screen overflow-hidden">
-    <div class="row justify-between mb-8">
-        <h1>Produk</h1>
-        <div class="row gap-3">
-            <search>
-                <form id="search" action="#" class="row bg-gray-100 pl-3 rounded-md gap-1">
-                    <i class="bi bi-search text-gray-400"></i>
-                    <input type="search" id="search" name="search" placeholder="Cari produk..." class="form-input focus:outline-none" />
-                    <button type="submit" class="btn-primary">Cari</button>
-                </form>
-            </search>
-            <a asp-action="Create" class="btn-primary pl-5">
-                <i class="bi bi-plus-lg stroke-2"></i>
-                Buat Produk
-            </a>
+
+<div class="flex gap-4">
+    @*Kiri*@
+    <div class="card fit-screen overflow-hidden flex-auto">
+        <div class="row justify-between mb-8">
+            <h1>List Produk</h1>
+            <div class="row gap-3">
+                <search>
+                    <form asp-controller="Produk" asp-action="List" id="search" method="get" class="row bg-gray-100 pl-3 rounded-md gap-1">
+                        <i class="bi bi-search text-gray-400"></i>
+                        <input type="search" id="search" name="searchListProduk" placeholder="Cari produk..." class="form-input focus:outline-none" />
+                        <button type="submit" class="btn-primary">Cari</button>
+                    </form>
+                </search>
+            </div>
         </div>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        @foreach (var item in Model)
-        {
-            <div asp-action="Details" asp-route-id="@item.Id" class="p-5 bg-gray-100 rounded-xl row gap-6 shadow">
-                <div class="w-32 aspect-square bg-gray-200 rounded-lg border"></div>
-                <div>
-                    <h2 class="text-2xl font-semibold capitalize line-clamp-1">@Html.DisplayFor(modelItem => item.Nama)</h2>
-                    <div class="text-gray-500 mt-1">
-                        <p>Rp @Html.DisplayFor(modelItem => item.Harga)</p>
-                        <p>@Html.DisplayFor(modelItem => item.Jumlah) Stok</p>
-                    </div>
-                    <div class="row gap-2 mt-1">
-                        <div id="kurang-produk" class="w-8 aspect-square rounded-full border center cursor-pointer">
-                            <i class="bi bi-dash"></i>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            @foreach (var item in Model)
+            {
+                <div asp-action="Details" asp-route-id="@item.Id" class="p-5 bg-gray-100 rounded-xl row gap-6 shadow">
+                    <div class="w-32 aspect-square bg-gray-200 rounded-lg border"></div>
+                    <div>
+                        <h2 class="text-2xl font-semibold capitalize line-clamp-1">@Html.DisplayFor(modelItem => item.Nama)</h2>
+                        <div class="text-gray-500 mt-1">
+                            <p>Rp @Html.DisplayFor(modelItem => item.Harga)</p>
+                            <p>@Html.DisplayFor(modelItem => item.Jumlah) Stok</p>
                         </div>
-                        <p id="jumlah-pesanan">0</p>
-                        <input type="number" class="hidden" />
-                        <div id="tambah-produk" class="w-8 aspect-square rounded-full border center cursor-pointer">
-                            <i class="bi bi-plus-lg"></i>
+                        <div class="row gap-2 mt-1">
+                            <div id="kurang-produk" class="w-8 aspect-square rounded-full border center cursor-pointer">
+                                <i class="bi bi-dash"></i>
+                            </div>
+                            <p id="jumlah-pesanan">0</p>
+                            <input type="number" class="hidden" />
+                            <div id="tambah-produk" class="w-8 aspect-square rounded-full border center cursor-pointer">
+                                <i class="bi bi-plus-lg"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        }
+            }
+        </div>
+    </div>
+    @*Kanan*@
+    <div class="card fit-screen overflow-hidden flex-none w-[400px]">
+        <h1>Keranjang</h1>
+        <table class="my-4">
+            <tbody>
+                <tr>
+                    <td class="text-start">Sosis</td>
+                    <td class="text-center">1x</td>
+                    <td class="text-end">RP.3000</td>
+                </tr>
+            </tbody>
+        </table>
+        <hr class="mb-4" />
+        <table class="mb-4">
+            <tbody>
+                <tr>
+                    <td class="text-start">Total</td>
+                    <td class="text-end">RP.3000</td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn-primary w-full">
+            Pesan
+        </button>
     </div>
 </div>
+
 
 <script>
     const tambah = document.querySelector('#kurang-prouk')

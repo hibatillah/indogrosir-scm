@@ -20,11 +20,20 @@ namespace indogrosir_tim8.Controllers
         }
 
         // GET: Produk
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchProduk)
         {
-              return _context.Produk != null ? 
-                          View(await _context.Produk.ToListAsync()) :
-                          Problem("Entity set 'indogrosir_tim8Context.Produk'  is null.");
+            if (_context.Produk == null)
+            {
+                return Problem("Entity set 'MvcMovieContext.Movie' is null.");
+            }
+            var produk = from m in _context.Produk
+                         select m;
+            if (!String.IsNullOrEmpty(searchProduk))
+            {
+                produk = produk.Where(s => s.Nama!.Contains(searchProduk));
+            }
+            return View(await produk.ToListAsync());
+            
         }
 
         // GET: Produk/Details/5
@@ -160,17 +169,26 @@ namespace indogrosir_tim8.Controllers
           return (_context.Produk?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
-        public async Task<IActionResult> List()
-        {
-            return _context.Produk != null ?
-                          View(await _context.Produk.ToListAsync()) :
-                          Problem("Entity set 'indogrosir_tim8Context.Produk'  is null.");
-        }
         public async Task<IActionResult> Keranjang()
         {
             return _context.Produk != null ?
                           View(await _context.Produk.ToListAsync()) :
                           Problem("Entity set 'indogrosir_tim8Context.Produk'  is null.");
+        }
+        public async Task<IActionResult> List(string searchListProduk)
+        {
+            if (_context.Produk == null)
+            {
+                return Problem("Entity set 'MvcMovieContext.Movie' is null.");
+            }
+            var produk = from m in _context.Produk
+                         select m;
+            if (!String.IsNullOrEmpty(searchListProduk))
+            {
+                produk = produk.Where(s => s.Nama!.Contains(searchListProduk));
+            }
+            return View(await produk.ToListAsync());
+
         }
     }
 }
