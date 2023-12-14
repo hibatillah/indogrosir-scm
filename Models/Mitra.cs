@@ -18,5 +18,10 @@ namespace indogrosir_tim8.Models
         public string Email { get; set; }
         public string Password {  get; set; }
         public string? Produk {  get; set; }
+
+        internal static Task<string?> ToListAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

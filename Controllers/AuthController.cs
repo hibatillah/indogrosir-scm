@@ -1,5 +1,6 @@
 ﻿using indogrosir_tim8.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace indogrosir_tim8.Controllers
 {
@@ -17,23 +18,31 @@ namespace indogrosir_tim8.Controllers
             return View();
         }
 
-        //public async Task<IActionResult> Index(string email, string pass)
-        //{
-        //    if (_context.Mitra == null)
-        //    {
-        //        return Problem("Entity set 'Mitra' is null.");
-        //    }
-        //    var mitra = from m in _context.Mitra
-        //                 select m;
+        public async Task<IActionResult> Login(string email, string pass)
+        {
+            if (_context.Mitra == null)
+            {
+                return Problem("Entity set 'Mitra' is null.");
+            }
 
-        //    if (!String.IsNullOrEmpty(email) && !String.IsNullOrEmpty(pass))
-        //    {
-        //        if (mitra.Where(s => s.Email == email && s.Password == pass))
-        //        {
+            var emailMitra = await _context.Mitra
+                .FirstOrDefaultAsync(m => m.Email == email);
 
-        //        }
-        //    }
-        //}
+            if (emailMitra == null)
+            {
+                return NotFound();
+            } 
+            else
+            {
+                var passMitra = emailMitra.Password;
+                if (passMitra == pass)
+                {
+                    HttpContext.Session.SetString("email", emailMitra.ToString());
+                    return RedirectToAction("Index", "SCM");
+                }
+            }
+            return View();
+        }
 
         public IActionResult Signup()
         {

@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using indogrosir_tim8.Data;
 using static System.Net.Mime.MediaTypeNames;
+using indogrosir_tim8.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<indogrosir_tim8Context>(options =>
@@ -12,13 +13,11 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-/*
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     SeedData.Initialize(services);
 }
-*/
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -32,7 +31,6 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
 app.UseAuthorization();
 
 app.MapControllerRoute(

@@ -46,6 +46,7 @@ namespace indogrosir_tim8.Controllers
 
             var produk = await _context.Produk
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (produk == null)
             {
                 return NotFound();
