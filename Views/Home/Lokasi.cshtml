@@ -1,75 +1,40 @@
-﻿@{
+﻿@model IEnumerable<indogrosir_tim8.Models.Cabang>
+@{
     ViewData["Title"] = "Lokasi";
 }
 
 <div class="card shadow h-screen overflow-hidden">
     <div class="h-full grid grid-cols-2 gap-6">
-
         @*Kiri*@
         <div class="h-full overflow-hidden">
             <h1 class="mb-6">Lokasi Gerai</h1>
             @*list lokasi*@
             <ul id="lokasi" class="pr-2 space-y-5 h-[43rem] overflow-y-scroll">
                 @*Pekanbaru*@
-                <li class="row gap-5">
-                    <div class="w-[600px] h-44 rounded-lg border-2 overflow-hidden">
-                        <img src="~/assets/image/pekanbaru.png" class="img-cover" alt="indogrosir pekanbaru" />
-                    </div>
-                    <div>
-                        <h2>Indogrosir Pekanbaru</h2>
-                        <p class="mb-2 text-justify text-gray-500 line-clamp-3">
-                            Jalan Soekarno Hatta (Arengka) No.18 RT.01 RW.08, Kel. Sidomulya Barat,Kec. Tampan, Kota Pekanbaru 28294
-                        </p>
-                        <a href="tel:0761564641" class="row gap-2">
-                            <i class="bi bi-telephone-fill text-blue-500"></i>
-                            <p class="text-gray-500">0761 - 564 641</p>
-                        </a>
-                        <a href="#" class="row gap-2">
-                            <i class="bi bi-geo-alt-fill text-blue-500"></i>
-                            <p class="text-gray-500">Buka Google Maps</p>
-                        </a>
-                    </div>
-                </li>
-                @*Palembang*@
-                <li class="row gap-5">
-                    <div class="w-[600px] h-44 rounded-lg border-2 overflow-hidden">
-                        <img src="~/assets/image/palembang.png" class="img-cover" alt="indogrosir palembang" />
-                    </div>
-                    <div>
-                        <h2>Indogrosir Palembang</h2>
-                        <p class="mb-2 text-justify text-gray-500 line-clamp-3">
-                            Jalan Pangeran Ayin D/H Najamuddin No. 326, Kel. Sukamaju Kec. Suko, Palembang, Sumatera Selatan 30164
-                        </p>
-                        <a href="tel:0761564641" class="row gap-2">
-                            <i class="bi bi-telephone-fill text-blue-500"></i>
-                            <p class="text-gray-500">0761 - 564 641</p>
-                        </a>
-                        <a href="#" class="row gap-2">
-                            <i class="bi bi-geo-alt-fill text-blue-500"></i>
-                            <p class="text-gray-500">Buka Google Maps</p>
-                        </a>
-                    </div>
-                </li>
-                @*Ambon*@
-                <li class="row gap-5">
-                    <div class="w-[600px] h-44 rounded-lg border-2 overflow-hidden">
-                        <img src="~/assets/image/ambon.png" class="img-cover" alt="indogrosir ambon" />
-                    </div>
-                    <div>
-                        <h2>Indogrosir Ambon</h2>
-                        <p class="mb-2 text-justify text-gray-500 line-clamp-3">
-                            Jalan Syaranamual Desa Hunuth Atau Kate-kate Kecamatan Pulau Ambon Kota Ambon Provinsi Maluku
-                        </p>
-                        <a href="tel:0761564641" class="row gap-2">
-                            <i class="bi bi-telephone-fill text-blue-500"></i>
-                            <p class="text-gray-500">0761 - 564 641</p>
-                        </a>
-                        <a href="#" class="row gap-2">
-                            <i class="bi bi-geo-alt-fill text-blue-500"></i>
-                            <p class="text-gray-500">Buka Google Maps</p>
-                        </a>
-                    </div>
-                </li>
+                @foreach (var item in Model)
+                {
+                    <li class="row gap-5">
+                        @*
+                        <div class="w-[600px] h-44 rounded-lg border-2 overflow-hidden">
+                            <img src="~/assets/lokasi/@item.Gambar" class="img-cover" alt="indogrosir pekanbaru" />
+                        </div>
+                        *@
+                        <div>
+                            <h2>@Html.DisplayFor(modelItem => item.Nama)</h2>
+                            <p class="mb-2 text-justify text-gray-500 line-clamp-3">
+                                @Html.DisplayFor(modelItem => item.Lokasi)
+                            </p>
+                            <a href="tel:@item.NoHp" class="row gap-2">
+                                <i class="bi bi-telephone-fill text-blue-500"></i>
+                                <p class="text-gray-500">@Html.DisplayFor(modelItem => item.NoHp)</p>
+                            </a>
+                            <a href="@item.Gmaps" class="row gap-2">
+                                <i class="bi bi-geo-alt-fill text-blue-500"></i>
+                                <p class="text-gray-500">Buka Google Maps</p>
+                            </a>
+                        </div>
+                    </li>          
+                }
             </ul>
         </div>
 

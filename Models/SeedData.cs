@@ -30,6 +30,58 @@ namespace indogrosir_tim8.Models
                         Produk = "Golda",
                     }
                 );
+                if (context.Cabang.Any())
+                {
+                    return; // DB has been seeded
+                }
+
+                context.Cabang.AddRange(
+                    new Cabang
+                    {
+                        Nama = "Indogrosir Pekanbaru",
+                        Lokasi = "Jalan Soekarno Hatta (Arengka) No.18 RT.01 RW.08, Kel. Sidomulya Barat,Kec. Tampan, Kota Pekanbaru 28294",
+                        NoHp = "0761 - 564 641",
+                        Gambar = "pekanbaru.png",
+                        Admin = "farhan",
+                        Gmaps = "http://www.google.com/maps/place/0.4513638,101.4173618"
+                    },
+                    new Cabang
+                    {
+                        Nama = "Indogrosir Bandung",
+                        Lokasi = "Jalan Ahmad Yani No. 806\r\n(100 M Barat Terminal Cicaheum)\r\nCicaheum\r\nBandung 40282",
+                        NoHp = "022-7202711",
+                        Gambar = "bandung.png",
+                        Admin = "farhan",
+                        Gmaps = "http://www.google.com/maps/place/-6.903677,107.654857"
+                    },
+                    new Cabang
+                    {
+                        Nama = "Indogrosir Banjarmasin",
+                        Lokasi = "Jalan A. Yani Km. 12,200 Kelurahan Gambut Barat , Kecamatan Gambut, Kabupaten Banjar Kalimantan Selatan 70652",
+                        NoHp = "022-7202711",
+                        Gambar = "banjarmasin.png",
+                        Admin = "farhan",
+                        Gmaps = "http://www.google.com/maps/place/-3.39262286,114.65804739"
+                    },
+                    new Cabang
+                    {
+                        Nama = "Indogrosir Kendari",
+                        Lokasi = "Jalan Madusila Kelurahan Anduonohu Kecamatan Poasia Kota Kendari Sulawesi Tenggara",
+                        NoHp = "0401-3083025",
+                        Gambar = "kendari.png",
+                        Admin = "farhan",
+                        Gmaps = "http://www.google.com/maps/place/-3.9943811,122.5429033"
+                    },
+                    new Cabang
+                    {
+                        Nama = "Indogrosir Ambon",
+                        Lokasi = "Jalan Syaranamual Desa Hunuth atau Kate-kate Kecamatan Pulau Ambon Kota Ambon Provinsi Maluku",
+                        NoHp = "0911 - 368 5555",
+                        Gambar = "ambon.png",
+                        Admin = "farhan",
+                        Gmaps = "http://www.google.com/maps/place/-3.637003468103064,128.2029516040826"
+                    }
+                );
                 context.SaveChanges();
             }
         }
