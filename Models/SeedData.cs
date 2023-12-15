@@ -1,8 +1,5 @@
 ﻿using indogrosir_tim8.Data;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Linq;
 
 namespace indogrosir_tim8.Models
 {

@@ -10,6 +10,7 @@ builder.Services.AddDbContext<indogrosir_tim8Context>(options =>
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
