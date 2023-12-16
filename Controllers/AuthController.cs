@@ -84,15 +84,17 @@ namespace indogrosir_tim8.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nama,Kategori,Harga,Jumlah,Minimum")] Produk produk)
+        public async Task<IActionResult> Regis([Bind("Id,Nama, Alamat,Email,Password")] Mitra mitra)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(produk);
+                _context.Add(mitra);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                TempData["Message"] = "Pendaftaran Berhasil!";
+                return RedirectToAction("Index", "Auth");
             }
-            return View(produk);
+            TempData["Message"] = "Pendaftaran Gagal!";
+            return RedirectToAction("Signup", "Auth");
         }
 
         [HttpPost]

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model indogrosir_tim8.Models.Mitra
+
+@{
     ViewData["Title"] = "Sign Up";
 }
 
@@ -9,22 +11,27 @@
         </div>
         <div class="col-span-1 pl-10">
             <form asp-controller="Auth" asp-action="Regis" id="signup" class="space-y-4">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <h1>Sign Up</h1>
-                <label for="usaha">
+                <label asp-for="Nama">
                     <span>Nama Usaha</span>
-                    <input type="text" id="usaha" name="usaha" placeholder="Masukkan Nama Usaha" class="form-input" required />
+                    <input asp-for="Nama" placeholder="Masukkan Nama Usaha" class="form-input" required />
+                    <span asp-validation-for="Nama" class="warning"></span>
                 </label>
-                <label for="lokasi">
+                <label asp-for="Alamat">
                     <span>Lokasi Usaha</span>
-                    <input type="text" id="lokasi" name="lokasi" placeholder="Masukkan Lokasi Usaha" class="form-input" required />
+                    <input asp-for="Alamat" placeholder="Masukkan Lokasi Usaha" class="form-input" required />
+                    <span asp-validation-for="Alamat" class="warning"></span>
                 </label>
-                <label for="email">
+                <label asp-for="Email">
                     <span>Email</span>
-                    <input type="email" id="email" name="email" placeholder="Masukkan Email" class="form-input" required />
+                    <input asp-for="Email" placeholder="Masukkan Email" class="form-input" required />
+                    <span asp-validation-for="Email" class="warning"></span>
                 </label>
-                <label for="password">
+                <label asp-for="Password">
                     <span>Password</span>
-                    <input type="password" id="password" name="password" placeholder="Masukkan Password" class="form-input" required />
+                    <input asp-for="Password" placeholder="Masukkan Password" class="form-input" required />
+                    <span asp-validation-for="Password" class="warning"></span>
                 </label>
                 <button type="submit" class="w-full btn-primary">Daftar</button>
                 <div class="row gap-1 text-gray-600">
@@ -35,3 +42,13 @@
         </div>
     </div>
 </div>
+
+@if (TempData["Message"] != null)
+{
+    <script type="text/javascript">
+        window.onload = function ()
+            {
+                alert('@TempData["Message"]');
+            };
+    </script>
+}
