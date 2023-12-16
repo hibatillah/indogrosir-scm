@@ -11,6 +11,7 @@ namespace indogrosir_tim8.Models
                 serviceProvider.GetRequiredService<
                     DbContextOptions<indogrosir_tim8Context>>()))
             {
+                // Mitra
                 if (context.Mitra.Any())
                 {
                     return; // DB has been seeded
@@ -30,6 +31,8 @@ namespace indogrosir_tim8.Models
                         Produk = "Golda",
                     }
                 );
+
+                // Cabang
                 if (context.Cabang.Any())
                 {
                     return; // DB has been seeded
@@ -48,7 +51,7 @@ namespace indogrosir_tim8.Models
                     new Cabang
                     {
                         Nama = "Indogrosir Bandung",
-                        Lokasi = "Jalan Ahmad Yani No. 806\r\n(100 M Barat Terminal Cicaheum)\r\nCicaheum\r\nBandung 40282",
+                        Lokasi = "Jalan Ahmad Yani No. 806 (100 M Barat Terminal Cicaheum) Cicaheum Bandung 40282",
                         NoHp = "022-7202711",
                         Gambar = "bandung.png",
                         Admin = "farhan",
