@@ -1,6 +1,7 @@
 ﻿using indogrosir_tim8.Data;
 using indogrosir_tim8.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Build.Framework;
 using Microsoft.EntityFrameworkCore;
 
 namespace indogrosir_tim8.Controllers
@@ -97,13 +98,22 @@ namespace indogrosir_tim8.Controllers
             return RedirectToAction("Signup", "Auth");
         }
 
-        [HttpPost]
-        public IActionResult DeleteCookie()
+        public IActionResult Logout()
         {
-            // Delete the cookie from the browser.
-            Response.Cookies.Delete("Name");
+            string user = _accessor.HttpContext.Request.Cookies["user_role"];
 
-            return RedirectToAction("Index");
+            if (user != null)
+            {
+                Response.Cookies.Delete("user_id");
+                Response.Cookies.Delete("user_role");
+                TempData["Message"] = "Logout Berhasil!";
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                TempData["Message"] = "Logout Gagal!";
+                return RedirectToAction("Index", "SCM");
+            }
         }
     }
 }

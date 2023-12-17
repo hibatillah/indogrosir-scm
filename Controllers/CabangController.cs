@@ -22,9 +22,12 @@ namespace indogrosir_tim8.Controllers
         // GET: Cabang
         public async Task<IActionResult> Index()
         {
-              return _context.Cabang != null ? 
-                          View(await _context.Cabang.ToListAsync()) :
-                          Problem("Entity set 'indogrosir_tim8Context.Cabang'  is null.");
+            if (_context.Cabang == null)
+            {
+                TempData["Message"] = "Data tidak ada";
+            }
+
+            return View(await _context.Cabang.ToListAsync());
         }
 
         // GET: Cabang/Details/5

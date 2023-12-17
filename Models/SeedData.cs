@@ -12,7 +12,7 @@ namespace indogrosir_tim8.Models
                     DbContextOptions<indogrosir_tim8Context>>()))
             {
                 // Mitra
-                if (context.Mitra.Any())
+                if (context.Mitra.Any() || context.Cabang.Any())
                 {
                     return; // DB has been seeded
                 }
@@ -31,12 +31,6 @@ namespace indogrosir_tim8.Models
                         Produk = "Golda",
                     }
                 );
-
-                // Cabang
-                if (context.Cabang.Any())
-                {
-                    return; // DB has been seeded
-                }
 
                 context.Cabang.AddRange(
                     new Cabang

@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using indogrosir_tim8.Data;
 using indogrosir_tim8.Models;
+using indogrosir_tim8.Data;
 
 namespace indogrosir_tim8.Controllers
 {

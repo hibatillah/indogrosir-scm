@@ -3,6 +3,11 @@ using indogrosir_tim8.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace indogrosir_tim8.Controllers
 {
@@ -34,10 +39,13 @@ namespace indogrosir_tim8.Controllers
 
         public async Task<IActionResult> Lokasi()
         {
-            var cabang = from m in _context.Mitra
+            if (_context.Cabang == null)
+            {
+                return Problem("Entity set 'Cabang' is null.");
+            }
+            var cabang = from m in _context.Cabang
                          select m;
-            return View(await cabang.ToListAsync());
-      
+            return View(cabang);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

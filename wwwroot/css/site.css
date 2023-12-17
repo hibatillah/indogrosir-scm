@@ -118,6 +118,9 @@ body.dark {
 }
 
 @layer utilities {
+    .active {
+        @apply text-blue-500;
+    }
     .center {
         @apply grid place-items-center;
     }

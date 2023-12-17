@@ -1,4 +1,4 @@
-# Framework Enterprise Project
+# 🛒 Supply Chain System for Indogrosir Partners
 
 ***Team 8 - 3SIC*** <br>
 Redesign Indogrosir website and create Supply Chain Management System for Indogrosir Partners. <br/>
