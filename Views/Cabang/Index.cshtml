@@ -44,8 +44,10 @@
         </div>
 
         @*Kanan*@
-        <div class="rounded-xl h-full border overflow-hidden">
-            <img src="~/assets/image/figmap.png" class="img-cover" />
+        <div id="map"class="rounded-xl h-full border overflow-hidden">
+            @*
+             <img src="~/assets/image/figmap.png" class="img-cover" />
+             *@
         </div>
     </div>
 </div>
@@ -58,3 +60,24 @@
         };
     </script>
 }
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin="">
+    </script>
+<script>
+    let map = L.map('map', {
+        center: [-1.9449984608589113, 114.90874197840336],
+        zoom: 3.5
+    });
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' }).addTo(map);
+
+    const pekanbaru = L.marker([0.4514818135313739, 101.41738325767065]).addTo(map);
+    const bandung = L.marker([-6.903559838459459, 107.65485699999999]).addTo(map);
+    const banjarmasin = L.marker([-3.392515799663163, 114.658015213494]).addTo(map);
+    const kendari = L.marker([-3.9942419639224322, 122.54290329999998]).addTo(map);
+
+    const cardLokasi = document.querySelectorAll('ul#lokasi li')
+    cardLokasi[0].addEventListener('click', () => setMap(0.4514818135313739, 101.41738325767065))
+    cardLokasi[1].addEventListener('click', () => setMap(-6.903559838459459, 107.65485699999999))
+    cardLokasi[2].addEventListener('click', () => setMap(-3.392515799663163, 114.658015213494))
+    cardLokasi[3].addEventListener('click', () => setMap(-3.9942419639224322, 122.54290329999998))
+</script>
