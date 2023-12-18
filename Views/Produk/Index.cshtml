@@ -30,7 +30,20 @@
                     <h2 class="text-2xl font-semibold capitalize line-clamp-1">@Html.DisplayFor(modelItem => item.Nama)</h2>
                     <div class="text-gray-500 mt-1">
                         <p>Rp @Html.DisplayFor(modelItem => item.Harga)</p>
-                        <p>@Html.DisplayFor(modelItem => item.Jumlah) Stok</p>
+                        <div class="flex gap-3">
+                            <p>@Html.DisplayFor(modelItem => item.Jumlah) Stok</p>
+                            <div>
+                                @if (item.Jumlah <= item.Minimum)
+                                {
+                                    <span class="text-red-500" title="Stok Kurang">
+                                        <i class="bi bi-exclamation-circle"></i>
+                                    </span>
+                                }
+                                else
+                                {
+                                }
+                            </div>
+                        </div>
                     </div>
                 </div>
             </a>
