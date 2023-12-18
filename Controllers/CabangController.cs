@@ -20,14 +20,19 @@ namespace indogrosir_tim8.Controllers
         }
 
         // GET: Cabang
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchGerai)
         {
             if (_context.Cabang == null)
             {
-                TempData["Message"] = "Data tidak ada";
+                return Problem("Entity set 'MvcMovieContext.Movie' is null.");
             }
-
-            return View(await _context.Cabang.ToListAsync());
+            var cabang = from m in _context.Cabang
+                          select m;
+            if (!String.IsNullOrEmpty(searchGerai))
+            {
+                cabang = cabang.Where(s => s.Nama!.Contains(searchGerai) || s.Lokasi!.Contains(searchGerai));
+            }
+            return View(await cabang.ToListAsync());
         }
 
         // GET: Cabang/Details/5

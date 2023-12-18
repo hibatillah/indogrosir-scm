@@ -12,7 +12,7 @@
             <search class="w-1/2">
                 <form asp-controller="Cabang" asp-action="Index" id="search" method="get" class="row bg-gray-100 pl-3 rounded-md gap-1">
                     <i class="bi bi-search text-gray-400"></i>
-                    <input type="search" id="search" name="searchProduk" placeholder="Cari nama produk..." class="form-input w-full focus:outline-none" />
+                    <input type="search" id="search" name="searchGerai" placeholder="Cari Lokasi Gerai..." class="form-input w-full focus:outline-none" />
                     <button type="submit" class="btn-primary">Cari</button>
                 </form>
             </search>
@@ -21,7 +21,7 @@
                 @foreach (var item in Model)
                 {
                     <li class="row gap-5">
-                        <div class="w-[600px] h-44 rounded-lg border-2 overflow-hidden">
+                        <div class="w-72 h-44 flex-none rounded-lg border-2 overflow-hidden">
                             <img src="~/assets/lokasi/@item.Gambar" class="img-cover" alt="indogrosir pekanbaru" />
                         </div>
                         <div>
