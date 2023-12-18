@@ -61,14 +61,25 @@
     </script>
 }
 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin="">
-    </script>
+</script>
+
 <script>
     let map = L.map('map', {
         center: [-1.9449984608589113, 114.90874197840336],
         zoom: 3.5
     });
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' }).addTo(map);
+    function setMap(latitude, longitude) {
+        map.setView([latitude, longitude], 18); // Ganti level zoom sesuai kebutuhan
+    }
+
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWlmdGFodWwyMyIsImEiOiJjbHFheGx3dTYxcDFjMmtqc3poYTkzbGs1In0.Ec6MCTSIThRfVMzZw9tPBg', {
+        attribution: '&copy; <a href="https://www.mapbox.com/about/maps/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox/streets-v11', // Ganti dengan style yang diinginkan dari Mapbox
+        tileSize: 512,
+        zoomOffset: -1,
+    }).addTo(map);
 
     const pekanbaru = L.marker([0.4514818135313739, 101.41738325767065]).addTo(map);
     const bandung = L.marker([-6.903559838459459, 107.65485699999999]).addTo(map);
@@ -81,3 +92,4 @@
     cardLokasi[2].addEventListener('click', () => setMap(-3.392515799663163, 114.658015213494))
     cardLokasi[3].addEventListener('click', () => setMap(-3.9942419639224322, 122.54290329999998))
 </script>
+
