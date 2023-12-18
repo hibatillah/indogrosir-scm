@@ -1,4 +1,5 @@
 ﻿@model indogrosir_tim8.Models.Produk
+@inject IHttpContextAccessor httpContextaccessor
 
 @{
     ViewData["Title"] = "Buat Produk";
@@ -26,6 +27,8 @@
         </label>
         <form asp-action="Create" class="flex-auto h-fit flex flex-wrap gap-6">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="UserId" value="@Html.Raw(httpContextaccessor.HttpContext.Request.Cookies["user_id"]).ToString()" />
+            <input type="hidden" asp-for="UserRole" value="@Html.Raw(httpContextaccessor.HttpContext.Request.Cookies["user_role"]).ToString()" />
             <label asp-for="Nama">
                 <span>Nama</span>
                 <input asp-for="Nama" placeholder="Masukkan nama produk" class="form-input capitalize" />

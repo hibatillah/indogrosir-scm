@@ -1,4 +1,5 @@
 ﻿@model indogrosir_tim8.Models.Pesanan
+@inject IHttpContextAccessor httpContextaccessor
 
 @{
     ViewData["Title"] = "Buat Pesanan";
@@ -16,6 +17,8 @@
     </div>
     <form asp-action="Create" class="flex-auto h-fit flex flex-wrap gap-6 mt-8">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="UserId" value="@Html.Raw(httpContextaccessor.HttpContext.Request.Cookies["user_id"]).ToString()" />
+        <input type="hidden" asp-for="UserRole" value="@Html.Raw(httpContextaccessor.HttpContext.Request.Cookies["user_role"]).ToString()" />
         <label asp-for="Tanggal">
             <span>Tanggal</span>
             <input asp-for="Tanggal" placeholder="Masukkan tanggal" class="form-input capitalize" />

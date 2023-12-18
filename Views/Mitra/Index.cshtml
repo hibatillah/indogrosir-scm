@@ -1,4 +1,5 @@
-﻿@model IEnumerable<indogrosir_tim8.Models.Mitra>
+﻿@using indogrosir_tim8;
+@model dynamic
 
 @{
     ViewData["Title"] = "Mitra";
@@ -21,18 +22,25 @@
             </a>
         </div>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-    @foreach (var item in Model) {
-        <a asp-action="Details" asp-route-id="@item.Id" class="p-5 bg-gray-100 rounded-xl row gap-6 shadow">
-            <div class="w-32 aspect-square bg-gray-200 rounded-lg border"></div>
-            <div>
-                <h2 class="text-2xl font-semibold capitalize line-clamp-1">@Html.DisplayFor(modelItem => item.Nama)</h2>
-                <div class="text-gray-500 mt-1">
-                    <p class="capitalize line-clamp-2">@Html.DisplayFor(modelItem => item.Alamat)</p>
-                    <p>@Html.DisplayFor(modelItem => item.GabungMember)</p>
-                </div>
-            </div>
-        </a>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+    @foreach (Mitra mitra in Model.Mitra) 
+    {
+        @foreach (Admin admin in Model.Admin)
+        {
+            @if (mitra.Cabang == admin.Cabang)
+            {
+                <a asp-action="Details" asp-route-id="@mitra.Id" class="p-5 bg-gray-100 rounded-xl row gap-6 shadow">
+                    <div class="w-32 aspect-square bg-gray-200 rounded-lg border"></div>
+                    <div>
+                        <h2 class="text-2xl font-semibold capitalize line-clamp-1">@Html.DisplayFor(modelItem => mitra.Nama)</h2>
+                        <div class="text-gray-500 mt-1">
+                            <p class="capitalize line-clamp-2">@Html.DisplayFor(modelItem => mitra.Alamat)</p>
+                            <p>@Html.DisplayFor(modelItem => mitra.GabungMember)</p>
+                        </div>
+                    </div>
+                </a>
+            }
+        }
     }
     </div>
 </div>

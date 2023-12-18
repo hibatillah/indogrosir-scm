@@ -12,7 +12,11 @@ namespace indogrosir_tim8.Models
                     DbContextOptions<indogrosir_tim8Context>>()))
             {
                 // Mitra
-                if (context.Mitra.Any() || context.Cabang.Any())
+                if (context.Mitra.Any() 
+                    || context.Cabang.Any() 
+                    || context.Produk.Any()
+                    || context.Admin.Any()
+                    )
                 {
                     return; // DB has been seeded
                 }
@@ -27,8 +31,51 @@ namespace indogrosir_tim8.Models
                         Cabang = "Pekanbaru",
                         Admin = "Ucup",
                         Email = "ucup@gmail.com",
-                        Password = "12345",
-                        Produk = "Golda",
+                        Password = "123",
+                    },
+                    new Mitra
+                    {
+                        Nama = "Parhan Mart",
+                        Alamat = "Jl. Durian",
+                        TahunBerdiri = DateTime.Parse("2016-2-12"),
+                        GabungMember = DateTime.Parse("2021-2-12"),
+                        Cabang = "Pekanbaru",
+                        Admin = "Parhan",
+                        Email = "parhan@gmail.com",
+                        Password = "123",
+                    }
+                );
+
+                context.Admin.AddRange(
+                    new Admin
+                    {
+                        Nama = "Raul",
+                        Email = "raul@gmail.com",
+                        Password = "123",
+                        Cabang = "Pekanbaru"
+                    }
+                );
+
+                context.Produk.AddRange(
+                    new Produk
+                    {
+                        Nama = "Golda",
+                        Kategori = "Minuman",
+                        Harga = 4000,
+                        Jumlah = 30,
+                        Minimum = 10,
+                        UserId = 1,
+                        UserRole = "mitra",
+                    },
+                    new Produk
+                    {
+                        Nama = "Sosis",
+                        Kategori = "Makanan",
+                        Harga = 1000,
+                        Jumlah = 30,
+                        Minimum = 10,
+                        UserId = 2,
+                        UserRole = "mitra",
                     }
                 );
 

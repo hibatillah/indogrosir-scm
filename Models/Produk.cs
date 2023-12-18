@@ -12,5 +12,7 @@ namespace indogrosir_tim8.Models
         public int Jumlah { get; set;}
         [Display(Name = "Minimum Stok")]
         public decimal Minimum { get; set;}
+        public int UserId { get; set; }
+        public string UserRole { get; set; }
     }
 }

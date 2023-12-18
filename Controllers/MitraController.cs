@@ -19,12 +19,17 @@ namespace indogrosir_tim8.Controllers
             _context = context;
         }
 
+        public async Task<IActionResult> Profil()
+        {
+            return View(await _context.Mitra.ToListAsync());
+        }
+
         // GET: Mitra
         public async Task<IActionResult> Index(string searchMitra)
         {
             if (_context.Mitra == null)
             {
-                return Problem("Entity set 'MvcMovieContext.Movie' is null.");
+                return Problem("Entity set 'Mitra' is null.");
             }
             var mitra = from m in _context.Mitra
                          select m;
@@ -64,7 +69,7 @@ namespace indogrosir_tim8.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nama,Alamat,Cabang,TahunBerdiri,GabungMember,Admin,Email,Password")] Mitra mitra)
+        public async Task<IActionResult> Create([Bind("Id,Nama,Alamat,Cabang,TahunBerdiri,GabungMember,Admin,Email")] Mitra mitra)
         {
             if (ModelState.IsValid)
             {

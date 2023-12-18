@@ -10,8 +10,8 @@
             <img src="~/assets/image/banner.png" alt="indogrosir" class="img-cover" />
         </div>
         <div class="col-span-1 pl-10">
-            <form asp-controller="Auth" asp-action="Regis" id="signup" class="space-y-4">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <form asp-controller="Auth" asp-action="Registrasi" id="signup" class="space-y-4">
+                <div asp-validation-summary="ModelOnly" class="warning"></div>
                 <h1>Sign Up</h1>
                 <label asp-for="Nama">
                     <span>Nama Usaha</span>
@@ -22,6 +22,17 @@
                     <span>Lokasi Usaha</span>
                     <input asp-for="Alamat" placeholder="Masukkan Lokasi Usaha" class="form-input" required />
                     <span asp-validation-for="Alamat" class="warning"></span>
+                </label>
+                <label asp-for="Cabang">
+                    <span>Cabang Indogrosir</span>
+                    <select asp-for="Cabang" placeholder="Pilih wilayah cabang" class="form-input" required>
+                        <option value="Pekanbaru">Pekanbaru</option>
+                        <option value="Bandung">Bandung</option>
+                        <option value="Banjarmasin">Banjarmasin</option>
+                        <option value="Kendari">Kendari</option>
+                        <option value="Ambon">Ambon</option>
+                    </select>
+                    <span asp-validation-for="Cabang" class="warning"></span>
                 </label>
                 <label asp-for="Email">
                     <span>Email</span>

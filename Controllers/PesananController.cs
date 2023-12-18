@@ -64,7 +64,7 @@ namespace indogrosir_tim8.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Tanggal,Mitra,Cabang,Admin,Produk,TotalHarga,JumlahPesanan")] Pesanan pesanan)
+        public async Task<IActionResult> Create([Bind("Id,Tanggal,Mitra,Cabang,Admin,Produk,TotalHarga,JumlahPesanan,UserId,UserRole")] Pesanan pesanan)
         {
             if (ModelState.IsValid)
             {

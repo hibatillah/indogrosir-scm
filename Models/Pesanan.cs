@@ -15,5 +15,7 @@ namespace indogrosir_tim8.Models
         public decimal TotalHarga { get; set; }
         [Display(Name = "Jumlah Pesanan")]
         public int JumlahPesanan { get; set; }
+        public int UserId { get; set; }
+        public string UserRole { get; set; }
     }
 }

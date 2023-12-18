@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<indogrosir_tim8.Models.Pesanan>
+@inject IHttpContextAccessor httpContextaccessor
 
 @{
     ViewData["Title"] = "Pesanan";
@@ -49,42 +50,46 @@
             </tr>
         </thead>
         <tbody>
-    @foreach (var item in Model) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Tanggal)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Mitra)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cabang)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Admin)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Produk)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TotalHarga)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.JumlahPesanan)
-                </td>
-                <td class="row gap-2">
-                    <a asp-action="Details" asp-route-id="@item.Id" class="btn-icon bg-blue-500">
-                        <i class="bi bi-eye"></i>
-                    </a>
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn-icon bg-purple-500">
-                        <i class="bi bi-pencil"></i>
-                    </a>
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn-icon bg-red-500">
-                        <i class="bi bi-trash"></i>
-                    </a>
-                </td>
-            </tr>
-    }
+        @foreach (var item in Model) 
+        {
+            @if (@Html.Raw(httpContextaccessor.HttpContext.Request.Cookies["user_id"]).ToString() == item.UserId.ToString() && @Html.Raw(httpContextaccessor.HttpContext.Request.Cookies["user_role"]).ToString() == item.UserRole)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tanggal)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mitra)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cabang)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Admin)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Produk)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalHarga)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.JumlahPesanan)
+                    </td>
+                    <td class="row gap-2">
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn-icon bg-blue-500">
+                            <i class="bi bi-eye"></i>
+                        </a>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn-icon bg-purple-500">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn-icon bg-red-500">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                    </td>
+                </tr>      
+            }
+        }
         </tbody>
     </table>
 </div>

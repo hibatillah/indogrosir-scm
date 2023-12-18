@@ -57,7 +57,7 @@ namespace indogrosir_tim8.Controllers
                     return RedirectToAction("Index", "Auth");
                 }
             }
-            else if (admin.Email == email)
+            else 
             {
                 if (admin.Password == pass)
                 {
@@ -71,11 +71,6 @@ namespace indogrosir_tim8.Controllers
                     return RedirectToAction("Index", "Auth");
                 }
             }
-            else
-            {
-                TempData["Message"] = "Email tidak sesuai!";
-                return RedirectToAction("Index", "Auth");
-            }
         }
 
         public IActionResult Signup()
@@ -85,7 +80,7 @@ namespace indogrosir_tim8.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Regis([Bind("Id,Nama, Alamat,Email,Password")] Mitra mitra)
+        public async Task<IActionResult> Registrasi([Bind("Id,Nama,Alamat,Cabang,Email,Password")] Mitra mitra)
         {
             if (ModelState.IsValid)
             {

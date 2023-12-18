@@ -10,14 +10,16 @@ namespace indogrosir_tim8.Controllers
 {
     public class SCMController : Controller
     {
-        public async Task<IActionResult> Index()
+        private readonly indogrosir_tim8Context _context;
+
+        public SCMController(indogrosir_tim8Context context)
         {
-            return View();
+            _context = context;
         }
 
-        public IActionResult Profil()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            return View(await _context.Mitra.ToListAsync());
         }
     }
 }
