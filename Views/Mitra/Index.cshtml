@@ -32,10 +32,10 @@
                 <a asp-action="Details" asp-route-id="@mitra.Id" class="p-5 bg-gray-100 rounded-xl row gap-6 shadow">
                     <div class="w-32 aspect-square bg-gray-200 rounded-lg border"></div>
                     <div>
-                        <h2 class="text-2xl font-semibold capitalize line-clamp-1">@Html.DisplayFor(modelItem => mitra.Nama)</h2>
+                        <h2 class="text-2xl font-semibold capitalize line-clamp-1">@mitra.Nama</h2>
                         <div class="text-gray-500 mt-1">
-                            <p class="capitalize line-clamp-2">@Html.DisplayFor(modelItem => mitra.Alamat)</p>
-                            <p>@Html.DisplayFor(modelItem => mitra.GabungMember)</p>
+                            <p class="capitalize line-clamp-2">@mitra.Alamat</p>
+                            <p>@mitra.GabungMember</p>
                         </div>
                     </div>
                 </a>

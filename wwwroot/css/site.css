@@ -58,6 +58,9 @@ body.dark {
     td {
         @apply py-2 text-gray-900 font-normal first:pl-3;
     }
+    abbr[title] {
+        text-decoration: unset;
+    }
 }
 
 @layer components {
@@ -148,7 +151,10 @@ body.dark {
     }
 
     /* element */
-    ul#lokasi::-webkit-scrollbar {
-        @apply w-1 rounded bg-white;
+    ul#list-lokasi::-webkit-scrollbar {
+        @apply w-1 rounded bg-transparent;
+    }
+    ul#list-lokasi::-webkit-scrollbar-thumb {
+        @apply w-1 rounded bg-gray-500;
     }
 }

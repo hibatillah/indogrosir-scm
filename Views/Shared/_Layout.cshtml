@@ -37,72 +37,76 @@
         </a>
         <nav id="menu" class="flex gap-x-3 items-center text-gray-400 select-none">
 
-            @if (@Html.Raw(httpContextaccessor.HttpContext.Request.Cookies["user_role"]).ToString() == "mitra")
+            @if (httpContextaccessor.HttpContext.Request.Cookies["user_role"] == "mitra")
             {
                 @* Mitra *@
-                <a id="dashboard" class="p-2 row gap-2 font-medium hover:text-blue-500" asp-area="" asp-controller="SCM" asp-action="Index">
+                <a id="dashboard" asp-area="" asp-controller="SCM" asp-action="Index" class="p-2 row gap-2 font-medium hover:text-blue-500">
                     <i class="bi bi-grid-fill"></i>
                     <span>Dashboard</span>
                 </a>
-                <a id="produk"  class="p-2 row gap-2 font-medium hover:text-blue-500" asp-area="" asp-controller="Produk" asp-action="Index">
+                <a id="produk" asp-area="" asp-controller="Produk" asp-action="Index"  class="p-2 row gap-2 font-medium hover:text-blue-500">
                     <i class="bi bi-archive-fill"></i>
                     <span>Produk</span>
                 </a>
-                <a id="pesanan" class="p-2 row gap-2 font-medium hover:text-blue-500" asp-area="" asp-controller="Pesanan" asp-action="Index">
+                <a id="pesanan" asp-area="" asp-controller="Pesanan" asp-action="Index" class="p-2 row gap-2 font-medium hover:text-blue-500">
                     <i class="bi bi-clipboard2-data-fill"></i>
                     <span>Pesanan</span>
                 </a>
-                <a id="profil" class="p-2 row gap-2 font-medium hover:text-blue-500" asp-area="" asp-controller="Mitra" asp-action="Profil">
+                <a id="profil" asp-area="" asp-controller="Mitra" asp-action="Profil" class="p-2 row gap-2 font-medium hover:text-blue-500">
                     <i class="bi bi-person-circle"></i>
                     <span>Profil</span>
                 </a>
-                <a id="logout" class="p-2 row gap-2 font-medium rounded hover:bg-red-600 hover:text-red-200" asp-area="" asp-controller="Auth" asp-action="Logout">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
-                    </svg>
+                <a id="logout" asp-area="" asp-controller="Auth" asp-action="Logout">
+                    <abbr title="Logout" class="p-2 row gap-2 font-medium rounded hover:bg-red-600 hover:text-red-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+                        </svg>
+                    </abbr>
                 </a>
             }
-            else if (@Html.Raw(httpContextaccessor.HttpContext.Request.Cookies["user_role"]).ToString() == "admin")
+            else if (httpContextaccessor.HttpContext.Request.Cookies["user_role"] == "admin")
             {
                 @* Admin *@
-                <a id="dashboard" class="p-2 row gap-2 font-medium hover:text-blue-500" asp-area="" asp-controller="SCM" asp-action="Index">
+                <a id="dashboard" asp-area="" asp-controller="SCM" asp-action="Index" class="p-2 row gap-2 font-medium hover:text-blue-500">
                     <i class="bi bi-grid-fill"></i>
                     <span>Dashboard</span>
                 </a>
-                <a id="produk" class="p-2 row gap-2 font-medium hover:text-blue-500" asp-area="" asp-controller="Produk" asp-action="Index">
+                <a id="produk" asp-area="" asp-controller="Produk" asp-action="Index" class="p-2 row gap-2 font-medium hover:text-blue-500">
                     <i class="bi bi-archive-fill"></i>
                     <span>Produk</span>
                 </a>
-                <a id="pesanan" class="p-2 row gap-2 font-medium hover:text-blue-500" asp-area="" asp-controller="Pesanan" asp-action="Index">
+                <a id="pesanan" asp-area="" asp-controller="Pesanan" asp-action="Index" class="p-2 row gap-2 font-medium hover:text-blue-500">
                     <i class="bi bi-clipboard2-data-fill"></i>
                     <span>Pesanan</span>
                 </a>
-                <a id="mitra" class="p-2 row gap-2 font-medium hover:text-blue-500" asp-area="" asp-controller="Mitra" asp-action="Index">
+                <a id="mitra" asp-area="" asp-controller="Mitra" asp-action="List" class="p-2 row gap-2 font-medium hover:text-blue-500">
                     <i class="bi bi-people-fill"></i>
                     <span>Mitra</span>
                 </a>
-                <a id="profil" class="p-2 row gap-2 font-medium hover:text-blue-500" asp-area="" asp-controller="SCM" asp-action="Profil">
+                <a id="profil" asp-area="" asp-controller="SCM" asp-action="Profil" class="p-2 row gap-2 font-medium hover:text-blue-500">
                     <i class="bi bi-person-circle"></i>
                     <span>Profil</span>
                 </a>
-                <a id="logout" class="p-2 row gap-2 font-medium rounded hover:bg-red-600 hover:text-red-200" asp-area="" asp-controller="Auth" asp-action="Logout">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
-                    </svg>
+                <a id="logout" asp-area="" asp-controller="Auth" asp-action="Logout">
+                    <abbr title="Logout" class="p-2 row gap-2 font-medium rounded hover:bg-red-600 hover:text-red-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+                        </svg>
+                    </abbr>
                 </a>
             }
             else
             {
                 @* Website *@
-                <a id="beranda" class="p-2 row gap-2 font-medium hover:text-blue-500" asp-area="" asp-controller="Home" asp-action="Index">
+                <a id="beranda" asp-area="" asp-controller="Home" asp-action="Index" class="p-2 row gap-2 font-medium hover:text-blue-500">
                     <i class="bi bi-grid-fill"></i>
                     <span>Beranda</span>
                 </a>
-                <a id="berita" class="p-2 row gap-2 font-medium hover:text-blue-500" asp-area="" asp-controller="Home" asp-action="Berita">
+                <a id="berita" asp-area="" asp-controller="Home" asp-action="Berita" class="p-2 row gap-2 font-medium hover:text-blue-500">
                     <i class="bi bi-bookmarks-fill"></i>
                     <span>Berita</span>
                 </a>
-                <a id="lokasi" class="p-2 row gap-2 font-medium hover:text-blue-500" asp-area="" asp-controller="Cabang" asp-action="Index">
+                <a id="lokasi" asp-area="" asp-controller="Cabang" asp-action="Index" class="p-2 row gap-2 font-medium hover:text-blue-500">
                     <i class="bi bi-geo-alt-fill"></i>
                     <span>Lokasi</span>
                 </a>
@@ -115,18 +119,18 @@
                         </svg>
                     </span>
                     <div id="dropdownTentang" class="z-20 absolute top-10 right-0 px-4 py-3 w-44 flex flex-col gap-2 rounded-md bg-white shadow-md border hidden">
-                        <a class="hover:text-blue-500" asp-area="" asp-controller="Tentang" asp-action="Sejarah">
+                        <a asp-area="" asp-controller="Tentang" asp-action="Sejarah" class="hover:text-blue-500">
                             Sejarah & Visi Misi
                         </a>
-                        <a class="hover:text-blue-500" asp-area="" asp-controller="Tentang" asp-action="Index">
+                        <a asp-area="" asp-controller="Tentang" asp-action="Index" class="hover:text-blue-500">
                             Produk Bisnis
                         </a>
-                        <a class="hover:text-blue-500" asp-area="" asp-controller="Tentang" asp-action="Hubungi">
+                        <a asp-area="" asp-controller="Tentang" asp-action="Hubungi" class="hover:text-blue-500">
                             Hubungi Kami
                         </a>
                     </div>
                 </div>
-                <a id="auth" class="p-2 row gap-2 font-medium hover:text-blue-500" asp-area="" asp-controller="Auth" asp-action="Index">
+                <a id="auth" asp-area="" asp-controller="Auth" asp-action="Index" class="p-2 row gap-2 font-medium hover:text-blue-500">
                     <i class="bi bi-person-circle"></i>
                     <span>Login</span>
                 </a>
@@ -138,7 +142,8 @@
         @RenderBody()
     </main>
 
-    @if (@Html.Raw(httpContextaccessor.HttpContext.Request.Cookies["user_role"]).ToString() != "mitra" && @Html.Raw(httpContextaccessor.HttpContext.Request.Cookies["user_role"]).ToString() != "admin")
+    @if (httpContextaccessor.HttpContext.Request.Cookies["user_role"] != "mitra" 
+        && httpContextaccessor.HttpContext.Request.Cookies["user_role"] != "admin")
     {
         <footer class="px-20 py-8 h-80 rounded-2xl bg-white shadow grid grid-cols-2 gap-4">
             <div class="h-full flex flex-col justify-between">

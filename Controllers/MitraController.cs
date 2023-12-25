@@ -13,15 +13,91 @@ namespace indogrosir_tim8.Controllers
     public class MitraController : Controller
     {
         private readonly indogrosir_tim8Context _context;
+        private readonly IHttpContextAccessor _accessor;
 
-        public MitraController(indogrosir_tim8Context context)
+        public MitraController(indogrosir_tim8Context context, IHttpContextAccessor accessor)
         {
             _context = context;
+            _accessor = accessor;
         }
 
         public async Task<IActionResult> Profil()
         {
-            return View(await _context.Mitra.ToListAsync());
+            string user_id = _accessor.HttpContext.Request.Cookies["user_id"];
+            string user_role = _accessor.HttpContext.Request.Cookies["user_role"];
+
+
+            if (_context.Mitra == null)
+            {
+                return NotFound();
+            }
+
+            if (user_role == "mitra")
+            {
+                var mitra = await _context.Mitra
+                    .FirstOrDefaultAsync(m => m.Id.ToString() == user_id);
+
+                if (mitra == null)
+                {
+                    return NotFound();
+                }
+
+                return View(mitra);
+            }
+
+            TempData["Message"] = "User tidak sesuai!";
+            return RedirectToAction("Index", "SCM");
+        }
+
+        public async Task<IActionResult> EditProfil()
+        {
+            string user_id = _accessor.HttpContext.Request.Cookies["user_id"];
+            int id = int.Parse(user_id);
+
+            if (_context.Mitra == null)
+            {
+                return NotFound();
+            }
+
+            var mitra = await _context.Mitra.FindAsync(id);
+            if (mitra == null)
+            {
+                return NotFound();
+            }
+            return View(mitra);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditProfil(int id, [Bind("Id,Nama,Alamat,Cabang,TahunBerdiri,GabungMember,Admin,Email")] Mitra mitra)
+        {
+            if (id != mitra.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(mitra);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!MitraExists(mitra.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction("Profil", "Mitra");
+            }
+            TempData["Message"] = "Data tidak valid!";
+            return View(mitra);
         }
 
         // GET: Mitra
@@ -101,7 +177,7 @@ namespace indogrosir_tim8.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nama,Alamat,Cabang,TahunBerdiri,GabungMember,Admin,Email,Password,Produk")] Mitra mitra)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nama,Alamat,Cabang,TahunBerdiri,GabungMember,Admin,Email,Password")] Mitra mitra)
         {
             if (id != mitra.Id)
             {

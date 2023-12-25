@@ -1,66 +1,98 @@
-﻿@model indogrosir_tim8.Models.Pesanan
-@inject IHttpContextAccessor httpContextaccessor
+﻿@using indogrosir_tim8;
+@model dynamic
 
 @{
     ViewData["Title"] = "Buat Pesanan";
 }
 
-<div class="card fit-screen">
-    <div class="row justify-between">
-        <h1>Tambah Pesanan</h1>
-        <div class="row gap-2">
-            <a asp-action="Index" class="btn-secondary">
-                <i class="bi bi-arrow-left"></i>
-                Kembali
-            </a>
+<div class="flex gap-4">
+    @*Kiri*@
+    <div class="card fit-screen overflow-hidden flex-auto">
+        <div class="row justify-between mb-8">
+            <h1>List Produk</h1>
+            <div class="row gap-3">
+                <search>
+                    <form asp-controller="Produk" asp-action="List" id="search" method="get" class="row bg-gray-100 pl-3 rounded-md gap-1">
+                        <i class="bi bi-search text-gray-400"></i>
+                        <input type="search" id="search" name="searchListProduk" placeholder="Cari produk..." class="form-input focus:outline-none" />
+                        <button type="submit" class="btn-primary">Cari</button>
+                    </form>
+                </search>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            @foreach (Produk item in Model.Produk)
+            {
+                <div asp-action="Details" asp-route-id="@item.Id" class="p-5 bg-gray-100 rounded-xl row gap-6 shadow">
+                    <div class="w-32 aspect-square bg-gray-200 rounded-lg border"></div>
+                    <div>
+                        <h2 class="text-2xl font-semibold capitalize line-clamp-1">@Html.DisplayFor(modelItem => item.Nama)</h2>
+                        <div class="text-gray-500 mt-1">
+                            <p>Rp @Html.DisplayFor(modelItem => item.Harga)</p>
+                            <p>@Html.DisplayFor(modelItem => item.Jumlah) Stok</p>
+                        </div>
+                        <div class="row gap-2 mt-1">
+                            <div id="kurang-produk" class="w-8 aspect-square rounded-full border center cursor-pointer">
+                                <i class="bi bi-dash"></i>
+                            </div>
+                            <p id="jumlah-pesanan">0</p>
+                            <input type="number" class="hidden" />
+                            <div id="tambah-produk" class="w-8 aspect-square rounded-full border center cursor-pointer">
+                                <i class="bi bi-plus-lg"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
         </div>
     </div>
-    <form asp-action="Create" class="flex-auto h-fit flex flex-wrap gap-6 mt-8">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <input type="hidden" asp-for="UserId" value="@Html.Raw(httpContextaccessor.HttpContext.Request.Cookies["user_id"]).ToString()" />
-        <input type="hidden" asp-for="UserRole" value="@Html.Raw(httpContextaccessor.HttpContext.Request.Cookies["user_role"]).ToString()" />
-        <label asp-for="Tanggal">
-            <span>Tanggal</span>
-            <input asp-for="Tanggal" placeholder="Masukkan tanggal" class="form-input capitalize" />
-            <span asp-validation-for="Tanggal" class="warning"></span>
-        </label>
-        <label asp-for="Mitra">
-            <span>Mitra</span>
-            <input asp-for="Mitra" class="form-input capitalize" placeholder="Masukkan mitra" />
-            <span asp-validation-for="Mitra" class="warning"></span>
-        </label>
-        <label asp-for="Cabang">
-            <span>Cabang</span>
-            <input asp-for="Cabang" class="form-input" placeholder="Masukkan cabang" />
-            <span asp-validation-for="Cabang" class="warning"></span>
-        </label>
-        <label asp-for="Admin">
-            <span>Admin</span>
-            <input asp-for="Admin" class="form-input" placeholder="Masukkan admin" />
-            <span asp-validation-for="Admin" class="warning"></span>
-        </label>
-        <label asp-for="Produk">
-            <span>Produk</span>
-            <input asp-for="Produk" class="form-input" placeholder="Masukkan produk" />
-            <span asp-validation-for="Produk" class="warning"></span>
-        </label>
-        <label asp-for="JumlahPesanan">
-            <span>Jumlah Pesanan</span>
-            <input asp-for="JumlahPesanan" class="form-input" placeholder="Masukkan jumlah pesanan" />
-            <span asp-validation-for="JumlahPesanan" class="warning"></span>
-        </label>
-        <label asp-for="TotalHarga">
-            <span>Total Harga</span>
-            <input asp-for="TotalHarga" class="form-input" placeholder="Masukkan total harga" />
-            <span asp-validation-for="TotalHarga" class="warning"></span>
-        </label>
-        @* Tanggal, Mitra, Cabang, Admin, Produk, TotalHarga, JumlahPesanan*@
-        <div class="self-end">
-            <input type="submit" value="Buat Pesanan" class="btn-primary" />
-        </div>
-    </form>
+    @*Kanan*@
+    <div class="card fit-screen overflow-hidden flex-none w-[400px]">
+        <h1>Keranjang</h1>
+        <table class="my-4">
+            <tbody>
+                <tr>
+                    <td class="text-start">Sosis</td>
+                    <td class="text-center">1x</td>
+                    <td class="text-end">RP.3000</td>
+                </tr>
+            </tbody>
+        </table>
+        <hr class="mb-4" />
+        <table class="mb-4">
+            <tbody>
+                <tr>
+                    <td class="text-start">Total</td>
+                    <td class="text-end">RP.3000</td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn-primary w-full">
+            Pesan
+        </button>
+    </div>
 </div>
+
+<script>
+    const tambah = document.querySelector('#kurang-prouk')
+    const kurang = document.querySelector('#tambah-produk')
+    const jumlah = document.querySelector('#jumlah-pesanan')
+
+    tambah.addEventListener('click', () => {
+        jumlah.innerText = parseInt(jumlah.innerText) + 1
+    })
+
+    kurang.addEventListener('click', () => {
+        if (jumlah.innerText !== 0) {
+            kurang.innerText = parseInt(jumlah.innerText) + 1
+        }
+    })
+</script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+@*
+<input type="hidden" asp-for="Tanggal" value="@DateTime.Today.ToString("d")" class="form-input" />
+*@

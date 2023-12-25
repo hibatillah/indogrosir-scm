@@ -1,0 +1,92 @@
+﻿@model indogrosir_tim8.Models.Mitra
+
+@{
+    ViewData["Title"] = "Edit Profil";
+}
+
+<div class="fit-screen flex gap-4 overflow-hidden">
+    <div class="w-1/4 px-10 py-16 space-y-8 bg-white rounded-2xl shadow">
+        <div class="space-y-3 w-full flex flex-col items-center">
+            <div class="w-40 h-40 rounded-full border relative bg-gray-200">
+                <img src="~/assets/image/2003.png" alt="profil mitra" class="w-40 aspect-square rounded-full object-cover" />
+                <span class="absolute right-1 bottom-1 w-9 aspect-square grid place-items-center bg-gray-200 rounded-full text-gray-600 border cursor-pointer">
+                    <i class="bi bi-pencil"></i>
+                </span>
+            </div>
+            <h2 class="text-2xl font-semibold">@Model.Nama</h2>
+        </div>
+        <div class="space-y-2">
+            <div class="row justify-between">
+                <p class="text-gray-900 text-medium">Wilayah</p>
+                <p class="text-gray-500">@Model.Cabang
+            </div>
+            <div class="row justify-between">
+                <p class="text-gray-900 text-medium">Member Sejak</p>
+                <p class="text-gray-500">@Model.GabungMember.ToString().Split(' ')[0]</p>
+            </div>
+        </div>
+        <a asp-action="Profil" type="button" class="btn-danger w-full rounded-full">
+            <span>Batal Edit Profil</span>
+        </a>
+    </div>
+    <div class="flex-auto card">
+        <h1>Profil Mitra</h1>
+        <form asp-action="EditProfil" id="profil" class="mt-8 grid grid-cols-3 gap-5">
+            <div asp-validation-summary="ModelOnly" class="warning"></div>
+            <input type="hidden" asp-for="Id" />
+            <label asp-for="Nama">
+                <span>Nama Mitra</span>
+                <input asp-for="Nama" class="form-input capitalize" />
+                <span asp-validation-for="Nama" class="warning"></span>
+            </label>
+            <label asp-for="Alamat">
+                <span>Alamat Mitra</span>
+                <input asp-for="Alamat" class="form-input capitalize" />
+                <span asp-validation-for="Alamat" class="warning"></span>
+            </label>
+            <label asp-for="Cabang">
+                <span>Wilayah Cabang</span>
+                <input asp-for="Cabang" class="form-input" />
+                <span asp-validation-for="Cabang" class="warning"></span>
+            </label>
+            <label asp-for="TahunBerdiri">
+                <span>Tahun Berdiri</span>
+                <input asp-for="TahunBerdiri" class="form-input" />
+                <span asp-validation-for="TahunBerdiri" class="warning"></span>
+            </label>
+            <label asp-for="GabungMember">
+                <span>Gabung Member</span>
+                <input asp-for="GabungMember" class="form-input" />
+                <span asp-validation-for="GabungMember" class="warning"></span>
+            </label>
+            <label asp-for="Admin">
+                <span>Admin</span>
+                <input asp-for="Admin" class="form-input" />
+                <span asp-validation-for="Admin" class="warning"></span>
+            </label>
+            <label asp-for="Email">
+                <span>Email</span>
+                <input asp-for="Email" class="form-input" />
+                <span asp-validation-for="Email" class="warning"></span>
+            </label>
+            <div class="self-end">
+                <input type="submit" value="Edit Profil" class="btn-primary w-full mb-1" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@if (TempData["Message"] != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert('@TempData["Message"]');
+        };
+    </script>
+}
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

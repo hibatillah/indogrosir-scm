@@ -1,78 +1,63 @@
 ﻿@model indogrosir_tim8.Models.Mitra
-@inject IHttpContextAccessor httpContextaccessor
 
 @{
     ViewData["Title"] = "Profil";
 }
 
 <div class="fit-screen flex gap-4 overflow-hidden">
-    @if (@Html.Raw(httpContextaccessor.HttpContext.Request.Cookies["user_id"]).ToString() == @Html.DisplayNameFor(model => model.Nama).ToString() 
-        && @Html.Raw(httpContextaccessor.HttpContext.Request.Cookies["user_role"]).ToString() == "mitra")
-    {
-        <div class="w-1/4 px-10 py-16 space-y-8 bg-white rounded-2xl shadow">
-            <div class="space-y-3 w-full flex flex-col items-center">
-                <div class="w-40 h-40 rounded-full border relative bg-gray-200">
-                    <img src="~/assets/image/2003.png" alt="profil mitra" class="w-40 aspect-square rounded-full object-cover" />
-                    <span class="absolute right-1 bottom-1 w-9 aspect-square grid place-items-center bg-gray-200 rounded-full text-gray-600 border cursor-pointer">
-                        <i class="bi bi-pencil"></i>
-                    </span>
-                </div>
-                <h2 class="text-2xl font-semibold">
-                    @Html.DisplayNameFor(model => model.Nama)
-                </h2>
+    <div class="w-1/4 px-10 py-16 space-y-8 bg-white rounded-2xl shadow">
+        <div class="space-y-3 w-full flex flex-col items-center">
+            <div class="w-40 h-40 rounded-full border relative bg-gray-200">
+                <img src="~/assets/image/2003.png" alt="profil mitra" class="w-40 aspect-square rounded-full object-cover" />
             </div>
-            <div class="space-y-2">
-                <div class="row justify-between">
-                    <p class="text-gray-900 text-medium">Wilayah</p>
-                    <p class="text-gray-500">
-                        @Html.DisplayNameFor(model => model.Cabang)
-                    </p>
-                </div>
-                <div class="row justify-between">
-                    <p class="text-gray-900 text-medium">Member Sejak</p>
-                    <p class="text-gray-500">
-                        @Html.DisplayNameFor(model => model.GabungMember)
-                    </p>
-                </div>
-            </div>
-            <a asp-action="ProfilEdit" asp-route-id="@Html.Raw(httpContextaccessor.HttpContext.Request.Cookies["user_id"])" type="button" id="editProfil" data-edit="unactive" class="btn-primary w-full rounded-full">
-                <i class="bi bi-pencil-square"></i>
-                <span>Edit Profil</span>
-            </a>
+            <h2 class="text-2xl font-semibold">@Model.Nama</h2>
         </div>
-        <div class="flex-auto card">
-            <h1>Profil Mitra</h1>
-            <div id="profil" class="mt-8 grid grid-cols-3 gap-5">
-                <label asp-for="Nama">
-                    <span>Nama Mitra</span>
-                    <input asp-for="Nama" class="form-input capitalize" readonly />
-                </label>
-                <label asp-for="Alamat">
-                    <span>Alamat Mitra</span>
-                    <input asp-for="Alamat" class="form-input capitalize" readonly />
-                </label>
-                <label asp-for="TahunBerdiri">
-                    <span>Tahun Berdiri</span>
-                    <input asp-for="TahunBerdiri" class="form-input" readonly />
-                </label>
-                <label asp-for="Cabang">
-                    <span>Wilayah Cabang</span>
-                    <input asp-for="Cabang" class="form-input" readonly />
-                </label>
-                <label asp-for="GabungMember">
-                    <span>Gabung Member</span>
-                    <input asp-for="GabungMember" class="form-input" readonly />
-                </label>
-                <label asp-for="Admin">
-                    <span>Admin</span>
-                    <input asp-for="Admin" class="form-input" readonly />
-                </label>
-                <label asp-for="Email">
-                    <span>Email</span>
-                    <input asp-for="Email" class="form-input" readonly />
-                </label>
+        <div class="space-y-2">
+            <div class="row justify-between">
+                <p class="text-gray-900 text-medium">Wilayah</p>
+                <p class="text-gray-500">@Model.Cabang
+            </div>
+            <div class="row justify-between">
+                <p class="text-gray-900 text-medium">Member Sejak</p>
+                <p class="text-gray-500">@Model.GabungMember.ToString().Split(' ')[0]</p>
             </div>
         </div>
-
-    }
+        <a asp-action="EditProfil" type="button" class="btn-primary w-full rounded-full">
+            <i class="bi bi-pencil-square"></i>
+            <span>Edit Profil</span>
+        </a>
+    </div>
+    <div class="flex-auto card">
+        <h1>Profil Mitra</h1>
+        <div id="profil" class="mt-8 grid grid-cols-3 gap-5">
+            <label asp-for="Nama">
+                <span>Nama Mitra</span>
+                <input asp-for="Nama" class="form-input capitalize" readonly />
+            </label>
+            <label asp-for="Alamat">
+                <span>Alamat Mitra</span>
+                <input asp-for="Alamat" class="form-input capitalize" readonly />
+            </label>
+            <label asp-for="TahunBerdiri">
+                <span>Tahun Berdiri</span>
+                <input asp-for="TahunBerdiri" class="form-input" readonly />
+            </label>
+            <label asp-for="Cabang">
+                <span>Wilayah Cabang</span>
+                <input asp-for="Cabang" class="form-input" readonly />
+            </label>
+            <label asp-for="GabungMember">
+                <span>Gabung Member</span>
+                <input asp-for="GabungMember" class="form-input" readonly />
+            </label>
+            <label asp-for="Admin">
+                <span>Admin</span>
+                <input asp-for="Admin" class="form-input" readonly />
+            </label>
+            <label asp-for="Email">
+                <span>Email</span>
+                <input asp-for="Email" class="form-input" readonly />
+            </label>
+        </div>
+    </div>
 </div>

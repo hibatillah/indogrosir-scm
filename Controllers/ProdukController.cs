@@ -13,27 +13,44 @@ namespace indogrosir_tim8.Controllers
     public class ProdukController : Controller
     {
         private readonly indogrosir_tim8Context _context;
+        private readonly IHttpContextAccessor _accessor;
 
-        public ProdukController(indogrosir_tim8Context context)
+        public ProdukController(indogrosir_tim8Context context, IHttpContextAccessor accessor)
         {
             _context = context;
+            _accessor = accessor;
         }
 
         // GET: Produk
         public async Task<IActionResult> Index(string searchProduk)
         {
+            string user_id = _accessor.HttpContext.Request.Cookies["user_id"];
+            string user_role = _accessor.HttpContext.Request.Cookies["user_role"];
+
             if (_context.Produk == null)
             {
-                return Problem("Entity set 'MvcMovieContext.Movie' is null.");
+                return Problem("Entity set 'Produk' is null.");
             }
+
             var produk = from m in _context.Produk
                          select m;
+
+            // get produk by login user
+            var produk_user = produk.Where(s => s.UserId.ToString() == user_id && s.UserRole == user_role);
+
             if (!String.IsNullOrEmpty(searchProduk))
             {
-                produk = produk.Where(s => s.Nama!.Contains(searchProduk));
+                produk_user = produk_user.Where(s => s.Nama!.Contains(searchProduk));
             }
-            return View(await produk.ToListAsync());
             
+            if (produk_user != null)
+            {
+                return View(await produk_user.ToListAsync());
+            }
+            else
+            {
+                return View(await produk.ToListAsync());
+            }
         }
 
         // GET: Produk/Details/5

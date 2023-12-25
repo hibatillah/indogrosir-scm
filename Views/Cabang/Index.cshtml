@@ -4,23 +4,25 @@
     ViewData["Title"] = "Lokasi";
 }
 
-<div class="card shadow h-screen overflow-hidden">
+<div class="card shadow h-[calc(100dvh-104px)] overflow-hidden">
     <div class="h-full grid grid-cols-2 gap-6">
         @*Kiri*@
         <div class="h-full overflow-hidden">
-            <h1 class="mb-6">Lokasi Gerai</h1>
-            <search class="w-1/2">
-                <form asp-controller="Cabang" asp-action="Index" id="search" method="get" class="row bg-gray-100 pl-3 rounded-md gap-1">
-                    <i class="bi bi-search text-gray-400"></i>
-                    <input type="search" id="search" name="searchGerai" placeholder="Cari Lokasi Gerai..." class="form-input w-full focus:outline-none" />
-                    <button type="submit" class="btn-primary">Cari</button>
-                </form>
-            </search>
+            <div class="row justify-between">
+                <h1>Lokasi Gerai</h1>
+                <search class="w-1/2">
+                    <form asp-controller="Cabang" asp-action="Index" id="search" method="get" class="row bg-gray-100 pl-3 rounded-md gap-1">
+                        <i class="bi bi-search text-gray-400"></i>
+                        <input type="search" id="search" name="searchGerai" placeholder="Cari Lokasi Gerai..." class="form-input w-full focus:outline-none" />
+                        <button type="submit" class="btn-primary">Cari</button>
+                    </form>
+                </search>
+            </div>
             @*list lokasi*@
-            <ul id="lokasi" class="pr-2 space-y-5 h-[43rem] mt-5 overflow-y-scroll">
+            <ul id="list-lokasi" class="pr-2 space-y-5 h-[520px] mt-5 overflow-y-scroll">
                 @foreach (var item in Model)
                 {
-                    <li class="row gap-5">
+                    <li class="row gap-5 cursor-pointer">
                         <div class="w-72 h-44 flex-none rounded-lg border-2 overflow-hidden">
                             <img src="~/assets/lokasi/@item.Gambar" class="img-cover" alt="indogrosir pekanbaru" />
                         </div>
@@ -29,13 +31,13 @@
                             <p class="mb-2 text-justify text-gray-500 line-clamp-3">
                                 @Html.DisplayFor(modelItem => item.Lokasi)
                             </p>
-                            <a href="tel:@item.NoHp" class="row gap-2">
+                            <a href="tel:@item.NoHp" class="w-fit row gap-2 hover:underline decoration-blue-500 underline-offset-1">
                                 <i class="bi bi-telephone-fill text-blue-500"></i>
                                 <p class="text-gray-500">@Html.DisplayFor(modelItem => item.NoHp)</p>
                             </a>
-                            <a href="@item.Gmaps" class="row gap-2">
+                            <a href="@item.Gmaps" class="w-fit row gap-2 hover:underline decoration-blue-500 underline-offset-1">
                                 <i class="bi bi-geo-alt-fill text-blue-500"></i>
-                                <p class="text-gray-500">Buka Google Maps</p>
+                                <p class="text-gray-500">Buka di Google Maps</p>
                             </a>
                         </div>
                     </li>          
@@ -44,11 +46,7 @@
         </div>
 
         @*Kanan*@
-        <div id="map"class="rounded-xl h-full border overflow-hidden">
-            @*
-             <img src="~/assets/image/figmap.png" class="img-cover" />
-             *@
-        </div>
+        <div id="map" class="pb-12 h-full rounded-xl border overflow-hidden z-0"></div>
     </div>
 </div>
 
@@ -60,9 +58,8 @@
         };
     </script>
 }
-<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin="">
-</script>
 
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
 <script>
     let map = L.map('map', {
         center: [-1.9449984608589113, 114.90874197840336],
@@ -70,7 +67,7 @@
     });
 
     function setMap(latitude, longitude) {
-        map.setView([latitude, longitude], 18); // Ganti level zoom sesuai kebutuhan
+        map.setView([latitude, longitude], 15); // Ganti level zoom sesuai kebutuhan
     }
 
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWlmdGFodWwyMyIsImEiOiJjbHFheGx3dTYxcDFjMmtqc3poYTkzbGs1In0.Ec6MCTSIThRfVMzZw9tPBg', {

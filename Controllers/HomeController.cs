@@ -15,15 +15,25 @@ namespace indogrosir_tim8.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly indogrosir_tim8Context _context;
+        private readonly IHttpContextAccessor _accessor;
 
-        public HomeController(ILogger<HomeController> logger, indogrosir_tim8Context context)
+        public HomeController(ILogger<HomeController> logger, indogrosir_tim8Context context, IHttpContextAccessor accessor)
         {
             _logger = logger;
             _context = context;
+            _accessor = accessor;
         }
+
 
         public IActionResult Index()
         {
+            string user_id = _accessor.HttpContext.Request.Cookies["user_id"];
+            string user_role = _accessor.HttpContext.Request.Cookies["user_role"];
+
+            if (user_id != null && user_role != null)
+            {
+                return RedirectToAction("Index", "SCM");
+            }
             return View();
         }
 
@@ -35,17 +45,6 @@ namespace indogrosir_tim8.Controllers
         public IActionResult Berita()
         {
             return View();
-        }
-
-        public async Task<IActionResult> Lokasi()
-        {
-            if (_context.Cabang == null)
-            {
-                return Problem("Entity set 'Cabang' is null.");
-            }
-            var cabang = from m in _context.Cabang
-                         select m;
-            return View(cabang);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

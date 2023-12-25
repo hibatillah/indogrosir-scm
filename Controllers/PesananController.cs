@@ -13,26 +13,50 @@ namespace indogrosir_tim8.Controllers
     public class PesananController : Controller
     {
         private readonly indogrosir_tim8Context _context;
+        private readonly IHttpContextAccessor _accessor;
 
-        public PesananController(indogrosir_tim8Context context)
+        public PesananController(indogrosir_tim8Context context, IHttpContextAccessor accessor)
         {
             _context = context;
+            _accessor = accessor;
         }
 
         // GET: Pesanan
         public async Task<IActionResult> Index(string searchPesanan)
         {
+            string user_id = _accessor.HttpContext.Request.Cookies["user_id"];
+            string user_role = _accessor.HttpContext.Request.Cookies["user_role"];
+
             if (_context.Pesanan == null)
             {
-                return Problem("Entity set 'MvcMovieContext.Movie' is null.");
+                return Problem("Entity set 'Pesanan' is null.");
             }
+
             var pesanan = from m in _context.Pesanan
                         select m;
+
+            // get pesanan by login user
+            var pesanan_user = pesanan.Where(s => s.UserId.ToString() == user_id && s.UserRole == user_role);
+
             if (!String.IsNullOrEmpty(searchPesanan))
             {
-                pesanan = pesanan.Where(s => s.Mitra!.Contains(searchPesanan) || s.Admin!.Contains(searchPesanan));
+                pesanan_user = pesanan_user.Where(s => s.Mitra!.Contains(searchPesanan) || s.Admin!.Contains(searchPesanan));
             }
-            return View(await pesanan.ToListAsync());
+
+            if (pesanan_user != null)
+            {
+                return View(await pesanan_user.ToListAsync());
+            }
+            else
+            {
+                return View(await pesanan.ToListAsync());
+            }
+        }
+
+        // GET: Pesanan/Create
+        public async Task<IActionResult> Create()
+        {
+            return View();
         }
 
         // GET: Pesanan/Details/5
@@ -51,12 +75,6 @@ namespace indogrosir_tim8.Controllers
             }
 
             return View(pesanan);
-        }
-
-        // GET: Pesanan/Create
-        public IActionResult Create()
-        {
-            return View();
         }
 
         // POST: Pesanan/Create
