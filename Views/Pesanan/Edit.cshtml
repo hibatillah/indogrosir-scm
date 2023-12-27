@@ -52,6 +52,10 @@
             <input asp-for="TotalHarga" class="form-input" placeholder="Masukkan total harga" />
             <span asp-validation-for="TotalHarga" class="warning"></span>
         </label>
+        <label asp-for="Status">
+            <span>Status Pesanan</span>
+            <input asp-for="Status" class="form-input" placeholder="Masukkan total harga" readonly />
+        </label>
         @* Tanggal, Mitra, Cabang, Admin, Produk, TotalHarga, JumlahPesanan*@
         <div class="self-end">
             <input type="submit" value="Edit Data Pesanan" class="btn-primary" />

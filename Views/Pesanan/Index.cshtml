@@ -10,16 +10,19 @@
         <h1>Pesanan</h1>
         <div class="row gap-3">
             <search>
-                <form asp-controller="Pesanan" asp-action="Index" method="get" class="row w-96 bg-gray-100 pl-3 rounded-md gap-1">
+                <form asp-controller="Pesanan" asp-action="Index" method="get" class="row w-[400px] bg-gray-100 pl-3 rounded-md gap-1">
                     <i class="bi bi-search text-gray-400"></i>
-                    <input type="search" id="search" name="searchPesanan" placeholder="Cari nama mitra atau admin..." class="form-input w-full focus:outline-none" />
+                    <input type="search" id="search" name="searchPesanan" placeholder="Cari status, mitra, tanggal atau jumlah..." class="form-input w-full focus:outline-none" />
                     <button type="submit" class="btn-primary">Cari</button>
                 </form>
             </search>
-            <a asp-action="Create" class="btn-primary pl-5">
-                <i class="bi bi-plus-lg stroke-2"></i>
-                Buat Pesanan
-            </a>
+            @if (httpContextaccessor.HttpContext.Request.Cookies["user_role"] == "mitra")
+            {
+                <a asp-action="Create" class="btn-primary pl-5">
+                    <i class="bi bi-plus-lg stroke-2"></i>
+                    Buat Pesanan
+                </a>
+            }
         </div>
     </div>
     <table>
@@ -43,8 +46,11 @@
                 <th>
                     @Html.DisplayNameFor(model => model.TotalHarga)
                 </th>
-                <th>
+                <th class="w-48">
                     @Html.DisplayNameFor(model => model.JumlahPesanan)
+                </th>
+                <th class="w-48">
+                    @Html.DisplayNameFor(model => model.Status)
                 </th>
                 <th class="w-32">Aksi</th>
             </tr>
@@ -73,6 +79,16 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.JumlahPesanan)
+                </td>
+                <td>
+                    @if (item.Status == "Menunggu")
+                    {
+                        <div class="w-fit px-3 py-1 rounded-md bg-violet-500 text-white font-medium">Menunggu</div>
+                    }
+                    else
+                    {
+                        <div class="w-fit px-3 py-1 rounded-md bg-sky-500 text-white font-medium">Selesai</div>
+                    }
                 </td>
                 <td class="row gap-2">
                     <a asp-action="Details" asp-route-id="@item.Id" class="btn-icon bg-blue-500">

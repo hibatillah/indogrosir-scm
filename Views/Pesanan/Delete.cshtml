@@ -43,6 +43,10 @@
             <span>Total Harga</span>
             <input asp-for="TotalHarga" class="form-input" readonly />
         </label>
+        <label asp-for="Status">
+            <span>Status Pesanan</span>
+            <input asp-for="Status" class="form-input" readonly />
+        </label>
         @* Tanggal, Mitra, Cabang, Admin, Produk, TotalHarga, JumlahPesanan*@
         <form asp-action="Delete" class="self-end">
             <input type="hidden" asp-for="Id" />

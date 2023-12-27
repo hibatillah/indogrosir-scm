@@ -33,24 +33,33 @@ namespace indogrosir_tim8.Controllers
             }
 
             var pesanan = from m in _context.Pesanan
-                        select m;
+                          select m;
 
-            // get pesanan by login user
-            var pesanan_user = pesanan.Where(s => s.UserId.ToString() == user_id && s.UserRole == user_role);
+            if (user_role == "mitra")
+            {
+                // get pesanan by id for mitra
+                pesanan = pesanan.Where(s => s.UserId.ToString() == user_id);
+
+
+            }
+            else if (user_role == "admin")
+            {
+                var admin = await _context.Admin
+                    .FirstOrDefaultAsync(m => m.Id.ToString() == user_id);
+
+                // get pesanan based on cabang admin
+                pesanan = pesanan.Where(s => s.Cabang == admin.Cabang);
+            }
+
 
             if (!String.IsNullOrEmpty(searchPesanan))
             {
-                pesanan_user = pesanan_user.Where(s => s.Mitra!.Contains(searchPesanan) || s.Admin!.Contains(searchPesanan));
+                pesanan = pesanan.Where(s => s.Status!.ToLower().Contains(searchPesanan.ToLower()) 
+                                            || s.Mitra!.Contains(searchPesanan) 
+                                            || s.Tanggal!.ToString().Contains(searchPesanan) 
+                                            || s.JumlahPesanan.Equals(int.Parse(searchPesanan)));
             }
-
-            if (pesanan_user != null)
-            {
-                return View(await pesanan_user.ToListAsync());
-            }
-            else
-            {
-                return View(await pesanan.ToListAsync());
-            }
+            return View(await pesanan.ToListAsync());
         }
 
         // GET: Pesanan/Create
@@ -82,7 +91,7 @@ namespace indogrosir_tim8.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Tanggal,Mitra,Cabang,Admin,Produk,TotalHarga,JumlahPesanan,UserId,UserRole")] Pesanan pesanan)
+        public async Task<IActionResult> Create([Bind("Id,Tanggal,Mitra,Cabang,Admin,Produk,TotalHarga,JumlahPesanan,Status,UserId")] Pesanan pesanan)
         {
             if (ModelState.IsValid)
             {
@@ -114,7 +123,7 @@ namespace indogrosir_tim8.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Tanggal,Mitra,Cabang,Admin,Produk,TotalHarga,JumlahPesanan")] Pesanan pesanan)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Tanggal,Mitra,Cabang,Admin,Produk,TotalHarga,JumlahPesanan,Status,UserId")] Pesanan pesanan)
         {
             if (id != pesanan.Id)
             {
@@ -169,7 +178,7 @@ namespace indogrosir_tim8.Controllers
         {
             if (_context.Pesanan == null)
             {
-                return Problem("Entity set 'indogrosir_tim8Context.Pesanan'  is null.");
+                return Problem("Entity set 'Pesanan'  is null.");
             }
             var pesanan = await _context.Pesanan.FindAsync(id);
             if (pesanan != null)

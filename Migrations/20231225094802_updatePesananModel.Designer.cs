@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using indogrosir_tim8.Data;
 
@@ -11,9 +12,11 @@ using indogrosir_tim8.Data;
 namespace indogrosir_tim8.Migrations
 {
     [DbContext(typeof(indogrosir_tim8Context))]
-    partial class indogrosir_tim8ContextModelSnapshot : ModelSnapshot
+    [Migration("20231225094802_updatePesananModel")]
+    partial class updatePesananModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -159,10 +162,6 @@ namespace indogrosir_tim8.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Produk")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

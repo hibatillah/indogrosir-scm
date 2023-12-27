@@ -1,5 +1,4 @@
-﻿@using indogrosir_tim8;
-@model dynamic
+﻿@model Tuple<Produk,Pesanan>
 
 @{
     ViewData["Title"] = "Buat Pesanan";
@@ -20,30 +19,27 @@
                 </search>
             </div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            @foreach (Produk item in Model.Produk)
-            {
-                <div asp-action="Details" asp-route-id="@item.Id" class="p-5 bg-gray-100 rounded-xl row gap-6 shadow">
-                    <div class="w-32 aspect-square bg-gray-200 rounded-lg border"></div>
-                    <div>
-                        <h2 class="text-2xl font-semibold capitalize line-clamp-1">@Html.DisplayFor(modelItem => item.Nama)</h2>
-                        <div class="text-gray-500 mt-1">
-                            <p>Rp @Html.DisplayFor(modelItem => item.Harga)</p>
-                            <p>@Html.DisplayFor(modelItem => item.Jumlah) Stok</p>
+        <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+            <a asp-action="Details" asp-route-id="@Model.Item1.Id" class="p-5 bg-gray-100 rounded-xl row gap-6 shadow">
+                <div class="w-32 aspect-square bg-gray-200 rounded-lg border"></div>
+                <div>
+                    <h2 class="text-2xl font-semibold capitalize line-clamp-1">@Model.Item1.Nama</h2>
+                    <div class="text-gray-500 mt-1">
+                        <p>Rp @Model.Item1.Harga</p>
+                        <p>@Model.Item1.Jumlah Stok</p>
+                    </div>
+                    <div class="row gap-2 mt-1">
+                        <div id="kurang-produk" class="w-8 aspect-square rounded-full border center cursor-pointer">
+                            <i class="bi bi-dash"></i>
                         </div>
-                        <div class="row gap-2 mt-1">
-                            <div id="kurang-produk" class="w-8 aspect-square rounded-full border center cursor-pointer">
-                                <i class="bi bi-dash"></i>
-                            </div>
-                            <p id="jumlah-pesanan">0</p>
-                            <input type="number" class="hidden" />
-                            <div id="tambah-produk" class="w-8 aspect-square rounded-full border center cursor-pointer">
-                                <i class="bi bi-plus-lg"></i>
-                            </div>
+                        <p id="jumlah-pesanan">0</p>
+                        <input type="number" class="hidden" />
+                        <div id="tambah-produk" class="w-8 aspect-square rounded-full border center cursor-pointer">
+                            <i class="bi bi-plus-lg"></i>
                         </div>
                     </div>
                 </div>
-            }
+            </a>
         </div>
     </div>
     @*Kanan*@

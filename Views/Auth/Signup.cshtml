@@ -6,7 +6,7 @@
 
 <div class="card shadow fit-screen grid place-items-center">
     <div class="grid grid-cols-2 w-4/6 gap-10">
-        <div class="col-span-1 h-[450px] rounded-xl overflow-hidden">
+        <div class="col-span-1 h-[450px] self-center rounded-xl overflow-hidden">
             <img src="~/assets/image/banner.png" alt="indogrosir" class="img-cover" />
         </div>
         <div class="col-span-1 pl-10">
@@ -34,6 +34,7 @@
                     </select>
                     <span asp-validation-for="Cabang" class="warning"></span>
                 </label>
+                <input type="hidden" asp-for="GabungMember" id="gabung-member" class="form-input" required />
                 <label asp-for="Email">
                     <span>Email</span>
                     <input asp-for="Email" placeholder="Masukkan Email" class="form-input" required />
@@ -54,12 +55,6 @@
     </div>
 </div>
 
-@if (TempData["Message"] != null)
-{
-    <script type="text/javascript">
-        window.onload = function ()
-            {
-                alert('@TempData["Message"]');
-            };
-    </script>
-}
+<script>
+    document.querySelector('#gabung-member').value = new Date().toISOString().substring(0, 10);
+</script>

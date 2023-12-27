@@ -17,7 +17,7 @@
                     <span>Email</span>
                     <input type="email" id="email" name="email" placeholder="Masukkan Email" class="form-input" required />
                 </label>
-                <label for="password">
+                <label for="pass">
                     <span>Password</span>
                     <input type="password" id="pass" name="pass" placeholder="Masukkan Password" class="form-input" required />
                 </label>
@@ -30,13 +30,3 @@
         </div>
     </div>
 </div>
-
-@if (TempData["Message"] != null)
-{
-    <script type="text/javascript">
-        window.onload = function ()
-            {
-                alert('@TempData["Message"]');
-            };
-    </script>
-}

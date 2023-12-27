@@ -38,14 +38,15 @@ namespace indogrosir_tim8.Controllers
             }
 
             var mitra = await _context.Mitra
-                .FirstOrDefaultAsync(m => m.Email == email);
+                    .FirstOrDefaultAsync(m => m.Email == email);
 
             var admin = await _context.Admin
-                .FirstOrDefaultAsync(m => m.Email == email);
+                    .FirstOrDefaultAsync(m => m.Email == email);
 
-            if (mitra.Email == email)
+            // check email & password
+            if (mitra != null)
             {
-                if (mitra.Password == pass)
+                if (mitra.Password.ToString() == pass.ToString())
                 {
                     Response.Cookies.Append("user_id", mitra.Id.ToString(), options);
                     Response.Cookies.Append("user_role", "mitra", options);
@@ -54,10 +55,10 @@ namespace indogrosir_tim8.Controllers
                 else
                 {
                     TempData["Message"] = "Password tidak sesuai!";
-                    return RedirectToAction("Index", "Auth");
+                    return RedirectToAction(nameof(Index));
                 }
             }
-            else 
+            else if (admin != null)
             {
                 if (admin.Password == pass)
                 {
@@ -68,9 +69,11 @@ namespace indogrosir_tim8.Controllers
                 else
                 {
                     TempData["Message"] = "Password tidak sesuai!";
-                    return RedirectToAction("Index", "Auth");
+                    return RedirectToAction(nameof(Index));
                 }
             }
+            TempData["Message"] = "Email tidak sesuai!";
+            return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Signup()
@@ -80,7 +83,7 @@ namespace indogrosir_tim8.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Registrasi([Bind("Id,Nama,Alamat,Cabang,Email,Password")] Mitra mitra)
+        public async Task<IActionResult> Registrasi([Bind("Id,Nama,Alamat,Cabang,GabungMember,Email,Password")] Mitra mitra)
         {
             if (ModelState.IsValid)
             {

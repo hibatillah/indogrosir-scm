@@ -22,13 +22,13 @@
             </a>
         </div>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
         @foreach (var item in Model)
         {
             <a asp-action="Details" asp-route-id="@item.Id" class="p-5 bg-gray-100 rounded-xl row gap-6 shadow">
                 <div class="w-32 aspect-square bg-gray-200 rounded-lg border"></div>
                 <div>
-                    <h2 class="text-2xl font-semibold capitalize line-clamp-1">@Html.DisplayFor(modelItem => item.Nama)</h2>
+                    <h2 class="font-semibold capitalize line-clamp-1">@Html.DisplayFor(modelItem => item.Nama)</h2>
                     <div class="text-gray-500 mt-1">
                         <p>Rp @Html.DisplayFor(modelItem => item.Harga)</p>
                         <div class="flex gap-3">

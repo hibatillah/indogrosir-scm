@@ -107,11 +107,22 @@ namespace indogrosir_tim8.Controllers
             {
                 return Problem("Entity set 'Mitra' is null.");
             }
+
+            string user_id = _accessor.HttpContext.Request.Cookies["user_id"];
+
+            // get current login admin
+            var admin = await _context.Admin
+                        .FirstOrDefaultAsync(a => a.Id.ToString() == user_id);
+
             var mitra = from m in _context.Mitra
-                         select m;
+                        select m;
+
+            // get mitra based on admin cabang
+            mitra = mitra.Where(m => m.Cabang == admin.Cabang);
+
             if (!String.IsNullOrEmpty(searchMitra))
             {
-                mitra = mitra.Where(s => s.Nama!.Contains(searchMitra));
+                mitra = mitra.Where(s => s.Nama!.Contains(searchMitra) || s.Alamat!.Contains(searchMitra));
             }
             return View(await mitra.ToListAsync());
         }

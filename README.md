@@ -10,11 +10,11 @@ Redesign Indogrosir website and create Supply Chain Management System for Indogr
 ## 📌 Features
 - [x] Provides various information related to Indogrosir
 - [x] Attractive user interface
-- [ ] Monitor product stock inventory
-- [ ] Product notification reaches minimum limit
+- [x] Monitor product stock inventory
+- [x] Product notification reaches minimum limit
+- [x] Managing partners for admin
+- [x] Managing products for partners
 - [ ] Place an order for products
-- [ ] Managing partners for admin
-- [ ] Managing products for partners
 
 ## 🎲 Tech Stack
 - ASP.NET Web App Model-View-Controller

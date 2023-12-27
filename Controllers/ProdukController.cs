@@ -186,13 +186,7 @@ namespace indogrosir_tim8.Controllers
         {
           return (_context.Produk?.Any(e => e.Id == id)).GetValueOrDefault();
         }
-
-        public async Task<IActionResult> Keranjang()
-        {
-            return _context.Produk != null ?
-                          View(await _context.Produk.ToListAsync()) :
-                          Problem("Entity set 'indogrosir_tim8Context.Produk'  is null.");
-        }
+        
         public async Task<IActionResult> List(string searchListProduk)
         {
             if (_context.Produk == null)

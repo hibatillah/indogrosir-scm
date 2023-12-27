@@ -5,7 +5,7 @@
 }
 
 <div class="card shadow h-[calc(100dvh-104px)] overflow-hidden">
-    <div class="h-full grid grid-cols-2 gap-6">
+    <div class="h-full grid grid-cols-2 gap-8">
         @*Kiri*@
         <div class="h-full overflow-hidden">
             <div class="row justify-between">
@@ -19,7 +19,7 @@
                 </search>
             </div>
             @*list lokasi*@
-            <ul id="list-lokasi" class="pr-2 space-y-5 h-[520px] mt-5 overflow-y-scroll">
+            <ul id="list-lokasi" class="pr-2 pb-16 space-y-5 h-full mt-5 overflow-y-scroll">
                 @foreach (var item in Model)
                 {
                     <li class="row gap-5 cursor-pointer">
@@ -49,15 +49,6 @@
         <div id="map" class="pb-12 h-full rounded-xl border overflow-hidden z-0"></div>
     </div>
 </div>
-
-@if (TempData["Message"] != null)
-{
-    <script type="text/javascript">
-        window.onload = function () {
-            alert('@TempData["Message"]');
-        };
-    </script>
-}
 
 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
 <script>

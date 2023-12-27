@@ -24,6 +24,7 @@ namespace indogrosir_tim8.Models
                 context.Mitra.AddRange(
                     new Mitra
                     {
+                        Id = 1,
                         Nama = "Ucup Mart",
                         Alamat = "Jl. Tegal Sari, Rumbai",
                         TahunBerdiri = DateTime.Parse("2016-2-12"),
@@ -35,6 +36,7 @@ namespace indogrosir_tim8.Models
                     },
                     new Mitra
                     {
+                        Id = 2,
                         Nama = "Parhan Mart",
                         Alamat = "Jl. Durian",
                         TahunBerdiri = DateTime.Parse("2016-2-12"),
@@ -65,6 +67,26 @@ namespace indogrosir_tim8.Models
                         Jumlah = 30,
                         Minimum = 10,
                         UserId = 1,
+                        UserRole = "admin",
+                    },
+                    new Produk
+                    {
+                        Nama = "Sosis",
+                        Kategori = "Makanan",
+                        Harga = 1000,
+                        Jumlah = 30,
+                        Minimum = 10,
+                        UserId = 1,
+                        UserRole = "admin",
+                    },
+                    new Produk
+                    {
+                        Nama = "Golda",
+                        Kategori = "Minuman",
+                        Harga = 4000,
+                        Jumlah = 30,
+                        Minimum = 10,
+                        UserId = 1,
                         UserRole = "mitra",
                     },
                     new Produk
@@ -74,7 +96,7 @@ namespace indogrosir_tim8.Models
                         Harga = 1000,
                         Jumlah = 30,
                         Minimum = 10,
-                        UserId = 2,
+                        UserId = 1,
                         UserRole = "mitra",
                     }
                 );
