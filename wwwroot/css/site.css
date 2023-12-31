@@ -61,6 +61,14 @@ body.dark {
     abbr[title] {
         text-decoration: unset;
     }
+    select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+        background-repeat: no-repeat;
+        background-position-x: 98%;
+        background-position-y: 50%;
+    }
 }
 
 @layer components {
@@ -86,7 +94,6 @@ body.dark {
     .img-cover {
         @apply w-full h-full object-cover;
     }
-
     .img-contain {
         @apply w-full h-full object-contain;
     }
@@ -96,13 +103,13 @@ body.dark {
         @apply pl-5 pr-6 py-2 rounded-lg text-white text-center font-medium select-none cursor-pointer;
     }
     .btn-primary {
-        @apply px-6 py-2 rounded-lg bg-blue-500 text-white text-center font-medium select-none cursor-pointer;
+        @apply px-6 py-2 rounded-lg bg-blue-500 text-white text-center font-medium select-none cursor-pointer hover:bg-blue-400 active:bg-blue-600;
     }
     .btn-secondary {
-        @apply px-6 py-2 rounded-lg bg-gray-300 text-gray-600 text-center font-medium select-none cursor-pointer;
+        @apply px-6 py-2 rounded-lg bg-gray-300 text-gray-600 text-center font-medium select-none cursor-pointer hover:bg-gray-200 active:bg-gray-400;
     }
     .btn-danger {
-        @apply px-6 py-2 rounded-lg bg-red-600 text-white text-center font-medium select-none cursor-pointer;
+        @apply px-6 py-2 rounded-lg bg-red-600 text-white text-center font-medium select-none cursor-pointer hover:bg-red-500 active:bg-red-700;
     }
     .btn-icon {
         @apply w-7 aspect-square grid place-items-center rounded text-white cursor-pointer;

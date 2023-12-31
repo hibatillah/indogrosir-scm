@@ -50,7 +50,8 @@ namespace indogrosir_tim8.Controllers
                 {
                     Response.Cookies.Append("user_id", mitra.Id.ToString(), options);
                     Response.Cookies.Append("user_role", "mitra", options);
-                    return RedirectToAction("Index", "SCM");
+                    TempData["Message"] = $"Login Berhasil, Selamat Datang {mitra.Nama}!";
+                    return RedirectToAction("Dashboard", "Mitra");
                 }
                 else
                 {
@@ -64,7 +65,8 @@ namespace indogrosir_tim8.Controllers
                 {
                     Response.Cookies.Append("user_id", admin.Id.ToString(), options);
                     Response.Cookies.Append("user_role", "admin", options);
-                    return RedirectToAction("Index", "SCM");
+                    TempData["Message"] = $"Login Berhasil, Selamat Datang {admin.Nama}!";
+                    return RedirectToAction("Dashboard", "Admin");
                 }
                 else
                 {

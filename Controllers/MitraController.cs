@@ -21,6 +21,34 @@ namespace indogrosir_tim8.Controllers
             _accessor = accessor;
         }
 
+        public async Task<IActionResult> Dashboard()
+        {
+            string user_id = _accessor.HttpContext.Request.Cookies["user_id"];
+            string user_role = _accessor.HttpContext.Request.Cookies["user_role"];
+
+
+            if (_context.Mitra == null)
+            {
+                return NotFound();
+            }
+
+            if (user_role == "mitra")
+            {
+                var mitra = await _context.Mitra
+                    .FirstOrDefaultAsync(m => m.Id.ToString() == user_id);
+
+                if (mitra == null)
+                {
+                    return NotFound();
+                }
+
+                return View(mitra);
+            }
+
+            TempData["Message"] = "User tidak sesuai!";
+            return RedirectToAction("Logout", "Auth");
+        }
+
         public async Task<IActionResult> Profil()
         {
             string user_id = _accessor.HttpContext.Request.Cookies["user_id"];

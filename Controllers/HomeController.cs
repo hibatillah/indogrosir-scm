@@ -30,9 +30,17 @@ namespace indogrosir_tim8.Controllers
             string user_id = _accessor.HttpContext.Request.Cookies["user_id"];
             string user_role = _accessor.HttpContext.Request.Cookies["user_role"];
 
-            if (user_id != null && user_role != null)
+            if (user_id != null)
             {
-                return RedirectToAction("Index", "SCM");
+                if (user_role == "mitra")
+                {
+                    return RedirectToAction("Dashboard", "Mitra");
+                }
+
+                if (user_role == "admin")
+                {
+                    return RedirectToAction("Dashboard", "Admin");
+                }
             }
             return View();
         }

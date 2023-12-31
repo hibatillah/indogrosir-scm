@@ -1,5 +1,9 @@
 ﻿@inject IHttpContextAccessor httpContextaccessor
 
+@{
+    var user_role = httpContextaccessor.HttpContext.Request.Cookies["user_role"];
+}
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -19,7 +23,7 @@
     <meta name="og:type" content="website">
     <meta name="og:locale" content="id_ID">
     <meta name="og:locale:alternate" content="en_US">
-    <link rel="icon" href="logo.ico?v=2" />
+    <link rel="icon" href="~/logo.ico?v=2" />
     <title>@ViewData["Title"] - Indogrosir</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/indogrosir_tim8.styles.css" asp-append-version="true" />
@@ -32,14 +36,14 @@
 <body>
     <header class="px-8 py-2 rounded-xl bg-white shadow flex justify-between">
         <a asp-area="" asp-controller="Home" asp-action="Index">
-            <img src="assets/image/logo.png" class="h-10 pointer-events-none" alt="logo indogrosir" />
+            <img src="~/logo.png" class="h-10 pointer-events-none" alt="logo indogrosir" />
         </a>
         <nav id="menu" class="flex gap-x-3 items-center text-gray-400 select-none">
 
-            @if (httpContextaccessor.HttpContext.Request.Cookies["user_role"] == "mitra")
+            @if (user_role == "mitra")
             {
                 @* Mitra *@
-                <a id="menu-item" asp-area="" asp-controller="SCM" asp-action="Index" class="p-2 row gap-2 font-medium hover:text-blue-500">
+                <a id="menu-item" asp-area="" asp-controller="Mitra" asp-action="Dashboard" class="p-2 row gap-2 font-medium hover:text-blue-500">
                     <i class="bi bi-grid-fill"></i>
                     <span>Dashboard</span>
                 </a>
@@ -63,10 +67,10 @@
                     </abbr>
                 </a>
             }
-            else if (httpContextaccessor.HttpContext.Request.Cookies["user_role"] == "admin")
+            else if (user_role == "admin")
             {
                 @* Admin *@
-                <a id="menu-item" asp-area="" asp-controller="SCM" asp-action="Index" class="p-2 row gap-2 font-medium hover:text-blue-500">
+                <a id="menu-item" asp-area="" asp-controller="Admin" asp-action="Dashboard" class="p-2 row gap-2 font-medium hover:text-blue-500">
                     <i class="bi bi-grid-fill"></i>
                     <span>Dashboard</span>
                 </a>
@@ -81,10 +85,6 @@
                 <a id="menu-item" asp-area="" asp-controller="Mitra" asp-action="Index" class="p-2 row gap-2 font-medium hover:text-blue-500">
                     <i class="bi bi-people-fill"></i>
                     <span>Mitra</span>
-                </a>
-                <a id="menu-item" asp-area="" asp-controller="Mitra" asp-action="Profil" class="p-2 row gap-2 font-medium hover:text-blue-500">
-                    <i class="bi bi-person-circle"></i>
-                    <span>Profil</span>
                 </a>
                 <a id="menu-item" asp-area="" asp-controller="Auth" asp-action="Logout">
                     <abbr title="Logout" class="p-2 row gap-2 font-medium rounded hover:bg-red-600 hover:text-red-200">
@@ -141,13 +141,12 @@
         @RenderBody()
     </main>
 
-    @if (httpContextaccessor.HttpContext.Request.Cookies["user_role"] != "mitra" 
-        && httpContextaccessor.HttpContext.Request.Cookies["user_role"] != "admin")
+    @if (user_role != "mitra" && user_role != "admin")
     {
         <footer class="px-20 py-8 h-80 rounded-2xl bg-white shadow grid grid-cols-2 gap-4">
             <div class="h-full flex flex-col justify-between">
                 <div>
-                    <img src="assets/image/logo.png" class="h-10 pointer-events-none" alt="logo indogrosir" />
+                    <img src="~/logo.png" class="h-10 pointer-events-none" alt="logo indogrosir" />
                     <p class="mt-2 mb-5 text-gray-900">PT. Inti Cakrawala Citra</p>
                     <p class="text-gray-500">
                         Menara Indomaret <br />
@@ -280,40 +279,8 @@
                 item.classList.add("text-blue-500");
             });
         });
-
-        /*
-        switch (currentPath.split('/')[1]) {
-            case "SCM":
-                currentPath.split('/')[2] == "Profil"
-                    ? activeMenu('#menuProfil')
-                    : activeMenu('#dashboard')
-                break;
-            case "Produk":
-                activeMenu('#produk')
-                break;
-            case "Pesanan":
-                activeMenu('#pesanan')
-                break;
-            case "Mitra":
-                activeMenu('#mitra')
-                break;
-            case "Home":
-                currentPath.split('/')[2] == "Berita"
-                    ? activeMenu('#berita')
-                    : activeMenu('#lokasi')
-                break;
-            case "Tentang":
-                activeMenu('#menuTentang')
-                break;
-            case "Auth":
-                activeMenu('#auth')
-                break;
-            default:
-                activeMenu('#beranda')
-                break;
-        }
-        */
     </script>
+
     @if (TempData["Message"] != null)
     {
         <script type="text/javascript">

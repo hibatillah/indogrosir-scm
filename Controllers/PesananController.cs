@@ -39,8 +39,6 @@ namespace indogrosir_tim8.Controllers
             {
                 // get pesanan by id for mitra
                 pesanan = pesanan.Where(s => s.UserId.ToString() == user_id);
-
-
             }
             else if (user_role == "admin")
             {
@@ -65,7 +63,37 @@ namespace indogrosir_tim8.Controllers
         // GET: Pesanan/Create
         public async Task<IActionResult> Create()
         {
-            return View();
+            string user_id = _accessor.HttpContext.Request.Cookies["user_id"];
+            string user_role = _accessor.HttpContext.Request.Cookies["user_role"];
+
+            var mitra = await _context.Mitra
+                    .FirstOrDefaultAsync(m => m.Id.ToString() == user_id);
+
+            var admin = await _context.Admin
+                    .FirstOrDefaultAsync(m => m.Cabang == mitra.Cabang);
+
+            var produk = from m in _context.Produk
+                         select m;
+
+            produk = produk.Where(p => p.UserId.Equals(admin.Id) && p.UserRole == "admin");
+
+            return View(await produk.ToListAsync());
+        }
+
+        // POST: Pesanan/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Id,Tanggal,Mitra,Cabang,Admin,Produk,TotalHarga,JumlahPesanan,Status,UserId")] Pesanan pesanan)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(pesanan);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(pesanan);
         }
 
         // GET: Pesanan/Details/5
@@ -83,22 +111,6 @@ namespace indogrosir_tim8.Controllers
                 return NotFound();
             }
 
-            return View(pesanan);
-        }
-
-        // POST: Pesanan/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Tanggal,Mitra,Cabang,Admin,Produk,TotalHarga,JumlahPesanan,Status,UserId")] Pesanan pesanan)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(pesanan);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
             return View(pesanan);
         }
 

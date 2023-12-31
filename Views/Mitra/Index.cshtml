@@ -11,7 +11,7 @@
             <search>
                 <form id="search" action="#" class="row bg-gray-100 pl-3 rounded-md gap-1">
                     <i class="bi bi-search text-gray-400"></i>
-                    <input type="search" id="search" name="searchMitra" placeholder="Cari nama atau alamat mitra..." class="form-input focus:outline-none" />
+                    <input type="search" id="search" name="searchMitra" placeholder="Cari nama atau alamat mitra..." class="form-input w-32 focus:outline-none" />
                     <button type="submit" class="btn-primary">Cari</button>
                 </form>
             </search>
@@ -24,13 +24,13 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
     @foreach (var item in Model) 
     {
-        <a asp-action="Details" asp-route-id="@item.Id" class="p-5 bg-gray-100 rounded-xl row gap-6 shadow">
-            <div class="w-32 aspect-square bg-gray-200 rounded-lg border"></div>
+        <a asp-action="Details" asp-route-id="@item.Id" class="p-5 bg-gray-100 active:bg-gray-200/80 rounded-xl row gap-5 shadow">
+            <div class="w-28 flex-none aspect-square bg-gray-200 rounded-lg border"></div>
             <div>
                 <h2 class="font-semibold capitalize line-clamp-1">@item.Nama</h2>
                 <div class="text-gray-500 mt-1">
                     <p class="capitalize line-clamp-2">@item.Alamat</p>
-                    <p>@item.GabungMember</p>
+                    <p>@item.GabungMember.ToString().Split(' ')[0]</p>
                 </div>
             </div>
         </a>

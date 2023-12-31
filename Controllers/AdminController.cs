@@ -13,10 +13,40 @@ namespace indogrosir_tim8.Controllers
     public class AdminController : Controller
     {
         private readonly indogrosir_tim8Context _context;
+        private readonly IHttpContextAccessor _accessor;
 
-        public AdminController(indogrosir_tim8Context context)
+        public AdminController(indogrosir_tim8Context context, IHttpContextAccessor accessor)
         {
             _context = context;
+            _accessor = accessor;
+        }
+
+        public async Task<IActionResult> Dashboard()
+        {
+            string user_id = _accessor.HttpContext.Request.Cookies["user_id"];
+            string user_role = _accessor.HttpContext.Request.Cookies["user_role"];
+
+
+            if (_context.Admin == null)
+            {
+                return NotFound();
+            }
+
+            if (user_role == "admin")
+            {
+                var admin = await _context.Admin
+                    .FirstOrDefaultAsync(m => m.Id.ToString() == user_id);
+
+                if (admin == null)
+                {
+                    return NotFound();
+                }
+
+                return View(admin);
+            }
+
+            TempData["Message"] = "User tidak sesuai!";
+            return RedirectToAction("Logout", "Auth");
         }
 
         // GET: Admin

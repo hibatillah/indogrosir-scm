@@ -10,7 +10,6 @@ namespace indogrosir_tim8.Models
         public string Mitra { get; set; }
         public string Cabang { get; set; }
         public string? Admin {  get; set; }
-        public string Produk { get; set; }
         [Display(Name = "Total Harga")]
         public decimal TotalHarga { get; set; }
         [Display(Name = "Jumlah Pesanan")]
