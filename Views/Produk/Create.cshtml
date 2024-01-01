@@ -3,6 +3,8 @@
 
 @{
     ViewData["Title"] = "Buat Produk";
+    int userId = int.Parse(httpContextaccessor.HttpContext.Request.Cookies["user_id"]);
+    string userRole = httpContextaccessor.HttpContext.Request.Cookies["user_id"].ToString();
 }
 
 <div class="card fit-screen">
@@ -27,8 +29,8 @@
         </label>
         <form asp-action="Create" class="flex-auto h-fit flex flex-wrap gap-6">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="UserId" value="@Html.Raw(httpContextaccessor.HttpContext.Request.Cookies["user_id"]).ToString()" />
-            <input type="hidden" asp-for="UserRole" value="@Html.Raw(httpContextaccessor.HttpContext.Request.Cookies["user_role"]).ToString()" />
+            <input type="hidden" asp-for="UserId" value="@userId" />
+            <input type="hidden" asp-for="UserRole" value="@userRole" />
             <label asp-for="Nama">
                 <span>Nama</span>
                 <input asp-for="Nama" placeholder="Masukkan nama produk" class="form-input capitalize" />

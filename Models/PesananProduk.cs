@@ -1,4 +1,6 @@
-﻿namespace indogrosir_tim8.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace indogrosir_tim8.Models
 {
     public class PesananProduk
     {

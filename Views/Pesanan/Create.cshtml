@@ -1,7 +1,9 @@
-﻿@model IEnumerable<indogrosir_tim8.Models.Produk>
+﻿@model dynamic
+@inject IHttpContextAccessor httpContextaccessor
 
 @{
     ViewData["Title"] = "Buat Pesanan";
+    int userId = int.Parse(httpContextaccessor.HttpContext.Request.Cookies["user_id"]);
 }
 
 <div class="flex gap-4">
@@ -11,7 +13,7 @@
             <h1>List Produk</h1>
             <div class="row gap-3">
                 <search>
-                    <form asp-controller="Produk" asp-action="List" id="search" method="get" class="row bg-gray-100 pl-3 rounded-md gap-1">
+                    <form asp-controller="Pesanan" asp-action="Create" id="search" method="get" class="row bg-gray-100 pl-3 rounded-md gap-1">
                         <i class="bi bi-search text-gray-400"></i>
                         <input type="search" id="search" name="searchListProduk" placeholder="Cari produk..." class="form-input focus:outline-none" />
                         <button type="submit" class="btn-primary">Cari</button>
@@ -20,15 +22,15 @@
             </div>
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
-            @foreach (var item in Model)
+            @foreach (var produk in Model.Produk)
             {
                 <div class="p-5 bg-gray-100 active:bg-gray-200/70 rounded-xl row gap-6 shadow cursor-pointer">
                     <div class="w-28 aspect-square bg-gray-200 rounded-lg border"></div>
                     <div>
-                        <h2 class="text-2xl font-semibold capitalize line-clamp-1">@item.Nama</h2>
+                        <h2 class="text-2xl font-semibold capitalize line-clamp-1">@produk.Nama</h2>
                         <div class="text-gray-500 mt-1">
-                            <p>Rp @item.Harga</p>
-                            <p>@item.Jumlah Stok</p>
+                            <p>Rp @produk.Harga</p>
+                            <p>@produk.Jumlah Stok</p>
                         </div>
                         <div class="row gap-2 mt-1">
                             <div id="kurang-produk" class="w-8 aspect-square rounded-full border center cursor-pointer">
@@ -47,7 +49,7 @@
     </div>
     @*Kanan*@
     <div class="card fit-screen overflow-hidden flex-none w-[400px]">
-        <h1>Keranjang</h1>
+        <h2>Keranjang</h2>
         <table class="my-4">
             <tbody>
                 <tr>
@@ -55,24 +57,50 @@
                     <td class="text-center">1x</td>
                     <td class="text-end">RP.3000</td>
                 </tr>
-            </tbody>
-        </table>
-        <hr class="mb-4" />
-        <table class="mb-4">
-            <tbody>
                 <tr>
                     <td class="text-start">Total</td>
                     <td class="text-end">RP.3000</td>
                 </tr>
             </tbody>
         </table>
-        <button class="btn-primary w-full">
-            Pesan
-        </button>
+        @foreach (var mitra in Model.Mitra)
+        {
+            @foreach (var admin in Model.Admin)
+            {
+                @if (mitra.Id == userId)
+                {
+                    @if (admin.Cabang == mitra.Cabang)
+                    {
+                        <form asp-action="Create" class="flex-auto h-fit flex flex-wrap gap-6">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" name="UserId" value="@userId" />
+                            <input type="hidden" name="Tanggal" id="tanggal" />
+                            <input type="hidden" name="Status" value="Menunggu" />
+                            <input type="hidden" name="Mitra" value="@mitra.Nama" />
+                            <input type="hidden" name="Cabang" value="@mitra.Cabang" />
+                            <input type="hidden" name="Admin" value="@admin.Nama" />
+                            <label for="TotalHarga">
+                                <span>TotalHarga</span>
+                                <input name="TotalHarga" class="form-input" placeholder="Masukkan jumlah stok tersedia" />
+                            </label>
+                            <label for="JumlahPesanan">
+                                <span>JumlahPesanan</span>
+                                <input name="JumlahPesanan" class="form-input" placeholder="Masukkan jumlah minimum stok" />
+                            </label>
+                            <div class="self-end w-full">
+                                <input type="submit" value="Buat Pesanan" class="btn-primary w-full" />
+                            </div>
+                        </form>
+                    }
+                }
+            }
+        }
     </div>
 </div>
 
 <script>
+    document.querySelector('#tanggal').value = new Date().toISOString().substring(0, 10);
+
     const tambah = document.querySelector('#kurang-prouk')
     const kurang = document.querySelector('#tambah-produk')
     const jumlah = document.querySelector('#jumlah-pesanan')

@@ -15,6 +15,8 @@ namespace indogrosir_tim8.Controllers
         private readonly indogrosir_tim8Context _context;
         private readonly IHttpContextAccessor _accessor;
 
+        public object RespositoryClass { get; private set; }
+
         public PesananController(indogrosir_tim8Context context, IHttpContextAccessor accessor)
         {
             _context = context;
@@ -77,7 +79,13 @@ namespace indogrosir_tim8.Controllers
 
             produk = produk.Where(p => p.UserId.Equals(admin.Id) && p.UserRole == "admin");
 
-            return View(await produk.ToListAsync());
+            dynamic PesananView = new System.Dynamic.ExpandoObject();
+            PesananView.Produk = produk;
+            PesananView.Pesanan = _context.Pesanan;
+            PesananView.Mitra = _context.Mitra;
+            PesananView.Admin = _context.Admin;
+
+            return View(PesananView);
         }
 
         // POST: Pesanan/Create
@@ -85,7 +93,7 @@ namespace indogrosir_tim8.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Tanggal,Mitra,Cabang,Admin,Produk,TotalHarga,JumlahPesanan,Status,UserId")] Pesanan pesanan)
+        public async Task<IActionResult> Create([Bind("Id,Tanggal,Mitra,Cabang,Admin,TotalHarga,JumlahPesanan,Status,UserId")] Pesanan pesanan)
         {
             if (ModelState.IsValid)
             {
@@ -135,7 +143,7 @@ namespace indogrosir_tim8.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Tanggal,Mitra,Cabang,Admin,Produk,TotalHarga,JumlahPesanan,Status,UserId")] Pesanan pesanan)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Tanggal,Mitra,Cabang,Admin,TotalHarga,JumlahPesanan,Status,UserId")] Pesanan pesanan)
         {
             if (id != pesanan.Id)
             {
