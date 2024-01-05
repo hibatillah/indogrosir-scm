@@ -7,6 +7,7 @@
 }
 
 <div class="flex gap-4">
+
     @*Kiri*@
     <div class="card fit-screen overflow-hidden flex-auto">
         <div class="row justify-between mb-8">
@@ -21,24 +22,23 @@
                 </search>
             </div>
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5">
             @foreach (var produk in Model.Produk)
             {
-                <div class="p-5 bg-gray-100 active:bg-gray-200/70 rounded-xl row gap-6 shadow cursor-pointer">
+                <div id="product" class="p-5 bg-gray-100 rounded-xl row gap-6 shadow">
                     <div class="w-28 aspect-square bg-gray-200 rounded-lg border"></div>
                     <div>
-                        <h2 class="text-2xl font-semibold capitalize line-clamp-1">@produk.Nama</h2>
+                        <h2 data-name="@produk.Nama" class="text-2xl font-semibold capitalize line-clamp-1">@produk.Nama</h2>
                         <div class="text-gray-500 mt-1">
-                            <p>Rp @produk.Harga</p>
+                            <p data-price="@produk.Harga">Rp @produk.Harga</p>
                             <p>@produk.Jumlah Stok</p>
                         </div>
-                        <div class="row gap-2 mt-1">
-                            <div id="kurang-produk" class="w-8 aspect-square rounded-full border center cursor-pointer">
+                        <div id="control-product" data-max="@produk.Jumlah" class="row gap-2 mt-1">
+                            <div id="kurang-produk" class="w-8 aspect-square rounded-full border-2 border-gray-300 active:bg-gray-200/70 center cursor-pointer">
                                 <i class="bi bi-dash"></i>
                             </div>
-                            <p id="jumlah-pesanan">0</p>
-                            <input type="number" class="hidden" />
-                            <div id="tambah-produk" class="w-8 aspect-square rounded-full border center cursor-pointer">
+                            <p id="jumlah-pesanan" class="w-5 text-center"></p>
+                            <div id="tambah-produk" class="w-8 aspect-square rounded-full border-2 border-gray-300 active:bg-gray-200/70 center cursor-pointer">
                                 <i class="bi bi-plus-lg"></i>
                             </div>
                         </div>
@@ -47,22 +47,24 @@
             }
         </div>
     </div>
+
     @*Kanan*@
     <div class="card fit-screen overflow-hidden flex-none w-[400px]">
         <h2>Keranjang</h2>
         <table class="my-4">
             <tbody>
-                <tr>
-                    <td class="text-start">Sosis</td>
-                    <td class="text-center">1x</td>
-                    <td class="text-end">RP.3000</td>
-                </tr>
-                <tr>
-                    <td class="text-start">Total</td>
-                    <td class="text-end">RP.3000</td>
-                </tr>
+                <!-- render by script when product added -->
             </tbody>
         </table>
+        <hr class="my-4" />
+        <div class="flex justify-between items-center">
+            <div class="text-start font-medium">Jumlah Produk</div>
+            <div id="totalProduk" class="text-end">0</div>
+        </div>
+        <div class="flex justify-between items-center mt-2 mb-6">
+            <div class="text-start font-medium">Total Harga</div>
+            <div id="totalHarga" class="text-end">0</div>
+        </div>
         @foreach (var mitra in Model.Mitra)
         {
             @foreach (var admin in Model.Admin)
@@ -79,14 +81,8 @@
                             <input type="hidden" name="Mitra" value="@mitra.Nama" />
                             <input type="hidden" name="Cabang" value="@mitra.Cabang" />
                             <input type="hidden" name="Admin" value="@admin.Nama" />
-                            <label for="TotalHarga">
-                                <span>TotalHarga</span>
-                                <input name="TotalHarga" class="form-input" placeholder="Masukkan jumlah stok tersedia" />
-                            </label>
-                            <label for="JumlahPesanan">
-                                <span>JumlahPesanan</span>
-                                <input name="JumlahPesanan" class="form-input" placeholder="Masukkan jumlah minimum stok" />
-                            </label>
+                            <input type="hidden" name="TotalHarga" />
+                            <input type="hidden" name="JumlahPesanan" />
                             <div class="self-end w-full">
                                 <input type="submit" value="Buat Pesanan" class="btn-primary w-full" />
                             </div>
@@ -99,21 +95,90 @@
 </div>
 
 <script>
+    // get current date
     document.querySelector('#tanggal').value = new Date().toISOString().substring(0, 10);
 
-    const tambah = document.querySelector('#kurang-prouk')
-    const kurang = document.querySelector('#tambah-produk')
-    const jumlah = document.querySelector('#jumlah-pesanan')
 
-    tambah.addEventListener('click', () => {
-        jumlah.innerText = parseInt(jumlah.innerText) + 1
+    // add reduce each product to cart
+    const controlProduct = document.querySelectorAll('#control-product')
+
+    controlProduct.forEach((item, index) => {
+        item.children[1].innerText = 0
+
+        item.children[2].addEventListener('click', () => {
+            if (item.children[1].innerText <= (parseInt(item.getAttribute('data-max')) - 1)) {
+                item.children[1].innerText = parseInt(item.children[1].innerText) + 1
+                getAddedProduct(index, item.children[1].innerText)
+            }
+        })
+
+        item.children[0].addEventListener('click', () => {
+            if (item.children[1].innerText != 0) {
+                item.children[1].innerText = parseInt(item.children[1].innerText) - 1
+                getAddedProduct(index, item.children[1].innerText)
+            }
+        })
+
     })
 
-    kurang.addEventListener('click', () => {
-        if (jumlah.innerText !== 0) {
-            kurang.innerText = parseInt(jumlah.innerText) + 1
+    // render added element to cart
+    const productName = document.querySelectorAll('#product [data-name]')
+    const productPrice = document.querySelectorAll('#product [data-price]')
+    const tbody = document.querySelector('tbody')
+
+    const getAddedProduct = (index, amount) => {
+        productName.forEach((product, indexProduct) => {
+            productPrice.forEach((price, indexPrice) => {
+                if (index == indexProduct && index == indexPrice) {
+                    const nameAddedProduct = product.getAttribute('data-name')
+                    const priceAddedProduct = price.getAttribute('data-price')
+                    addProductToCart(nameAddedProduct, amount, parseFloat(priceAddedProduct))
+                }
+            })
+        })
+    }
+
+    const addProductToCart = (name, amount, price) => {
+        const productCart = document.querySelectorAll('tbody tr')
+        const totalProduk = document.querySelector('#totalProduk')
+        const totalHarga = document.querySelector('#totalHarga')
+        let isProductAlready = false
+
+        productCart.forEach((product, index) => {
+            // product already in cart
+            if (product.getAttribute('data-name') == name) {
+                product.children[1].innerText = `${amount}x`
+                product.children[2].innerText = `Rp. ${parseFloat(amount) * price}`
+                isProductAlready = true
+                console.log('Product updated')
+
+                if (amount == 0) {
+                    product.remove()
+                    console.log('removed')
+                }
+            }
+        })
+
+        // added new product
+        if (!isProductAlready) {
+            const newProduct = document.createElement('tr')
+            newProduct.setAttribute('data-name', name)
+            newProduct.innerHTML = `
+                <td class="text-start w-40 line-clamp-1">${name}</td>
+                <td data-amount="${amount}" class="text-center">${amount}x</td>
+                <td data-price="${price}" class="w-28 text-end">Rp. ${price}</td>
+            `
+            tbody.appendChild(newProduct)
+            console.log('Product Added')
         }
-    })
+
+        // get total product amount
+        let totalAmount = 0
+        let totalPrice = 0      
+
+        totalProduk.innerText = `${totalAmount} item`
+        totalHarga.innerText = `Rp. ${totalPrice}`
+    }
 </script>
 
 @section Scripts {

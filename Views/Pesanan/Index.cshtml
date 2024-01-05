@@ -69,11 +69,11 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Admin)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TotalHarga)
+                <td id="total">
+                    Rp. @Html.DisplayFor(modelItem => item.TotalHarga)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.JumlahPesanan)
+                    @Html.DisplayFor(modelItem => item.JumlahPesanan) item
                 </td>
                 <td>
                     @if (item.Status == "Menunggu")
@@ -101,3 +101,12 @@
         </tbody>
     </table>
 </div>
+
+<script>
+    export const formatRupiah = (number) => {
+        return new Intl.NumberFormat("id-ID", {
+            style: "currency",
+            currency: "IDR",
+        }).format(number);
+    };
+</script>

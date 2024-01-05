@@ -5,7 +5,7 @@
 }
 
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" >
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,6 +15,10 @@
     <meta name="description" content="Indogrosir's website & Supply Chain Management System for Indogrosir Partners">
     <meta name="keywords" content="Enterprise, Framework, ASPNet, MVC, SCM, Redesign">
     <meta name="copyright" content="Team 8 - 3SIC">
+    <title>@ViewData["Title"] - Indogrosir</title>
+    <link rel="icon" href="~/logo.ico?v=2" />
+
+    @* opengraph *@
     <meta name="og:title" content="Indogrosir">
     <meta name="og:description" content="Website & SCM System for Indogrosir Partners">
     <meta name="og:image" content="/assets/image/shot.jpg">
@@ -23,17 +27,20 @@
     <meta name="og:type" content="website">
     <meta name="og:locale" content="id_ID">
     <meta name="og:locale:alternate" content="en_US">
-    <link rel="icon" href="~/logo.ico?v=2" />
-    <title>@ViewData["Title"] - Indogrosir</title>
+
+    @* assets *@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/indogrosir_tim8.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+
+    @* library *@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
 <body>
+
     <header class="px-8 py-2 rounded-xl bg-white shadow flex justify-between">
         <a asp-area="" asp-controller="Home" asp-action="Index">
             <img src="~/logo.png" class="h-10 pointer-events-none" alt="logo indogrosir" />

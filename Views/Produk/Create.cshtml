@@ -4,7 +4,7 @@
 @{
     ViewData["Title"] = "Buat Produk";
     int userId = int.Parse(httpContextaccessor.HttpContext.Request.Cookies["user_id"]);
-    string userRole = httpContextaccessor.HttpContext.Request.Cookies["user_id"].ToString();
+    string userRole = httpContextaccessor.HttpContext.Request.Cookies["user_role"].ToString();
 }
 
 <div class="card fit-screen">
