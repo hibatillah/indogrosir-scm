@@ -37,12 +37,27 @@ namespace indogrosir_tim8.Controllers
                 var mitra = await _context.Mitra
                     .FirstOrDefaultAsync(m => m.Id.ToString() == user_id);
 
+                var produk = from m in _context.Produk
+                             select m;
+
+                produk = produk.Where(p => p.UserId.ToString() == user_id);
+
+                var pesanan = from m in _context.Pesanan
+                             select m;
+
+                pesanan = pesanan.Where(p => p.UserId.ToString() == user_id);
+
+                dynamic Dashboard = new System.Dynamic.ExpandoObject();
+                Dashboard.Produk = produk;
+                Dashboard.Mitra = mitra;
+                Dashboard.Pesanan = pesanan;
+
                 if (mitra == null)
                 {
                     return NotFound();
                 }
 
-                return View(mitra);
+                return View(Dashboard);
             }
 
             TempData["Message"] = "User tidak sesuai!";
