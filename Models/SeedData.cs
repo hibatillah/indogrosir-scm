@@ -12,41 +12,13 @@ namespace indogrosir_tim8.Models
                     DbContextOptions<indogrosir_tim8Context>>()))
             {
                 // Mitra
-                if (context.Mitra.Any() 
-                    || context.Cabang.Any() 
+                if (context.Cabang.Any() 
                     || context.Produk.Any()
                     || context.Admin.Any()
                     )
                 {
                     return; // DB has been seeded
                 }
-
-                context.Mitra.AddRange(
-                    new Mitra
-                    {
-                        Id = 1,
-                        Nama = "Ucup Mart",
-                        Alamat = "Jl. Tegal Sari, Rumbai",
-                        TahunBerdiri = DateTime.Parse("2016-2-12"),
-                        GabungMember = DateTime.Parse("2021-2-12"),
-                        Cabang = "Pekanbaru",
-                        Admin = "Ucup",
-                        Email = "ucup@gmail.com",
-                        Password = "123",
-                    },
-                    new Mitra
-                    {
-                        Id = 2,
-                        Nama = "Parhan Mart",
-                        Alamat = "Jl. Durian",
-                        TahunBerdiri = DateTime.Parse("2016-2-12"),
-                        GabungMember = DateTime.Parse("2021-2-12"),
-                        Cabang = "Pekanbaru",
-                        Admin = "Parhan",
-                        Email = "parhan@gmail.com",
-                        Password = "123",
-                    }
-                );
 
                 context.Admin.AddRange(
                     new Admin

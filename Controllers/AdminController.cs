@@ -21,7 +21,7 @@ namespace indogrosir_tim8.Controllers
             _accessor = accessor;
         }
 
-        public async Task<IActionResult> Dashboard()
+        public async Task<IActionResult> Dashboard(string search)
         {
             string user_id = _accessor.HttpContext.Request.Cookies["user_id"];
             string user_role = _accessor.HttpContext.Request.Cookies["user_role"];
@@ -37,12 +37,26 @@ namespace indogrosir_tim8.Controllers
                 var admin = await _context.Admin
                     .FirstOrDefaultAsync(m => m.Id.ToString() == user_id);
 
+                var mitra = from m in _context.Mitra
+                             select m;
+
+                mitra = mitra.Where(m => m.Cabang == admin.Cabang);
+
+                if (!String.IsNullOrEmpty(search))
+                {
+                    mitra = mitra.Where(s => s.Nama!.Contains(search) || s.Alamat!.Contains(search));
+                }
+
+                dynamic Dashboard = new System.Dynamic.ExpandoObject();
+                Dashboard.Admin = admin;
+                Dashboard.Mitra = mitra;
+
                 if (admin == null)
                 {
                     return NotFound();
                 }
 
-                return View(admin);
+                return View(Dashboard);
             }
 
             TempData["Message"] = "User tidak sesuai!";

@@ -1,33 +1,60 @@
-﻿@model indogrosir_tim8.Models.Admin
+﻿@model dynamic
 
 @{
     ViewData["Title"] = "Dashboard Admin";
-    var img = $"/assets/lokasi/{Model.Cabang.ToLower()}.png";
+    var img = $"/assets/lokasi/{Model.Admin.Cabang.ToLower()}.png";
 }
 
 <div class="fit-screen flex gap-4 overflow-hidden">
-    <div class="w-1/4 px-10 py-16 space-y-8 bg-white rounded-2xl shadow">
+    <div class="flex-none w-1/4 px-10 py-16 space-y-8 bg-white rounded-2xl shadow">
         <div class="space-y-5 w-full flex flex-col items-center">
             <div class="w-60 h-40 rounded-lg border relative bg-gray-200 overflow-hidden">
-                <img src="@img" alt="profil mitra" class="img-cover" />
+                <img src="@img" alt="profil cabang" class="img-cover" />
             </div>
-            <h2 class="text-3xl font-semibold">Cabang @Model.Cabang</h2>
+            <h2 class="text-3xl font-semibold">Cabang @Model.Admin.Cabang</h2>
         </div>
         <div class="space-y-2">
             <div class="row justify-between">
                 <p class="text-gray-900 text-medium">Nama</p>
-                <p class="text-gray-500">@Model.Nama</p>
+                <p class="text-gray-500">@Model.Admin.Nama</p>
             </div>
             <div class="row justify-between">
                 <p class="text-gray-900 text-medium">Email</p>
-                <p class="text-gray-500">@Model.Email</p>
+                <p class="text-gray-500">@Model.Admin.Email</p>
             </div>
         </div>
     </div>
     <div class="flex-auto card">
-        <h1>Dashboard</h1>
-        <div id="profil" class="mt-8 grid grid-cols-3 gap-5">
-            
+        <div class="row justify-between mb-8">
+            <h2>Mitra Cabang @Model.Admin.Cabang</h2>
+            <div class="row gap-3">
+                <search>
+                    <form id="search" class="row bg-gray-100 pl-3 rounded-md gap-1">
+                        <i class="bi bi-search text-gray-400"></i>
+                        <input type="search" id="search" name="search" placeholder="Cari nama atau alamat mitra..." class="form-input w-60 focus:outline-none" />
+                        <button type="submit" class="btn-primary">Cari</button>
+                    </form>
+                </search>
+                <a asp-controller="Mitra" asp-action="Create" class="btn-primary pl-5">
+                    <i class="bi bi-plus-lg stroke-2"></i>
+                    Tambah Mitra
+                </a>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            @foreach (var item in Model.Mitra)
+            {
+                <a asp-controller="Mitra" asp-action="Details" asp-route-id="@item.Id" class="p-5 bg-gray-100 active:bg-gray-200/80 rounded-xl row gap-5 shadow">
+                    <div class="w-28 flex-none aspect-square bg-gray-200 rounded-lg border"></div>
+                    <div>
+                        <h2 class="font-semibold capitalize line-clamp-1">@item.Nama</h2>
+                        <div class="text-gray-500 mt-1">
+                            <p class="capitalize line-clamp-2">@item.Alamat</p>
+                            <p>@item.GabungMember.ToString().Split(' ')[0]</p>
+                        </div>
+                    </div>
+                </a>
+            }
         </div>
     </div>
-</div>
+</div>   

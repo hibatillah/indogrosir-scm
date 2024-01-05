@@ -59,11 +59,11 @@
         <hr class="my-4" />
         <div class="flex justify-between items-center">
             <div class="text-start font-medium">Jumlah Produk</div>
-            <div id="totalProduk" class="text-end">0</div>
+            <div id="totalProduk" data-total-amount="0" class="text-end">0</div>
         </div>
         <div class="flex justify-between items-center mt-2 mb-6">
             <div class="text-start font-medium">Total Harga</div>
-            <div id="totalHarga" class="text-end">0</div>
+            <div id="totalHarga" data-total-price="0" class="text-end">0</div>
         </div>
         @foreach (var mitra in Model.Mitra)
         {
@@ -109,6 +109,7 @@
             if (item.children[1].innerText <= (parseInt(item.getAttribute('data-max')) - 1)) {
                 item.children[1].innerText = parseInt(item.children[1].innerText) + 1
                 getAddedProduct(index, item.children[1].innerText)
+                getTotalProductAndAmount('plus')
             }
         })
 
@@ -116,6 +117,7 @@
             if (item.children[1].innerText != 0) {
                 item.children[1].innerText = parseInt(item.children[1].innerText) - 1
                 getAddedProduct(index, item.children[1].innerText)
+                getTotalProductAndAmount('minus')
             }
         })
 
@@ -124,7 +126,6 @@
     // render added element to cart
     const productName = document.querySelectorAll('#product [data-name]')
     const productPrice = document.querySelectorAll('#product [data-price]')
-    const tbody = document.querySelector('tbody')
 
     const getAddedProduct = (index, amount) => {
         productName.forEach((product, indexProduct) => {
@@ -139,16 +140,18 @@
     }
 
     const addProductToCart = (name, amount, price) => {
+        const tbody = document.querySelector('tbody')
         const productCart = document.querySelectorAll('tbody tr')
-        const totalProduk = document.querySelector('#totalProduk')
-        const totalHarga = document.querySelector('#totalHarga')
         let isProductAlready = false
 
         productCart.forEach((product, index) => {
             // product already in cart
             if (product.getAttribute('data-name') == name) {
+                product.children[1].setAttribute('data-amount', amount)
                 product.children[1].innerText = `${amount}x`
-                product.children[2].innerText = `Rp. ${parseFloat(amount) * price}`
+                
+                product.children[2].setAttribute('data-price', price * amount)
+                product.children[2].innerText = `Rp. ${parseFloat(price) * amount}`
                 isProductAlready = true
                 console.log('Product updated')
 
@@ -171,13 +174,36 @@
             tbody.appendChild(newProduct)
             console.log('Product Added')
         }
+    }
 
-        // get total product amount
+    // get total product amount
+    const getTotalProductAndAmount = (ref) => {
+        const productCart = document.querySelectorAll('tbody tr')
+        const totalProduk = document.querySelector('#totalProduk')
+        const totalHarga = document.querySelector('#totalHarga')
         let totalAmount = 0
-        let totalPrice = 0      
+        let totalPrice = 0
 
-        totalProduk.innerText = `${totalAmount} item`
+        productCart.forEach((item) => {
+            const amount = item.children[1].getAttribute('data-amount')
+            const price = item.children[2].getAttribute('data-price')
+            console.log("total",amount, price)
+
+            if (ref == "plus") {
+                totalAmount += parseInt(amount);
+                totalPrice += parseFloat(price);
+            } else {
+                totalPrice = totalHarga.getAttribute('data-total-price')
+                totalAmount = totalProduk.getAttribute('data-total-amount')
+                totalAmount -= 1;
+                totalPrice = totalPrice - parseFloat(price) / parseInt(amount);
+            }
+        });
+
+        totalHarga.setAttribute('data-total-price', totalPrice)
+        totalProduk.setAttribute('data-total-amount', totalAmount)
         totalHarga.innerText = `Rp. ${totalPrice}`
+        totalProduk.innerText = `${totalAmount} item`
     }
 </script>
 
