@@ -6,19 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace indogrosir_tim8.Migrations
 {
     /// <inheritdoc />
-    public partial class SecondCreate : Migration
+    public partial class newMigrationUpdate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<string>(
-                name: "Admin",
-                table: "Pesanan",
-                type: "nvarchar(max)",
-                nullable: true,
-                oldClrType: typeof(string),
-                oldType: "nvarchar(max)");
-
             migrationBuilder.CreateTable(
                 name: "Admin",
                 columns: table => new
@@ -43,9 +35,12 @@ namespace indogrosir_tim8.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nama = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Lokasi = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NoHp = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Gambar = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Gmaps = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Admin = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Produk = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Mitra = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Produk = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Mitra = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -61,16 +56,37 @@ namespace indogrosir_tim8.Migrations
                     Nama = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Alamat = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Cabang = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TahunBerdiri = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    GabungMember = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Admin = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TahunBerdiri = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    GabungMember = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Admin = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Produk = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Gambar = table.Column<string>(type: "nvarchar(max)", nullable: false),
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Mitra", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Pesanan",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PesananId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Tanggal = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Mitra = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Cabang = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Admin = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TotalHarga = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    JumlahPesanan = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pesanan", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -83,38 +99,38 @@ namespace indogrosir_tim8.Migrations
                     Kategori = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Harga = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Jumlah = table.Column<int>(type: "int", nullable: false),
-                    Minimum = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    Minimum = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Gambar = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    UserRole = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Produk", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Saran",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nama = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NoHape = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Cabang = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Pesan = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Tanggal = table.Column<DateTime>(type: "datetime2", nullable: false),
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Saran", x => x.Id);
                 });
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Admin");
-
-            migrationBuilder.DropTable(
-                name: "Cabang");
-
-            migrationBuilder.DropTable(
-                name: "Mitra");
-
-            migrationBuilder.DropTable(
-                name: "Produk");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Admin",
-                table: "Pesanan",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "",
-                oldClrType: typeof(string),
-                oldType: "nvarchar(max)",
-                oldNullable: true);
+            
         }
     }
 }

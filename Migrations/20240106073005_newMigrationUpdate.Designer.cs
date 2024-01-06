@@ -12,8 +12,8 @@ using indogrosir_tim8.Data;
 namespace indogrosir_tim8.Migrations
 {
     [DbContext(typeof(indogrosir_tim8Context))]
-    [Migration("20231215164946_updateCabang")]
-    partial class updateCabang
+    [Migration("20240106073005_newMigrationUpdate")]
+    partial class newMigrationUpdate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -70,6 +70,10 @@ namespace indogrosir_tim8.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Gmaps")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Lokasi")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -109,6 +113,7 @@ namespace indogrosir_tim8.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Cabang")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
@@ -124,9 +129,6 @@ namespace indogrosir_tim8.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Produk")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("TahunBerdiri")
@@ -159,7 +161,7 @@ namespace indogrosir_tim8.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Produk")
+                    b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -168,6 +170,9 @@ namespace indogrosir_tim8.Migrations
 
                     b.Property<decimal>("TotalHarga")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -196,6 +201,13 @@ namespace indogrosir_tim8.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Nama")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserRole")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

@@ -212,6 +212,64 @@ namespace indogrosir_tim8.Migrations
 
                     b.ToTable("Produk");
                 });
+
+            modelBuilder.Entity("indogrosir_tim8.Models.PesananProduk", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
+
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                b.Property<string>("Produk")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<int>("Jumlah")
+                    .IsRequired()
+                    .HasColumnType("int");
+
+                b.Property<int>("PesananId")
+                    .IsRequired()
+                    .HasColumnType("int");
+
+                b.HasKey("Id");
+
+                b.ToTable("PesananProduk");
+            });
+
+            modelBuilder.Entity("indogrosir_tim8.Models.Saran", b =>
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
+
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                b.Property<string>("Nama")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+
+                b.Property<string>("NoHape")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<string>("Cabang")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<string>("Pesan")
+                    .IsRequired()
+                    .HasColumnType("nvarchar(max)");
+
+                b.Property<DateTime>("Tanggal")
+                    .HasColumnType("datetime2");
+
+                b.HasKey("Id");
+
+                b.ToTable("Saran");
+            });
 #pragma warning restore 612, 618
         }
     }

@@ -87,15 +87,27 @@ namespace indogrosir_tim8.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Registrasi([Bind("Id,Nama,Alamat,Cabang,GabungMember,Email,Password")] Mitra mitra)
         {
-            if (ModelState.IsValid)
+            var getMitra = await _context.Mitra
+                    .FirstOrDefaultAsync(m => m.Email == mitra.Email);
+
+            if (getMitra == null)
             {
-                _context.Add(mitra);
-                await _context.SaveChangesAsync();
-                TempData["Message"] = "Pendaftaran Berhasil!";
-                return RedirectToAction("Index", "Auth");
+                if (ModelState.IsValid)
+                {
+                    _context.Add(mitra);
+                    await _context.SaveChangesAsync();
+                    TempData["Message"] = "Pendaftaran Berhasil!";
+                    return RedirectToAction("Index", "Auth");
+                }
+
+                TempData["Message"] = "Pendaftaran Gagal!";
+                return RedirectToAction("Signup", "Auth");
+
+            } else
+            {
+                TempData["Message"] = "Email telah terdaftar";
+                return RedirectToAction("Signup", "Auth");
             }
-            TempData["Message"] = "Pendaftaran Gagal!";
-            return RedirectToAction("Signup", "Auth");
         }
 
         public IActionResult Logout()
