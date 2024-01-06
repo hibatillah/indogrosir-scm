@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using indogrosir_tim8.Models;
 using indogrosir_tim8.Data;
+using Microsoft.Extensions.Hosting;
 
 namespace indogrosir_tim8.Controllers
 {
@@ -14,11 +15,13 @@ namespace indogrosir_tim8.Controllers
     {
         private readonly indogrosir_tim8Context _context;
         private readonly IHttpContextAccessor _accessor;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public ProdukController(indogrosir_tim8Context context, IHttpContextAccessor accessor)
+        public ProdukController(indogrosir_tim8Context context, IHttpContextAccessor accessor, IWebHostEnvironment hc)
         {
             _context = context;
             _accessor = accessor;
+            _hostEnvironment = hc;
         }
 
         // GET: Produk
@@ -45,7 +48,7 @@ namespace indogrosir_tim8.Controllers
             
             if (produk_user != null)
             {
-                return View(await produk_user.ToListAsync());
+                return View(await produk_user.ToListAsync()); 
             }
             else
             {
@@ -68,7 +71,7 @@ namespace indogrosir_tim8.Controllers
             {
                 return NotFound();
             }
-
+            ViewData["ImagePath"] = Path.Combine("/assets/produk", produk.Gambar);
             return View(produk);
         }
 
@@ -83,16 +86,47 @@ namespace indogrosir_tim8.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nama,Kategori,Harga,Jumlah,Minimum,UserId,UserRole")] Produk produk)
+        public async Task<IActionResult> Create(ProdukViewModel produk)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) // Validasi model
             {
-                _context.Add(produk);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                String filename = "";
+                if (produk.Gambar != null)
+                {
+                    String uploadfolder = Path.Combine(_hostEnvironment.WebRootPath, "assets/produk");
+                    filename = Guid.NewGuid().ToString() + "_" + produk.Gambar.FileName;
+                    String filepath = Path.Combine(uploadfolder, filename);
+                    produk.Gambar.CopyTo(new FileStream(filepath, FileMode.Create));
+                }
+
+                Produk p = new Produk
+                {
+                    Nama = produk.Nama,
+                    Gambar = filename,
+                    Harga = produk.Harga,
+                    Kategori = produk.Kategori,
+                    Minimum = produk.Minimum,
+                    Jumlah = produk.Jumlah,
+                    UserId = produk.UserId,
+                    UserRole = produk.UserRole,
+                };
+
+                _context.Produk.Add(p);
+                await _context.SaveChangesAsync(); // Menggunakan SaveChangesAsync()
+
+                ViewBag.Success = "Record added";
+                TempData["Message"] = "Data Berhasil dibuat";
+                // Alihkan ke action Index
+                return RedirectToAction("Index");
+
+               
             }
+            TempData["Message"] = "Data gagal dibuat";
             return View(produk);
+
         }
+
+
 
         // GET: Produk/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -145,6 +179,7 @@ namespace indogrosir_tim8.Controllers
             return View(produk);
         }
 
+
         // GET: Produk/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -159,6 +194,7 @@ namespace indogrosir_tim8.Controllers
             {
                 return NotFound();
             }
+            ViewData["ImagePath"] = Path.Combine("/assets/produk", produk.Gambar);
 
             return View(produk);
         }

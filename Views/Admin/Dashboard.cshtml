@@ -45,7 +45,6 @@
             @foreach (var item in Model.Mitra)
             {
                 <a asp-controller="Mitra" asp-action="Details" asp-route-id="@item.Id" class="p-5 bg-gray-100 active:bg-gray-200/80 rounded-xl row gap-5 shadow">
-                    <div class="w-28 flex-none aspect-square bg-gray-200 rounded-lg border"></div>
                     <div>
                         <h2 class="font-semibold capitalize line-clamp-1">@item.Nama</h2>
                         <div class="text-gray-500 mt-1">
