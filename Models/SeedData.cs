@@ -13,7 +13,6 @@ namespace indogrosir_tim8.Models
             {
                 // Mitra
                 if (context.Cabang.Any() 
-                    || context.Produk.Any()
                     || context.Admin.Any()
                     )
                 {
@@ -27,49 +26,6 @@ namespace indogrosir_tim8.Models
                         Email = "raul@gmail.com",
                         Password = "123",
                         Cabang = "Pekanbaru"
-                    }
-                );
-
-                context.Produk.AddRange(
-                    new Produk
-                    {
-                        Nama = "Golda",
-                        Kategori = "Minuman",
-                        Harga = 4000,
-                        Jumlah = 30,
-                        Minimum = 10,
-                        UserId = 1,
-                        UserRole = "admin",
-                    },
-                    new Produk
-                    {
-                        Nama = "Sosis",
-                        Kategori = "Makanan",
-                        Harga = 1000,
-                        Jumlah = 30,
-                        Minimum = 10,
-                        UserId = 1,
-                        UserRole = "admin",
-                    },
-                    new Produk
-                    {
-                        Nama = "Golda",
-                        Kategori = "Minuman",
-                        Harga = 4000,
-                        Jumlah = 30,
-                        Minimum = 10,
-                        UserId = 1,
-                        UserRole = "mitra",
-                    },
-                    new Produk
-                    {
-                        Nama = "Sosis",
-                        Kategori = "Makanan",
-                        Harga = 1000,
-                        Jumlah = 30,
-                        Minimum = 10,
-                        UserId = 1,
-                        UserRole = "mitra",
                     }
                 );
 

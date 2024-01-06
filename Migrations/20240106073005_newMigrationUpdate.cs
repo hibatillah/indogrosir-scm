@@ -61,7 +61,7 @@ namespace indogrosir_tim8.Migrations
                     Admin = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Gambar = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Gambar = table.Column<string>(type: "nvarchar(max)", nullable: true),
                 },
                 constraints: table =>
                 {
@@ -102,7 +102,7 @@ namespace indogrosir_tim8.Migrations
                     Minimum = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Gambar = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    UserRole = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    UserRole = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
