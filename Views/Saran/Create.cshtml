@@ -1,4 +1,6 @@
-﻿@{
+﻿@model indogrosir_tim8.Models.Saran
+
+@{
     ViewData["Title"] = "Hubungi Kami";
 }
 
@@ -8,19 +10,19 @@
             <img src="~/assets/image/banner.png" alt="indogrosir" class="img-cover" />
         </div>
         <div class="col-span-1 order-1 pr-10">
-            <form id="login" action="#" class="space-y-4">
+            <form asp-action="Create" class="space-y-4">
                 <h1>Tulis Pendapatmu</h1>
-                <label for="nama">
+                <label asp-for="Nama">
                     <span>Nama</span>
-                    <input type="text" id="nama" name="nama" placeholder="Masukkan Nama" class="form-input" required />
+                    <input asp-for="Nama" placeholder="Masukkan Nama" class="form-input" required />
                 </label>
-                <label for="nohape">
+                <label asp-for="NoHape">
                     <span>No. Hape</span>
-                    <input type="tel" id="nohape" name="nohape" placeholder="Masukkan Nomor Hape" class="form-input" required />
+                    <input asp-for="NoHape" placeholder="Masukkan Nomor Hape" class="form-input" required />
                 </label>
-                <label for="Cabang">
+                <label asp-for="Cabang">
                     <span>Cabang Indogrosir</span>
-                    <select name="Cabang" placeholder="Pilih wilayah cabang" class="form-input" required>
+                    <select asp-for="Cabang" placeholder="Pilih wilayah cabang" class="form-input" required>
                         <option value="Pekanbaru">Pekanbaru</option>
                         <option value="Bandung">Bandung</option>
                         <option value="Banjarmasin">Banjarmasin</option>
@@ -28,12 +30,21 @@
                         <option value="Ambon">Ambon</option>
                     </select>
                 </label>
-                <label for="pesan">
+                <label asp-for="Pesan">
                     <span>Pesan</span>
-                    <textarea id="pesan" name="pesan" rows="4" placeholder="Tulis Pesan Anda.." class="form-input" required></textarea>
+                    <textarea asp-for="Pesan" rows="4" placeholder="Tulis Pesan Anda.." class="form-input" required></textarea>
                 </label>
+                <input type="hidden" asp-for="Tanggal" id="tanggal" required />
                 <button type="submit" class="w-full btn-primary">Kirim Pesan</button>
             </form>
         </div>
     </div>
 </div>
+
+<script>
+    document.querySelector('#tanggal').value = new Date().toLocaleString();
+</script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

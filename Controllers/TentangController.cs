@@ -23,21 +23,5 @@ namespace indogrosir_tim8.Controllers
         {
             return View();
         }
-
-        public async Task<IActionResult> Hubungi()
-        {
-            return View();
-        }
-
-        public async Task<IActionResult> Hubungi([Bind("Id,Nama,NoHape,Cabang,Pesan")] Saran saran)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(saran);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(saran);
-        }
     }
 }

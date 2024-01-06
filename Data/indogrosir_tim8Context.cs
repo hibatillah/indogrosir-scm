@@ -23,5 +23,7 @@ namespace indogrosir_tim8.Data
         public DbSet<indogrosir_tim8.Models.Cabang> Cabang { get; set; } = default!;
 
         public DbSet<indogrosir_tim8.Models.Admin> Admin { get; set; } = default!;
+
+        public DbSet<indogrosir_tim8.Models.Saran> Saran { get; set; } = default!;
     }
 }

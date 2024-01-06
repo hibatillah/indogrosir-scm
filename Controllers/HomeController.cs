@@ -24,7 +24,6 @@ namespace indogrosir_tim8.Controllers
             _accessor = accessor;
         }
 
-
         public IActionResult Index()
         {
             string user_id = _accessor.HttpContext.Request.Cookies["user_id"];
@@ -51,6 +50,15 @@ namespace indogrosir_tim8.Controllers
         }
 
         public IActionResult Berita()
+        {
+            return View();
+        }
+        public IActionResult Bisnis()
+        {
+            return View();
+        }
+
+        public IActionResult Sejarah()
         {
             return View();
         }

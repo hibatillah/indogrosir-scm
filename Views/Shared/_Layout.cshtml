@@ -89,6 +89,10 @@
                     <i class="bi bi-clipboard2-data-fill"></i>
                     <span>Pesanan</span>
                 </a>
+                <a id="menu-item" asp-area="" asp-controller="Saran" asp-action="Index" class="p-2 row gap-2 font-medium hover:text-blue-500">
+                    <i class="bi bi-chat-left-text-fill"></i>
+                    <span>Saran</span>
+                </a>
                 <a id="menu-item" asp-area="" asp-controller="Auth" asp-action="Logout">
                     <abbr title="Logout" class="p-2 row gap-2 font-medium rounded hover:bg-red-600 hover:text-red-200">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
@@ -121,13 +125,13 @@
                         </svg>
                     </span>
                     <div id="menu-dropdown" class="hidden z-20 absolute top-10 right-0 px-4 py-3 w-44 flex flex-col gap-2 rounded-md bg-white shadow-md border">
-                        <a asp-area="" asp-controller="Tentang" asp-action="Sejarah" class="hover:text-blue-500">
+                        <a asp-area="" asp-controller="Home" asp-action="Sejarah" class="hover:text-blue-500">
                             Sejarah & Visi Misi
                         </a>
-                        <a asp-area="" asp-controller="Tentang" asp-action="Index" class="hover:text-blue-500">
+                        <a asp-area="" asp-controller="Home" asp-action="Bisnis" class="hover:text-blue-500">
                             Produk Bisnis
                         </a>
-                        <a asp-area="" asp-controller="Tentang" asp-action="Hubungi" class="hover:text-blue-500">
+                        <a asp-area="" asp-controller="Saran" asp-action="Create" class="hover:text-blue-500">
                             Hubungi Kami
                         </a>
                     </div>
@@ -193,17 +197,17 @@
                             <h4>Tentang</h4>
                         </li>
                         <li>
-                            <a class="hover:text-blue-500" asp-area="" asp-controller="Tentang" asp-action="Sejarah">
+                            <a class="hover:text-blue-500" asp-area="" asp-controller="Home" asp-action="Sejarah">
                                 Sejarah
                             </a>
                         </li>
                         <li>
-                            <a class="hover:text-blue-500" asp-area="" asp-controller="Tentang" asp-action="Index">
+                            <a class="hover:text-blue-500" asp-area="" asp-controller="Home" asp-action="Bisnis">
                                 Produk Bisnis
                             </a>
                         </li>
                         <li>
-                            <a class="hover:text-blue-500" asp-area="" asp-controller="Tentang" asp-action="Hubungi">
+                            <a class="hover:text-blue-500" asp-area="" asp-controller="Saran" asp-action="Create">
                                 Hubungi Kami
                             </a>
                         </li>

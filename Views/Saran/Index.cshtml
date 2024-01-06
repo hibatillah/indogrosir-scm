@@ -1,0 +1,64 @@
+﻿@model IEnumerable<indogrosir_tim8.Models.Saran>
+
+@{
+    ViewData["Title"] = "Saran Pengguna";
+}
+
+<div class="card fit-screen overflow-hidden">
+    <div class="row justify-between mb-8">
+        <h1>Saran Pengguna</h1>
+        <div class="row gap-3">
+            <search>
+                <form asp-controller="Pesanan" asp-action="Index" method="get" class="row bg-gray-100 pl-3 rounded-md gap-1">
+                    <i class="bi bi-search text-gray-400"></i>
+                    <input type="search" id="search" name="searchPesanan" placeholder="Cari saran pengguna..." class="form-input w-full focus:outline-none" />
+                    <button type="submit" class="btn-primary">Cari</button>
+                </form>
+            </search>
+        </div>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tanggal)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nama)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cabang)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NoHape)
+                </th>
+                <th class="w-254">
+                    @Html.DisplayNameFor(model => model.Pesan)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model) 
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tanggal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nama)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cabang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NoHape)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pesan)
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+
