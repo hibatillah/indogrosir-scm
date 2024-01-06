@@ -33,7 +33,7 @@
                             <p data-price="@produk.Harga">Rp @produk.Harga</p>
                             <p>@produk.Jumlah Stok</p>
                         </div>
-                        <div id="control-product" data-max="@produk.Jumlah" class="row gap-2 mt-1">
+                        <div id="control-product" data-produk="@produk.Nama" data-max="@produk.Jumlah" class="row gap-2 mt-1">
                             <div id="kurang-produk" class="w-8 aspect-square rounded-full border-2 border-gray-300 active:bg-gray-200/70 center cursor-pointer">
                                 <i class="bi bi-dash"></i>
                             </div>
@@ -52,9 +52,7 @@
     <div class="card fit-screen overflow-hidden flex-none w-[400px]">
         <h2>Keranjang</h2>
         <table class="my-4">
-            <tbody>
-                <!-- render by script when product added -->
-            </tbody>
+            <tbody></tbody>
         </table>
         <hr class="my-4" />
         <div class="flex justify-between items-center">
@@ -81,8 +79,9 @@
                             <input type="hidden" name="Mitra" value="@mitra.Nama" />
                             <input type="hidden" name="Cabang" value="@mitra.Cabang" />
                             <input type="hidden" name="Admin" value="@admin.Nama" />
-                            <input type="hidden" name="TotalHarga" value="20000" />
-                            <input type="hidden" name="JumlahPesanan" value="4" />
+                            <input type="hidden" name="Produk" />
+                            <input type="hidden" name="Jumlah" />
+                            <input type="hidden" name="TotalHarga" />
                             <div class="self-end w-full">
                                 <input type="submit" value="Buat Pesanan" class="btn-primary w-full" />
                             </div>
@@ -98,61 +97,65 @@
     // get current date
     document.querySelector('#tanggal').value = new Date().toISOString().substring(0, 10);
 
-
     // add reduce each product to cart
     const controlProduct = document.querySelectorAll('#control-product')
 
     controlProduct.forEach((item, index) => {
-        item.children[1].innerText = 0
+        item.children[1].innerText = 0  
 
         item.children[2].addEventListener('click', () => {
-            if (item.children[1].innerText <= (parseInt(item.getAttribute('data-max')) - 1)) {
-                item.children[1].innerText = parseInt(item.children[1].innerText) + 1
-                getAddedProduct(index, item.children[1].innerText)
-                getTotalProductAndAmount('plus')
+            const product = document.querySelector('tbody tr')
+
+            if (product == null) {
+                if (item.children[1].innerText <= (parseInt(item.getAttribute('data-max')) - 1)) {
+                    item.children[1].innerText = parseInt(item.children[1].innerText) + 1
+                    getProduct(index, item.children[1].innerText)
+                    getTotalProductAndAmount('plus')
+                }
             }
         })
 
         item.children[0].addEventListener('click', () => {
             if (item.children[1].innerText != 0) {
                 item.children[1].innerText = parseInt(item.children[1].innerText) - 1
-                getAddedProduct(index, item.children[1].innerText)
+                getProduct(index, item.children[1].innerText)
                 getTotalProductAndAmount('minus')
             }
         })
 
     })
 
-    // render added element to cart
+    // get added product
     const productName = document.querySelectorAll('#product [data-name]')
     const productPrice = document.querySelectorAll('#product [data-price]')
 
-    const getAddedProduct = (index, amount) => {
+    const getProduct = (index, amount) => {
         productName.forEach((product, indexProduct) => {
             productPrice.forEach((price, indexPrice) => {
                 if (index == indexProduct && index == indexPrice) {
                     const nameAddedProduct = product.getAttribute('data-name')
                     const priceAddedProduct = price.getAttribute('data-price')
                     addProductToCart(nameAddedProduct, amount, parseFloat(priceAddedProduct))
+                    console.log(nameAddedProduct, amount, parseFloat(priceAddedProduct))
                 }
             })
         })
     }
 
+    // add product to cart
     const addProductToCart = (name, amount, price) => {
         const tbody = document.querySelector('tbody')
-        const productCart = document.querySelectorAll('tbody tr')
+        const product = document.querySelector('tbody tr')
+        document.querySelector('input[name="Produk"]').value = name
         let isProductAlready = false
 
-        productCart.forEach((product, index) => {
-            // product already in cart
-            if (product.getAttribute('data-name') == name) {
+        if (product) {
+            if (product && product.getAttribute('data-name') == name) {
                 product.children[1].setAttribute('data-amount', amount)
                 product.children[1].innerText = `${amount}x`
-                
+
                 product.children[2].setAttribute('data-price', price * amount)
                 product.children[2].innerText = `Rp. ${parseFloat(price) * amount}`
-                isProductAlready = true
                 console.log('Product updated')
 
                 if (amount == 0) {
@@ -160,10 +163,11 @@
                     console.log('removed')
                 }
             }
-        })
+            isProductAlready = true
+        }
 
-        // added new product
         if (!isProductAlready) {
+            // added new product
             const newProduct = document.createElement('tr')
             newProduct.setAttribute('data-name', name)
             newProduct.innerHTML = `
@@ -199,6 +203,9 @@
                 totalPrice = totalPrice - parseFloat(price) / parseInt(amount);
             }
         });
+
+        document.querySelector('input[name="Jumlah"]').value = totalAmount
+        document.querySelector('input[name="TotalHarga"]').value = totalPrice
 
         totalHarga.setAttribute('data-total-price', totalPrice)
         totalProduk.setAttribute('data-total-amount', totalAmount)

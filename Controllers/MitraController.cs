@@ -40,7 +40,7 @@ namespace indogrosir_tim8.Controllers
                 var produk = from m in _context.Produk
                              select m;
 
-                produk = produk.Where(p => p.UserId.ToString() == user_id);
+                produk = produk.Where(p => p.UserId.ToString() == user_id && p.UserRole == user_role);
 
                 var pesanan = from m in _context.Pesanan
                              select m;
@@ -256,7 +256,7 @@ namespace indogrosir_tim8.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Dashboard", "Admin");
             }
             return View(mitra);
         }

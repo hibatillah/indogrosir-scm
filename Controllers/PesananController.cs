@@ -57,7 +57,7 @@ namespace indogrosir_tim8.Controllers
                 pesanan = pesanan.Where(s => s.Status!.ToLower().Contains(searchPesanan.ToLower()) 
                                             || s.Mitra!.Contains(searchPesanan) 
                                             || s.Tanggal!.ToString().Contains(searchPesanan) 
-                                            || s.JumlahPesanan.Equals(int.Parse(searchPesanan)));
+                                            || s.Jumlah.Equals(int.Parse(searchPesanan)));
             }
             return View(await pesanan.ToListAsync());
         }
@@ -93,7 +93,7 @@ namespace indogrosir_tim8.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Tanggal,Mitra,Cabang,Admin,TotalHarga,JumlahPesanan,Status,UserId")] Pesanan pesanan)
+        public async Task<IActionResult> Create([Bind("Id,Tanggal,Mitra,Cabang,Admin,TotalHarga,Produk,Jumlah,Status,UserId")] Pesanan pesanan)
         {
             if (ModelState.IsValid)
             {
@@ -114,6 +114,7 @@ namespace indogrosir_tim8.Controllers
 
             var pesanan = await _context.Pesanan
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (pesanan == null)
             {
                 return NotFound();
@@ -143,7 +144,7 @@ namespace indogrosir_tim8.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Tanggal,Mitra,Cabang,Admin,TotalHarga,JumlahPesanan,Status,UserId")] Pesanan pesanan)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Tanggal,Mitra,Cabang,Admin,TotalHarga,Produk,Jumlah,Status,UserId")] Pesanan pesanan)
         {
             if (id != pesanan.Id)
             {
@@ -214,6 +215,90 @@ namespace indogrosir_tim8.Controllers
         {
           return (_context.Pesanan?.Any(e => e.Id == id)).GetValueOrDefault();
         }
-       
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Confirm(int id, [Bind("Id,Tanggal,Mitra,Cabang,Admin,TotalHarga,Produk,Jumlah,Status,UserId")] Pesanan pesanan)
+        {
+            if (id != pesanan.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var admin = await _context.Admin
+                             .FirstOrDefaultAsync(m => m.Cabang == pesanan.Cabang);
+
+                    var produkAdmin = await _context.Produk
+                                        .FirstOrDefaultAsync(p =>
+                                            p.UserRole == "admin"
+                                            && p.UserId == admin.Id
+                                            && p.Nama.ToLower() == pesanan.Produk.ToLower());
+
+                    var produkMitra = await _context.Produk
+                                        .FirstOrDefaultAsync(p =>
+                                            p.UserRole == "mitra"
+                                            && p.UserId == pesanan.UserId
+                                            && p.Nama.ToLower() == pesanan.Produk.ToLower());
+
+                    produkAdmin.Jumlah -= pesanan.Jumlah;
+                    produkMitra.Jumlah += pesanan.Jumlah;
+
+                    _context.Update(pesanan);
+                    _context.Update(produkAdmin);
+                    _context.Update(produkMitra);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!PesananExists(pesanan.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+
+                return RedirectToAction(nameof(Index));
+            }
+            return View(pesanan);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Cancel(int id, [Bind("Id,Tanggal,Mitra,Cabang,Admin,TotalHarga,Produk,Jumlah,Status,UserId")] Pesanan pesanan)
+        {
+            if (id != pesanan.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(pesanan);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!PesananExists(pesanan.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(pesanan);
+        }
     }
 }

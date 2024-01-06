@@ -1,7 +1,9 @@
 ﻿@model indogrosir_tim8.Models.Pesanan
+@inject IHttpContextAccessor httpContextaccessor
 
 @{
     ViewData["Title"] = "Detail Pesanan";
+    string userRole = httpContextaccessor.HttpContext.Request.Cookies["user_role"];
 }
 
 <div class="card fit-screen">
@@ -22,7 +24,7 @@
             </a>
         </div>
     </div>
-    <div class="flex-auto mt-8 h-fit flex flex-wrap gap-6">
+    <div asp-action="Confirm" class="flex-auto mt-8 h-fit grid grid-cols-2 md:grid-cols-2 gap-6">
         <label asp-for="Tanggal">
             <span>Tanggal Pesanan</span>
             <input asp-for="Tanggal" class="form-input" readonly />
@@ -39,9 +41,13 @@
             <span>Admin</span>
             <input asp-for="Admin" class="form-input capitalize" readonly />
         </label>
-        <label asp-for="JumlahPesanan">
+        <label asp-for="Produk">
+            <span>Produk Dipesan</span>
+            <input asp-for="Produk" class="form-input" readonly />
+        </label>
+        <label asp-for="Jumlah">
             <span>Jumlah Pesanan</span>
-            <input asp-for="JumlahPesanan" class="form-input" readonly />
+            <input asp-for="Jumlah" class="form-input" readonly />
         </label>
         <label asp-for="TotalHarga">
             <span>Total Harga</span>
@@ -51,5 +57,42 @@
             <span>Status Pesanan</span>
             <input asp-for="Status" class="form-input" readonly />
         </label>
+        @if (userRole == "admin" && Model.Status == "Menunggu") 
+        {
+            <div class="row justify-end col-span-2 w-full gap-4">
+                <form asp-action="Cancel">
+                    <input type="hidden" asp-for="Tanggal" class="form-input" readonly />
+                    <input type="hidden" asp-for="Mitra" class="form-input" readonly />
+                    <input type="hidden" asp-for="Cabang" class="form-input" readonly />
+                    <input type="hidden" asp-for="Admin" class="form-input" readonly />
+                    <input type="hidden" asp-for="Produk" class="form-input" readonly />
+                    <input type="hidden" asp-for="Jumlah" class="form-input" readonly />
+                    <input type="hidden" asp-for="TotalHarga" class="form-input" readonly />
+                    <input type="hidden" asp-for="UserId" class="form-input" readonly />
+                    <input type="hidden" asp-for="Status" value="Batal" class="form-input" readonly />
+                    <input type="hidden" asp-for="Id" />
+                    <input type="submit" value="Batalkan Pesanan" class="btn-danger" />
+                </form>
+                <form asp-action="Confirm">
+                    <input type="hidden" asp-for="Tanggal" class="form-input" readonly />
+                    <input type="hidden" asp-for="Mitra" class="form-input" readonly />
+                    <input type="hidden" asp-for="Cabang" class="form-input" readonly />
+                    <input type="hidden" asp-for="Admin" class="form-input" readonly />
+                    <input type="hidden" asp-for="Produk" class="form-input" readonly />
+                    <input type="hidden" asp-for="Jumlah" class="form-input" readonly />
+                    <input type="hidden" asp-for="TotalHarga" class="form-input" readonly />
+                    <input type="hidden" asp-for="UserId" class="form-input" readonly />
+                    <input type="hidden" asp-for="Status" value="Selesai" class="form-input" readonly />
+                    <input type="hidden" asp-for="Id" />
+                    <input type="submit" value="Konfirmasi Pesanan" class="btn-primary" />
+                </form>
+            </div>
+        }
     </div>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

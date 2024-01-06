@@ -74,13 +74,13 @@ namespace indogrosir_tim8.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PesananId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Tanggal = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Mitra = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Cabang = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Admin = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Admin = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Produk = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Jumlah = table.Column<int>(type: "int", nullable: false),
                     TotalHarga = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    JumlahPesanan = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false)
                 },
