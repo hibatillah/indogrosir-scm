@@ -40,7 +40,7 @@ namespace indogrosir_tim8.Controllers
                 var produk = from m in _context.Produk
                              select m;
 
-                produk = produk.Where(p => p.UserId.ToString() == user_id && p.UserRole == user_role);
+                produk = produk.Where(p => p.UserId.ToString() == user_id && p.UserRole == "mitra");
 
                 var pesanan = from m in _context.Pesanan
                              select m;
@@ -112,7 +112,7 @@ namespace indogrosir_tim8.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditProfil(int id, [Bind("Id,Nama,Alamat,Cabang,TahunBerdiri,GabungMember,Admin,Email")] Mitra mitra)
+        public async Task<IActionResult> EditProfil(int id, [Bind("Id,Nama,Alamat,Cabang,TahunBerdiri,GabungMember,Admin,Email,Password")] Mitra mitra)
         {
             if (id != mitra.Id)
             {
@@ -199,13 +199,13 @@ namespace indogrosir_tim8.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nama,Alamat,Cabang,TahunBerdiri,GabungMember,Admin,Email")] Mitra mitra)
+        public async Task<IActionResult> Create([Bind("Id,Nama,Alamat,Cabang,TahunBerdiri,GabungMember,Admin,Email,Password")] Mitra mitra)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(mitra);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Dashboard", "Admin");
             }
             return View(mitra);
         }
@@ -295,7 +295,7 @@ namespace indogrosir_tim8.Controllers
             }
             
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Dashboard", "Admin");
         }
 
         private bool MitraExists(int id)

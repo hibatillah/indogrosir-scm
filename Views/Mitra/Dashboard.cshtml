@@ -16,7 +16,7 @@
         jumlahPesanan++;
     }
 
-    @foreach (var produk in Model.Pesanan)
+    @foreach (var produk in Model.Produk)
     {
         jumlahProduk++;
     }
@@ -61,7 +61,9 @@
         @foreach (var item in Model.Produk)
         {
             <a asp-controller="Produk" asp-action="Details" asp-route-id="@item.Id" class="p-5 bg-gray-100 active:bg-gray-200/80 rounded-xl row gap-5 shadow">
-                <div class="w-28 flex-none aspect-square bg-gray-200 rounded-lg border"></div>
+                <div class="w-28 flex-none aspect-square bg-gray-200 rounded-lg border">
+                    <img src="~/assets/produk/@item.Gambar" class="img-cover" />
+                </div>
                 <div>
                     <h2 class="font-semibold capitalize line-clamp-1">@item.Nama</h2>
                     <div class="text-gray-500 mt-1">

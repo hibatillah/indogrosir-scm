@@ -1,7 +1,9 @@
 ﻿@model indogrosir_tim8.Models.Pesanan
+@inject IHttpContextAccessor httpContextaccessor
 
 @{
     ViewData["Title"] = "Edit Pesanan";
+    var userId = httpContextaccessor.HttpContext.Request.Cookies["user_id"];
 }
 
 <div class="card fit-screen">
@@ -17,6 +19,7 @@
     <form asp-action="Edit" class="flex-auto h-fit flex flex-wrap gap-6 mt-8">
         <div asp-validation-summary="ModelOnly" class="warning"></div>
         <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="UserId" value="@userId    " />
         <label asp-for="Tanggal">
             <span>Tanggal</span>
             <input asp-for="Tanggal" placeholder="Masukkan tanggal" class="form-input capitalize" />

@@ -139,6 +139,34 @@ namespace indogrosir_tim8.Models
                         Jumlah = 10,
                         Minimum = 100,
                         UserId = 1,
+                        UserRole = "admin",
+                        Gambar = "pucuk.png",
+                    }
+
+                );
+                context.Produk.AddRange(
+                    new Produk
+                    {
+                        Nama = "Coca-cola",
+                        Kategori = "Minuman",
+                        Harga = 8000,
+                        Jumlah = 10,
+                        Minimum = 100,
+                        UserId = 1,
+                        UserRole = "admin",
+                        Gambar = "coca-cola.png",
+                    }
+
+                );
+                context.Produk.AddRange(
+                    new Produk
+                    {
+                        Nama = "Pucuk",
+                        Kategori = "Minuman",
+                        Harga = 4000,
+                        Jumlah = 10,
+                        Minimum = 100,
+                        UserId = 1,
                         UserRole = "mitra",
                         Gambar = "pucuk.png",
                     }
@@ -181,6 +209,33 @@ namespace indogrosir_tim8.Models
                         Jumlah = 10,
                         Minimum = 100,
                         UserId = 2,
+                        UserRole = "admin",
+                        Gambar = "tehbotol.png",
+                    }
+
+                );
+                context.Produk.AddRange(
+                    new Produk
+                    {
+                        Nama = "Freshtea",
+                        Kategori = "Minuman",
+                        Harga = 10000,
+                        Jumlah = 10,
+                        Minimum = 100,
+                        UserId = 2,
+                        UserRole = "admin",
+                        Gambar = "freshtea.png",
+                    }
+                );
+                context.Produk.AddRange(
+                    new Produk
+                    {
+                        Nama = "Teh Botol",
+                        Kategori = "Minuman",
+                        Harga = 10000,
+                        Jumlah = 10,
+                        Minimum = 100,
+                        UserId = 2,
                         UserRole = "mitra",
                         Gambar = "tehbotol.png",
                     }
@@ -198,7 +253,6 @@ namespace indogrosir_tim8.Models
                         UserRole = "mitra",
                         Gambar = "freshtea.png",
                     }
-
                 );
                 context.Produk.AddRange(
                     new Produk

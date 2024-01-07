@@ -1,19 +1,20 @@
 ﻿@model indogrosir_tim8.Models.Mitra
+@inject IHttpContextAccessor httpContextaccessor
 
 @{
     ViewData["Title"] = "Edit Profil";
+    var userId = httpContextaccessor.HttpContext.Request.Cookies["user_id"];
 }
 
 <div class="fit-screen flex gap-4 overflow-hidden">
     <div class="w-1/4 px-10 py-16 space-y-8 bg-white rounded-2xl shadow">
         <div class="space-y-3 w-full flex flex-col items-center">
-            <div class="w-40 h-40 rounded-full border relative bg-gray-200">
-                <img src="~/assets/image/2003.png" alt="profil mitra" class="w-40 aspect-square rounded-full object-cover" />
-                <span class="absolute right-1 bottom-1 w-9 aspect-square grid place-items-center bg-gray-200 rounded-full text-gray-600 border cursor-pointer">
-                    <i class="bi bi-pencil"></i>
-                </span>
+            <div class="space-y-3 w-full flex flex-col items-center">
+                <div class="w-40 h-40  relative">
+                    <img src="~/assets/image/store3d.png" alt="profil mitra" class="w-40 aspect-square object-cover" />
+                </div>
+                <h2 class="text-2xl font-semibold">@Model.Nama</h2>
             </div>
-            <h2 class="text-2xl font-semibold">@Model.Nama</h2>
         </div>
         <div class="space-y-2">
             <div class="row justify-between">
@@ -33,7 +34,8 @@
         <h1>Profil Mitra</h1>
         <form asp-action="EditProfil" id="profil" class="mt-8 grid grid-cols-3 gap-5">
             <div asp-validation-summary="ModelOnly" class="warning"></div>
-            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="Id" value="@userId" />
+            <input type="hidden" asp-for="Password" />
             <label asp-for="Nama">
                 <span>Nama Mitra</span>
                 <input asp-for="Nama" class="form-input capitalize" />

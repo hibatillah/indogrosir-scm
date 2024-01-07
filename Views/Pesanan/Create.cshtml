@@ -106,14 +106,10 @@
         item.children[1].innerText = 0  
 
         item.children[2].addEventListener('click', () => {
-            const product = document.querySelector('tbody tr')
-
-            if (product == null) {
-                if (item.children[1].innerText <= (parseInt(item.getAttribute('data-max')) - 1)) {
-                    item.children[1].innerText = parseInt(item.children[1].innerText) + 1
-                    getProduct(index, item.children[1].innerText)
-                    getTotalProductAndAmount('plus')
-                }
+            if (item.children[1].innerText <= (parseInt(item.getAttribute('data-max')) - 1)) {
+                item.children[1].innerText = parseInt(item.children[1].innerText) + 1
+                getProduct(index, item.children[1].innerText)
+                getTotalProductAndAmount('plus')
             }
         })
 

@@ -263,13 +263,6 @@
         const allMenu = document.querySelectorAll('nav#menu > *')
         console.log('current path', currentPath.split('/')[-1])
 
-        /* active menu */
-        const activeMenu = (element) => {
-            let active = 'text-blue-500'
-            allMenu.forEach((menu) => menu.classList.remove(active))
-            document.querySelector(element).classList.add(active)
-        }
-
         /* dropdown tentang */
         const menuTentang = document.querySelector('#menu-item.dropdown')
         const dropTentang = document.querySelector('#menu-dropdown')
@@ -277,15 +270,6 @@
             console.log('dropdown actived')
             dropTentang.classList.toggle('hidden')
         })
-
-        /* check active page */
-        const menu = document.querySelectorAll("nav#menu #menu-item");
-        menu.forEach((item) => {
-            item.addEventListener("click", () => {
-                menu.forEach((el) => el.classList.remove("ztext-blue-500"));
-                item.classList.add("text-blue-500");
-            });
-        });
     </script>
 
     @if (TempData["Message"] != null)
