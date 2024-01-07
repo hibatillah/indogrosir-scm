@@ -13,7 +13,7 @@ namespace indogrosir_tim8.Models
             {
                 // Mitra
                 if (context.Cabang.Any() 
-                    || context.Admin.Any()
+                    || context.Admin.Any() || context.Produk.Any() || context.Mitra.Any()
                     )
                 {
                     return; // DB has been seeded
@@ -25,8 +25,236 @@ namespace indogrosir_tim8.Models
                         Nama = "Raul",
                         Email = "raul@gmail.com",
                         Password = "123",
-                        Cabang = "Pekanbaru"
+                        Cabang = "Pekanbaru",
+                    },
+                    new Admin
+                    {
+                        Nama = "farhan",
+                        Email = "farhan@gmail.com",
+                        Password = "123",
+                        Cabang = "Bandung",
                     }
+                );
+                context.Mitra.AddRange(
+                    new Mitra
+                    {
+                        Nama = "Siti",
+                        Alamat = "Jl. Padat Karya No.11",
+                        Cabang = "Pekanbaru",
+                        TahunBerdiri = DateTime.Parse("2016-7-23"),
+                        GabungMember = DateTime.Parse("2024-1-7"),
+                        Admin = "Siti",
+                        Email = "siti@gmail.com",
+                        Password = "123",
+              
+                    },
+                    new Mitra
+                    {
+                        Nama = "Budi",
+                        Alamat = "Jl.Srikandi No.45",
+                        Cabang = "Pekanbaru",
+                        TahunBerdiri = DateTime.Parse("2017-3-3"),
+                        GabungMember = DateTime.Parse("2024-1-7"),
+                        Admin = "Budi",
+                        Email = "budi@gmail.com",
+                        Password = "123",
+                        
+                    },
+                    new Mitra
+                    {
+                        Nama = "Andi",
+                        Alamat = "Jl. Sukajaya No.33",
+                        Cabang = "Bandung",
+                        TahunBerdiri = DateTime.Parse("2018-4-29"),
+                        GabungMember = DateTime.Parse("2024-1-7"),
+                        Admin = "Andi",
+                        Email = "andi@gmail.com",
+                        Password = "123",
+                        
+                    }
+                );
+
+                context.Produk.AddRange(
+                    new Produk
+                    {
+                        Nama = "Golda",
+                        Kategori = "Minuman",
+                        Harga = 3000,
+                        Jumlah = 10,
+                        Minimum = 100,
+                        UserId =1,
+                        UserRole = "admin",
+                        Gambar = "golda.jpg",
+                    }
+
+                );
+                context.Produk.AddRange(
+                    new Produk
+                    {
+                        Nama = "Chitato",
+                        Kategori = "Makanan Ringan",
+                        Harga = 6000,
+                        Jumlah = 10,
+                        Minimum = 100,
+                        UserId = 1,
+                        UserRole = "admin",
+                        Gambar = "chitato.jpg",
+                    }
+
+                );
+                context.Produk.AddRange(
+                    new Produk
+                    {
+                        Nama = "Nescafe",
+                        Kategori = "Minuman",
+                        Harga = 8000,
+                        Jumlah = 10,
+                        Minimum = 100,
+                        UserId = 2,
+                        UserRole = "admin",
+                        Gambar = "nescafe.png",
+                    }
+
+                );
+                context.Produk.AddRange(
+                    new Produk
+                    {
+                        Nama = "Qtela",
+                        Kategori = "Makana Ringan",
+                        Harga = 6000,
+                        Jumlah = 10,
+                        Minimum = 100,
+                        UserId = 2,
+                        UserRole = "admin",
+                        Gambar = "qtela.png",
+                    }
+
+                );
+                context.Produk.AddRange(
+                    new Produk
+                    {
+                        Nama = "Pucuk",
+                        Kategori = "Minuman",
+                        Harga = 4000,
+                        Jumlah = 10,
+                        Minimum = 100,
+                        UserId = 1,
+                        UserRole = "mitra",
+                        Gambar = "pucuk.png",
+                    }
+
+                );
+                context.Produk.AddRange(
+                    new Produk
+                    {
+                        Nama = "Coca-cola",
+                        Kategori = "Minuman",
+                        Harga = 8000,
+                        Jumlah = 10,
+                        Minimum = 100,
+                        UserId = 1,
+                        UserRole = "mitra",
+                        Gambar = "coca-cola.png",
+                    }
+
+                );
+                context.Produk.AddRange(
+                    new Produk
+                    {
+                        Nama = "Redbull",
+                        Kategori = "Minuman",
+                        Harga = 24000,
+                        Jumlah = 10,
+                        Minimum = 100,
+                        UserId = 1,
+                        UserRole = "mitra",
+                        Gambar = "redbull.png",
+                    }
+
+                );
+                context.Produk.AddRange(
+                    new Produk
+                    {
+                        Nama = "Teh Botol",
+                        Kategori = "Minuman",
+                        Harga = 10000,
+                        Jumlah = 10,
+                        Minimum = 100,
+                        UserId = 2,
+                        UserRole = "mitra",
+                        Gambar = "tehbotol.png",
+                    }
+
+                );
+                context.Produk.AddRange(
+                    new Produk
+                    {
+                        Nama = "Freshtea",
+                        Kategori = "Minuman",
+                        Harga = 10000,
+                        Jumlah = 10,
+                        Minimum = 100,
+                        UserId = 2,
+                        UserRole = "mitra",
+                        Gambar = "freshtea.png",
+                    }
+
+                );
+                context.Produk.AddRange(
+                    new Produk
+                    {
+                        Nama = "Sprite",
+                        Kategori = "Minuman",
+                        Harga = 10000,
+                        Jumlah = 10,
+                        Minimum = 100,
+                        UserId = 2,
+                        UserRole = "mitra",
+                        Gambar = "sprite.png",
+                    }
+
+                );
+                context.Produk.AddRange(
+                    new Produk
+                    {
+                        Nama = "Popmie",
+                        Kategori = "Makanan",
+                        Harga = 5000,
+                        Jumlah = 10,
+                        Minimum = 100,
+                        UserId = 3,
+                        UserRole = "mitra",
+                        Gambar = "popmie.png",
+                    }
+
+                );
+                context.Produk.AddRange(
+                    new Produk
+                    {
+                        Nama = "Indomie",
+                        Kategori = "Minuman",
+                        Harga = 3000,
+                        Jumlah = 10,
+                        Minimum = 100,
+                        UserId = 3,
+                        UserRole = "mitra",
+                        Gambar = "indomie.png",
+                    }
+
+                );
+                context.Produk.AddRange(
+                    new Produk
+                    {
+                        Nama = "Aqua",
+                        Kategori = "Minuman",
+                        Harga = 5000,
+                        Jumlah = 10,
+                        Minimum = 100,
+                        UserId = 3,
+                        UserRole = "mitra",
+                        Gambar = "aqua.png",
+                    }
+
                 );
 
                 context.Cabang.AddRange(
