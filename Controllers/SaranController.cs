@@ -13,18 +13,31 @@ namespace indogrosir_tim8.Controllers
     public class SaranController : Controller
     {
         private readonly indogrosir_tim8Context _context;
+        private readonly IHttpContextAccessor _accessor;
 
-        public SaranController(indogrosir_tim8Context context)
+        public SaranController(indogrosir_tim8Context context, IHttpContextAccessor accessor)
         {
             _context = context;
+            _accessor = accessor;
         }
 
         // GET: Saran
         public async Task<IActionResult> Index()
         {
-              return _context.Saran != null ? 
-                          View(await _context.Saran.ToListAsync()) :
-                          Problem("Entity set 'indogrosir_tim8Context.Saran'  is null.");
+            string user_id = _accessor.HttpContext.Request.Cookies["user_id"];
+            string user_role = _accessor.HttpContext.Request.Cookies["user_role"];
+
+            var admin = await _context.Admin
+                .FirstOrDefaultAsync(m => m.Id.ToString() == user_id);
+
+            var saran = from m in _context.Saran
+                        select m;
+
+            saran = saran.Where(m => m.Cabang == admin.Cabang);
+
+            return View(saran);
+
+
         }
 
         // GET: Saran/Details/5
